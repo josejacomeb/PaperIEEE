@@ -410,18 +410,16 @@ Subsection text here.
 Subsubsection text here.
 
 \section{State of Art}
-Along the last centuries there had been developed  huge progress in the science and technology, significant milestones such as Communications, Computer Numerical Control and the miniaturization of components has permitted to the social and industrial sectors to benefit in order to reach their objectives.
-
-The globalization in the world also allow to countries like Ecuador(which isn’t larger producer of technology) to receive products and technological knowledge to satisfy requirements o propose   solutions for problems of the country still unresolved.
-
-The transformation of the industry is a example of the evolution of the science, the Manufacturing , the Food and Drink,Information Industries, etc. are signs of this industrial revolution. However there are fields still unexplored  in Ecuador like the agroindustry. Agriculture in Ecuador has changed a bit since the epoch of the Incas, it isn’t so bad mainly due there are good agriculture knowledge like terraces but the faulty exploitation of technological resources make impossible to the country to exploit its true potential like agricultural producer.
-
-
-Today the agriculture has many challenges for the Precision Agriculture such as the Weed and Crop segmentation, according to Suarez, Piñero y Valladores, el yield of the corn is affected by 5000 kg/ha. Actually the growing development of techniques of Artificial Vision and Machine Learning permit to researchers propose solutions for the Segmentation of Weeds in Crops. 
-
-One of the first approximations to the algorithms of detection of Crops is the developed in 1996 by Brivot and Mercant, this could be possible by the use of IR Images, the image is processed by a hysteresis umbral and the method of Min Neighbouring to identify the row of crops. In recent years the implementation of Machine Learning has opened new possibilities for differentiate the Weed from the crops, recently Chend and Mason had developed an algorithm by the use of Harris Corner detector, Feature Detector and using the DBSCAN(Density-based spartial clustering of apllications with noise) as Machine Learnin, it demonstrates an effectiveness of  98\% in the identification of Weeds in the Rice.  Hong, Lei and Heping use an optimal method for detection in various types of luminosity, they achived this by the use an ANN for weed and maize classification, with a precision of 92.5\%, Araguez et. al perform their analysis through the analysis of the green hystogram and performing the segmentation of the crop and weed by classifiers not specified in the document. Su Hnin Hlaing1, Aung Soe Khaing used the binarization methods of OTSU and Watershed for the segmentation of the images, while the classification was given through a areas analysis to perform a thresholding, although the method is computationally effective when the Weed distribution does not resemble the size to the crop plant, its error increases when there is more density of crop than of weed. Romeo et. al propose to use a fuzzy clustering approach to correctly segment the crop green and the same algorithm to classify the soil crop. Potena, Nardi and Pretto use a multispectral camera to obtain RGB and NIR images, for the segmentation and classification they use a light CNN for the first process and a Deep CNN for classification, its accuracy is up to 98\%. There is an approximation to Cicco, Potena, Griseeti CNN through the generation of datasets
-
-
+During the last centuries, huge progress has taken place in science and technology developments. Significant milestones such as Communications, Numerical Computer Control and the miniaturization of components have benefited social and industrial sectors on its approach to solve specific problems. 
+\\
+Globalization has permitted countries who are not leader technology developers, like Ecuador, to receive leading edge technological products in order to satisfy requirements and propose   solutions to still-unresolved problems.
+\\
+Industry transformation is a science evolution example; manufacturing, food, and information industries, among others, are signs of this industrial revolution. However there are fields still unexplored  in Ecuador like agroindustry. Agriculture in Ecuador has not changed much since precolombine times; while it is true that there are efficient agriculture practices, the lack of technological resources make it impossible for the country to exploit its true potential as an agricultural producer.
+\\
+Nowadays, one of agriculture challenges is the development of precision agriculture techniques focused on Weed and Crop segmentation. There are studies that show the impact of Weed in corn crops \cite{Suarez:Pinero}; its yield is affected by 5000 kg/ha. Currently, growing development of Artificial Vision and Machine Learning algorithms allow researchers to propose solutions for Weed Segmentation in Crops. 
+\\
+One of the first approximations to the algorithms of detection of Crops is the developed \cite{Brivot:Marchant}, this could be possible by the use of IR Images, the image is processed by a hysteresis umbral and the method of Min Neighbouring to identify the row of crops. In recent years the implementation of Machine Learning has opened new possibilities for differentiate the Weed from the crops, recently Chend and Mason had developed an algorithm by the use of Harris Corner detector, Feature Detector and using the DBSCAN(Density-based spartial clustering of apllications with noise) as Machine Learnin, it demonstrates an effectiveness of  98\% in the identification of Weeds in the Rice.  Hong, Lei and Heping use an optimal method for detection in various types of luminosity, they achived this by the use an ANN for weed and maize classification, with a precision of 92.5\%, Araguez et. al perform their analysis through the analysis of the green hystogram and performing the segmentation of the crop and weed by classifiers not specified in the document. Su Hnin Hlaing1, Aung Soe Khaing used the binarization methods of OTSU and Watershed for the segmentation of the images, while the classification was given through a areas analysis to perform a thresholding, although the method is computationally effective when the Weed distribution does not resemble the size to the crop plant, its error increases when there is more density of crop than of weed. Romeo et. al propose to use a fuzzy clustering approach to correctly segment the crop green and the same algorithm to classify the soil crop. Potena, Nardi and Pretto use a multispectral camera to obtain RGB and NIR images, for the segmentation and classification they use a light CNN for the first process and a Deep CNN for classification, its accuracy is up to 98\%. There is an approximation to Cicco, Potena, Griseeti CNN through the generation of datasets
+\\
 \section{Implementation of the Algorithm}
 %Codigo para la Implementacion del Algoritmo
 
@@ -540,7 +538,7 @@ The conclusion goes here.
 \section*{Acknowledgment}
 
 
-The authors would like to thank...
+The authors would like to thank... 
 
 
 
@@ -570,14 +568,21 @@ The authors would like to thank...
 % (used to reserve space for the reference number labels box)
 \begin{thebibliography}{1}
 
-\bibitem{Brivot:Marchant}
-R.~Brivot and J.~A. Marchant, \emph{Segmentation of plants and weeds for a precision crop protection robot using infrared images}\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: IEE Proc-Vis Image Signal Process, 1996.
+\bibitem{Suarez:Pinero}
+R. ~Su\'arez, J. ~Pi\~neiro and J. ~Valladares \emph{Distintos Sistemas De Escarda En Ma\'iz Forrajero} . Vol ~II. \hskip 1em plus
+  0.5em minus 0.4em\relax Gij\'on: Publicaciones SERIDA, 2005. Web. 3 Mar. 2017. 
 
-\bibitem{IEEEhowto:yo}
-Youtube, \emph{Gmail \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
   
+\bibitem{Brivot:Marchant}
+R.~Brivot and J.~A. Marchant, \emph{Segmentation of plants and weeds for a precision crop protection robot using infrared images} Vol ~143 Issue 2 \hskip 1em plus
+  0.5em minus 0.4em\relax Harlow, England: IEE Proceedings - Vision, Image and Signal Processing, 1996.
+
+\bibitem{IEEEhowto:kopka}
+H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+
+  
+
 \end{thebibliography}
 
 
