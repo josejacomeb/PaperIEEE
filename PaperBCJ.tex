@@ -435,30 +435,39 @@ The segmentation of weed and crops is not closed to color images, using a multis
 %Codigo para la Implementacion del Algoritmo
 The development of the model for the weed and maize detection algorithm using convolutional neural networks is described below.
 \\
-\subsection{Hardward}
+\subsection{Hardware}
 The card used is a Raspberry Pi 3. The camera used for both the sampling and the model was a RaspBerry Pi Camera module v2, 		which is configured to obtain a video at a resolution of 640 by 480 pixels , In order to improve the performance of image 	processing.
 \\
 
 \subsection{Software}
 
-The programs / packages used were OpenCV and Qt, for the acquisition, segmentation of images, Cafe for the realization of neural networks,
+The packages used were OpenCV and c/++, for the acquisition, segmentation of images, Caffe an Cuda for the realization of neural networks,
 \\
 \subsection{Neural networks}
 For the training of neural networks we used an AlexNet architecture, but we do quizes with others architectures like Let Net, Inception Ned, but the results wont good.
 \\
+For the model we have two categories, the first maize in its initial stage, and the second weed, We had a total of  2225 images, of which 1622 images were of maize and 603 of weed
+\\
+
 \subsection{Dataset Desciption}
-	\begin{figure}[!t]
-	For the model we have two categories, the first maize in its initial stage, and the second weed, All images for the dataset were obtained from maize cultivations in their initial stage in Pillaro canton, where they had a total of  2225 images, of which 1622 images were of maize and 603 of weed, once obtained the images are processed by openCV to segment them and can be obtained as follows:
-	\\
+	Samples were obtained from images captured in maize fields in their initial stage, when there was no exaggerated presence of weeds in the culture, the camera was configured at a resolution of 640 by 480 pixels, to obtain raw samples of the two Categories to be classified.
+\\
+Then, through a digital image processing, the raw samples were segmented to differentiate them from the soil and other non-plant elements, thereby obtaining unique images from each class.
+\\
+Once the segmented images were obtained, they were removed those that had a resolution lower than 64x64 pixels, because it/'s the size of the layer of entrance of the network, besides it was not convenient its processing since its total area was much smaller than the samples of corn, Which is the purpose of this document.
 	
+	\begin{figure}[h]
 	\centering
 	\includegraphics[width=2.5in]{im1}
 	\caption{Simulation results for the network.}
 	\label{fig_sim}
 	\end{figure}
 	
+	
+	
 	\subsection{Convolutional Neuronal Network}
-	After the segmentation of the pictures have been terminated, it is neccesary classify the images of Maize and Weed, a high accurate method of Image Classification is Convolutional Neuronal Networks(CNN), those models are complex but efficient with a highly rate of discrimination and its demostrated that they have good results in Image Classification, Object Detection and Fine-Grained  Classification \cite{Razavian}. Their are also applied in Precision Agriculture \cite{Potena:Nardi} for the correct identification of plants. 
+	After the segmentation of the pictures have been terminated, it is neccesary classify the images of Maize and Weed, a high accurate method of Image Classification is Convolutional Neuronal Networks(CNN), those models are complex but efficient with a highly rate of discrimination and its demostrated that they have good results in Image Classification, Object Detection and Fine-Grained  Classification \cite{Razavian}. Their are also applied in Precision Agriculture \cite{Potena:Nardi} for the correct identification of plants.
+
 	\section{Test}
 	%Codigo para la Implementacion del Algoritmo
 	
