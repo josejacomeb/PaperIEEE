@@ -523,9 +523,6 @@ One of the characteristics of the CNN is that they can have multiple architectur
 	
 Inside of the shown parameters in the Table {table:1}, we considered the net who achieved the highest rate of accuracy and lowest rate of loss, clearly the cNET is the chosen due it shows a precission equal to human classification. The following picture shows the process of training of the cNET \\
 Inside of the shown parameters in the Table \ref{table:2}, we considered the net who achieved the highest rate of accuracy and lowest rate of loss, clearly the cNET is the chosen due it shows a precission equal to human classification. The following picture shows the process of training of the cNET. \\
->>>>>>> master
-
-
 
 	\begin{figure*}[htb]
 	\centering
@@ -540,13 +537,10 @@ Inside of the shown parameters in the Table \ref{table:2}, we considered the net
 	\caption{ Graph of the Training Process }
 	\label{fig_sim}
 	\end{figure}
-<<<<<<< HEAD
+
 
 Although results given for the net are excellents, one of the main purposes of this paper is the implementation in real time, so the number of parameters to be computed must be a problem, so we considered to modify the net in order to improve the processing time. To achive this, it was neccesary to reduce the number of filters from 64 to 16, this permitted to reduce the number of parameters to 1651376(it's a 25\% of parameters than the original net), and what about the precision of the net, it was slighty affected but it reach a 97.2\% of accuracy, the results of the processing will be explained with more detail in the next section.
 
-=======
-	
->>>>>>> master
 	\section{Test}
 
 For this stage, we considered an extra dataset with 200 images of maize plants and 203 images of weed, the results were comparated between cNET with 64 and 16 filters, each one would be  
@@ -574,9 +568,9 @@ For this stage, we considered an extra dataset with 200 images of maize plants a
  \hline
    & \% Accuracy Weed & \%Accuracy Maize  & Average time of classification\\ 
  \hline 
- cNET(64 Filters) & 81.6 & 88.36 & 2.34 ms  \\ [0.75ex]
+ cNET(64 Filters) & 81.6 & 88.36 & 615 ms  \\ [0.75ex]
  \hline
- cNET(16 Filters) & 85.71 & 87.13 & 951 us \\ [0.75ex]
+ cNET(16 Filters) & 85.71 & 87.13 & 161 s \\ [0.75ex]
   \hline
 \end{tabular}
 \caption{Test}
@@ -683,7 +677,14 @@ For this stage, we considered an extra dataset with 200 images of maize plants a
 
 
 \section{Conclusion}
-The conclusion goes here.
+
+In this paper we have studied the application of Convolutional Neuronal Networks for Classification between Maize and Weed Plants, for that we have used some CNN Architectures, the Network with best results in precision was cNET, with a 99.33 \% of accuracy of training, using a dataset of both classes  of 44580 segmented images. \\
+
+In order to search a right processing to work in real time, we have experimented to reduce the number of filters of the Layers of the Net from 64 to 16 filters, achiveiving to reduce the number of parameters to be computed during the classification , we obteined a classification time 2.5 times less than the original Net of 64 filters , this change had a small impact in the training accuray of the net, it value fell 1 \% in comparation with the original net. \\
+
+Also, by using different methods to classify the images in our experiments, the results showed that the best time of classification was achieved by using a Nvidia Graphic Cards, this is due the Parallel Architecture that this GPU has and also it has fully support for the computation platform CUDA, it demostrated to be 18 times faster than a normal CPU and 170 times faster than a Raspberry Pi 3. \\
+
+The study demostrated that is better to perform some geometrical tranformations to the Dataset images due it benefits to improve the  classification of plants because the plants ever have different orientations in the crop field. 
 
 
 
@@ -694,8 +695,9 @@ The conclusion goes here.
 % use section* for acknowledgment
 \section*{Acknowledgment}
 
+The authors would like to thank to the "Granja Agroecol\'ogica y Demostrativa" of P\'illaro City and owners of corn crops of the city which allowed us to take samples of plants, to obtain to conform the dataset of the project. \\
 
-The authors would like to thank... 
+This work has been supported by the University of the Army "ESPE"  Latacunga.  
 
 
 % trigger a \newpage just before the given reference
