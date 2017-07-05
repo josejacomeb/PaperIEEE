@@ -1,4 +1,4 @@
-
+	
 %% bare_conf.tex
 %% V1.4b
 %% 2015/08/26
@@ -311,6 +311,9 @@
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 \usepackage{graphicx}
+\usepackage{array}
+\usepackage{caption}
+\captionsetup[table]{position=bottom}   %% or below
 
 \begin{document}
 %
@@ -320,7 +323,7 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Weed and Corn segmentation through Convolutional Neuronal Networks }
+\title{Precise Weed and Maize classification through Convolutional Neuronal Networks }
 
 
 % author names and affiliations
@@ -474,13 +477,13 @@ For the Validation Phase, we had chosen randomly a fifth part of the total image
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{|c | c | c | c | c|} 
+\begin{tabular}{| c | c | c | c | c |} 
  \hline
- Phase & Train & Validation & Test & Total \\ [0.5ex] 
+ Phase & Train & Validation & Test & Total \\ [1ex] 
  \hline
  Maize & 7581 & 1895 & 787 & 9476 \\ 
- Weed & 2023 & 505 & 300 & 2528\\[1ex] 
- \hline 
+ Weed & 2023 & 505 & 300 & 2528\\ 
+ \hline
 \end{tabular}
 \caption{Distribution of the Dataset of each class}
 \label{table:1}
@@ -497,7 +500,7 @@ One of the characteristics of the CNN is that they can have multiple architectur
 \centering
 \begin{tabular}{|l c c c c|} 
  \hline
- Parameters & LeNet & AlexNet & cNET & sNET \\ [0.5ex] 
+ Parameters & LeNet & AlexNet & cNET & sNET \\ [0.75ex] 
  \hline
  Input size of images & 32x32 & 64x64 & 64x64 & 64x64 \\ 
  Layers numbers & 9 & 11 & 8 & 4\\
@@ -505,24 +508,59 @@ One of the characteristics of the CNN is that they can have multiple architectur
  Iterations & 3000 & 3000 & 4500 & 3000 \\ 
   Accuracy(\%) & 78.84 & 95.266 & 99.33 & 90.4 \\
   Loss(\%) & 44.8471 & 12.7256 & 5.86 & 781.3 \\ [1ex] 
- \hline \\
+ \hline 
 \end{tabular}
 \caption{Distribution of the Dataset of each class}
-\label{table:1}
+\label{table:2}
 \end{table}
 	
-Inside of the shown parameters in the Table {table:1}, we considered the net who achieved the highest rate of accuracy and lowest rate of loss, clearly the cNET is the chosen due it shows a precission equal to human classification. The following picture shows the process of training of the cNET \\
+Inside of the shown parameters in the Table \ref{table:2}, we considered the net who achieved the highest rate of accuracy and lowest rate of loss, clearly the cNET is the chosen due it shows a precission equal to human classification. The following picture shows the process of training of the cNET. \\
+
 
 	\begin{figure}[h]
 	\centering
-	\includegraphics[width=3.2in]{entrenamiento}
+	\includegraphics[width=2.3in]{entrenamiento}
 	\caption{ Graph of the Training Process }
 	\label{fig_sim}
 	\end{figure}
 
+Although results given for the net are excellents, one of the main purposes of this paper is the implementation in real time, so the number of parameters to be computed must be a problem, so we considered to modify the net in order to improve the processing time. To achive this, it was neccesary to reduce the number of filters from 64 to 16, this permitted to reduce the number of parameters to 1651376(it's a 25\% of parameters than the original net), and what about the precision of the net, it was slighty affected but it reach a 97.2\% of accuracy, the results of the processing will be explained with more detail in the next section.
 
 	\section{Test}
-	%Codigo para la Implementacion del Algoritmo
+
+For this stage, we considered an extra dataset with 200 images of maize plants and 203 images of weed, the results were comparated between cNET with 64 and 16 filters, each one would be  
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|c|c|c|} 
+ \hline
+ \multicolumn{4}{ |c| }{GPU} \\
+ \hline
+   & \% Accuracy Weed & \% Accuracy Maize  & Average time of classification   \\ 
+ \hline 
+ cNET(64 Filters) & 81.6 & 88.36 & 2.34 ms  \\ [0.75ex]
+ \hline
+ cNET(16 Filters) & 85.71 & 87.13 & 951  $\mu$ s \\ [0.75ex]
+  \hline
+ \multicolumn{4}{ |c| }{CPU} \\
+ \hline
+   & \% Accuracy Weed & \%Accuracy Maize  & Average time of classification \\ 
+ \hline 
+ cNET(64 Filters) & 81.6 & 88.36 & 51.6 ms  \\ [0.75ex]
+ \hline
+ cNET(16 Filters) & 85.71 & 87.13 & 17.23 ms \\ [0.75ex]
+  \hline
+ \multicolumn{4}{ |c| }{CPU Raspberry Pi 3} \\
+ \hline
+   & \% Accuracy Weed & \%Accuracy Maize  & Average time of classification\\ 
+ \hline 
+ cNET(64 Filters) & 81.6 & 88.36 & 2.34 ms  \\ [0.75ex]
+ \hline
+ cNET(16 Filters) & 85.71 & 87.13 & 951 us \\ [0.75ex]
+  \hline
+\end{tabular}
+\caption{Test}
+\label{table:2}
+\end{table}
 	
 	
 	
