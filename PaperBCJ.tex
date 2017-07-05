@@ -438,7 +438,7 @@ The segmentation of weed and crops is not closed to color images, using a multis
 The development of the model for the weed and maize detection algorithm using convolutional neural networks is described below.
 \\
 \subsection{Hardware}
-For the stages of obtaining images and training net we  used the following elements: A Raspberry Pi 3 with Pi Camera V2.1 for the record of images, it was configured to obtain a video at a resolution of 640x480 pixels in order to improve the performance of image processing. Due to the popularity of the GPU computing, it was neccesary to consider hardware compatible with Parallel Computing like the Graphic Cards manufactured by NVIDIA, they have the advantage of better times of processing compared to CPU, in order to optimize the time of image processing and training of Deep Learning Models, so we used a Computer with a Nvidia Graphics Card GTX950M.
+For the training and image capturing stages, the following elements were used: a Raspberry Pi 3 with Pi Camera V2.1 for image recording, it was configured to obtain a video at a resolution of 640x480 pixels in order to improve the performance of image processing. Due to the popularity of the GPU computing, it was neccesary to consider hardware compatible with Parallel Computing like the Graphic Cards manufactured by NVIDIA, they have the advantage of better times of processing compared to CPU, in order to optimize the time of image processing and training of Deep Learning Models, so we used a Computer with a Nvidia Graphics Card GTX950M.
 \\
 
 \subsection{Software}
@@ -462,7 +462,15 @@ Samples were obtained from images captured in those maize fields , we considered
 	\label{fig_sim}
 	\end{figure}
 	
-Then, through a digital image processing, the images were segmented to differentiate them from the soil and other non-plant elements, then the images were masked to provide the dataset features of color of the Maize and Weed. Once the segmented images were obtained, they were removed those that had a resolution lower than 64x64 pixels, because it's smaller than size of input layer of the network, besides it was not convenient its processing since its total area was much smaller than the samples of corn, which is the purpose of this document. To highlight we had labelled the samples manually in two classes. In the following image we present the final results of the processed images that conform the dataset.
+Then, through a digital image processing, the images were segmented to differentiate them from the soil and other non-plant elements, then the images were masked to provide the dataset features of color of the Maize and Weed. Once the segmented images were obtained, they were removed those that had a resolution lower than 64x64 pixels, because it's smaller than size of input layer of the network, besides it was not convenient its processing since its total area was much smaller than the samples of corn, which is the purpose of this document.\\
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=3.2in]{procesamiento}
+	\caption{Preprocessing to obtain samples for the dataset}
+	\label{fig_sim}
+	\end{figure}
+	
+To highlight we had labelled the samples manually in two classes. In the following image we present the final results of the processed images that conform the dataset.\\
 	
 	\begin{figure}[h]
 	\centering
@@ -471,7 +479,7 @@ Then, through a digital image processing, the images were segmented to different
 	\label{fig_sim}
 	\end{figure}
 	
-Once we completed the processing of the images were obtained 2369 images of Maize and 632 images of Weed, \textbf{Seng} \cite{SengChang} said that once CNN has reached an acceptable accuracy, the dataset could extend by Geometric Transformations, because we will develop a  system  for classify the maize in any position , we considered to rotate the source sample to 90º,180º and 270º so the dataset will be treble, improving the accuracy of the model. \\
+Once we completed the processing of the images were obtained 2369 images of Maize and 632 images of Weed, \textbf{Seng} \cite{SengChang} said that once CNN has reached an acceptable accuracy, the dataset could extend by Geometric Transformations, in addition \cite{Sladojevic}  they measure that this allows to reduce the overfitting and to improve the presicion in the training, reason why we use rotations that go from the 30 to the 330 degrees in steps of 30, obtaining in this way to increase the date for 12 times and have better chances of recognizing plants that are in any orientation. \\
 
 For the Validation Phase, we had chosen randomly a fifth part of the total images of each class, so we have the following chart with the distribution of the dataset.
 
@@ -494,8 +502,7 @@ For the Validation Phase, we had chosen randomly a fifth part of the total image
 	After the last step have been terminated, it is neccesary classify the images of Maize and Weed, a high accurate method of Image Classification is Convolutional Neuronal Networks(CNN), those models are complex but efficient with a highly rate of discrimination and its demostrated that they have good results in Image Classification, Object Detection and Fine-Grained  Classification \cite{Razavian}. Their are also applied in Precision Agriculture \cite{Potena:Nardi} for the correct identification of plants.
 \\ 
 
-One of the characteristics of the CNN is that they can have multiple architectures, each architecture can reach different result depending of the application , for the present document we have considered four CNN architectures: Two models were chose of the Caffe Zoo Model(it's a free resource provided by Caffe Developers), LeNet and AlexNet also Potena and Nardi had used two additional types of Models, sNET and cNET, they were sucessfully proved in identification of plants in crops\cite{Potena:Nardi}, with the Nets chosen, each one was trained with a same Solver of type AdaDelta and with the same dataset, the results of training are the following. 
-\\
+One of the characteristics of the CNN is that they can have multiple architectures, each architecture can reach different result depending of the application , for the present document we have considered four CNN architectures: Two models were chose of the Caffe Zoo Model(it's a free resource provided by Caffe Developers), LeNet and AlexNet also Potena and Nardi had used two additional types of Models, sNET and cNET, they were sucessfully proved in identification of plants in crops\cite{Potena:Nardi}, with the Nets chosen, each one was trained with a same Solver of type AdaDelta and with the same dataset, the results of training are the following. \\
 \begin{table}[h!]
 \centering
 \begin{tabular}{|l c c c c|} 
@@ -508,6 +515,7 @@ One of the characteristics of the CNN is that they can have multiple architectur
  Iterations & 3000 & 3000 & 4500 & 3000 \\ 
   Accuracy(\%) & 78.84 & 95.266 & 99.33 & 90.4 \\
   Loss(\%) & 44.8471 & 12.7256 & 5.86 & 781.3 \\ [1ex] 
+<<<<<<< HEAD
  \hline 
 \end{tabular}
 \caption{Distribution of the Dataset of each class}
@@ -516,16 +524,38 @@ One of the characteristics of the CNN is that they can have multiple architectur
 	
 Inside of the shown parameters in the Table \ref{table:2}, we considered the net who achieved the highest rate of accuracy and lowest rate of loss, clearly the cNET is the chosen due it shows a precission equal to human classification. The following picture shows the process of training of the cNET. \\
 
+=======
+ \hline
+\end{tabular}  
+\caption{Distribution of the Dataset of each class}
+%%\endlastfoot
+\label{table:1} 
+\end{table}
+Inside of the shown parameters in the Table {table:1}, we considered the net who achieved the highest rate of accuracy and lowest rate of loss, clearly the cNET is the chosen due it shows a precission equal to human classification. The following picture shows the process of training of the cNET \\
+>>>>>>> master
 
+
+
+	\begin{figure*}[htb]
+	\centering
+	\includegraphics[width=6.5 in]{arquitectura}
+	\caption{ The schematic of CNet }
+	\label{fig_sim}
+	\end{figure*}
+	
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=2.3in]{entrenamiento}
 	\caption{ Graph of the Training Process }
 	\label{fig_sim}
 	\end{figure}
+<<<<<<< HEAD
 
 Although results given for the net are excellents, one of the main purposes of this paper is the implementation in real time, so the number of parameters to be computed must be a problem, so we considered to modify the net in order to improve the processing time. To achive this, it was neccesary to reduce the number of filters from 64 to 16, this permitted to reduce the number of parameters to 1651376(it's a 25\% of parameters than the original net), and what about the precision of the net, it was slighty affected but it reach a 97.2\% of accuracy, the results of the processing will be explained with more detail in the next section.
 
+=======
+	
+>>>>>>> master
 	\section{Test}
 
 For this stage, we considered an extra dataset with 200 images of maize plants and 203 images of weed, the results were comparated between cNET with 64 and 16 filters, each one would be  
@@ -677,9 +707,6 @@ The conclusion goes here.
 The authors would like to thank... 
 
 
-
-
-
 % trigger a \newpage just before the given reference
 % number - used to balance the columns on the last page
 % adjust value as needed - may need to be readjusted if
@@ -768,6 +795,10 @@ Fassio, A., Carriquiry, A., Tojo, C. and Romero, R  \emph{MAIZ: Aspectos sobre f
 \bibitem{IEEEhowto:kopka}
 H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
   0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+
+\bibitem{Sladojevic}
+S. Sladojevic,M. Arsenovic, A. Andarela, D. Culibrk and D, Stefanovic, \emph{Deep Neural Networks Based Recognition Diseases by Leaf Image Classification \LaTeX}, 3rd~ed.\hskip 1em plus
+  0.5em minus 0.4em\relax Trento, Italy: Srdjan Sladojevic, 2016.
 
 
 
