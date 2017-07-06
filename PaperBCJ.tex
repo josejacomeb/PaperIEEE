@@ -505,29 +505,48 @@ One of the characteristics of the CNN is that they can have multiple architectur
 \caption{Distribution of the Dataset of each class}
 \label{table:2}
 \end{table}
-	
-Inside of the shown parameters in the Table \ref{table:2}, we considered the net who achieved the highest rate of accuracy and lowest rate of loss, clearly the cNET is the chosen due it shows a precission near to human classification. The following picture shows the process of training of the cNET. \\
 
-	\begin{figure*}[htb]
-	\centering
-	\includegraphics[width=6.5 in]{arquitectura}
-	\caption{ The schematic of CNet }
-	\label{fig_sim}
-	\end{figure*}
+Inside of the shown parameters in the Table \ref{table:2}, we considered the net who achieved the highest rate of accuracy and lowest rate of loss, clearly the cNET is the chosen due it shows a precission near to human classification.\\
+	
+Although results given for the net are excellents, one of the main purposes of this paper is the implementation in real time, so the number of parameters to be computed must be a problem, so we considered to modify the net in order to improve the processing time. To achive this, it was neccesary to reduce the number of filters of cNET from 64 to 16.\\
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l c c |} 
+ \hline
+ Parameters & cNET 16 filters & cNET 64 filters \\ [0.75ex] 
+ \hline
+ Number of parameters & 1651376 & 6421568 \\ 
+ Iterations & 9000 & 9000  \\ 
+  Accuracy(\%) & 97.26 & 96.40  \\
+  Loss(\%) & 8.39 & 14.48  \\ [1ex] 
+ \hline 
+\end{tabular}
+\caption{Distribution of the Dataset of each class}
+\label{table:3}
+\end{table}
+
+This permitted to reduce the number of parameters to 1651376(it's a 25\% of parameters than the original net), and what about the precision of the net, it was slighty affected but it reach a 97.2\% of accuracy.\\
 	
 	\begin{figure}[h]
 	\centering
-	\includegraphics[width=2.3in]{entrenamiento}
+	\includegraphics[width=3.6 in]{arquitectura}
+	\caption{ The schematic of CNet }
+	\label{fig_sim}
+	\end{figure}
+	
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=2.4in]{entrenamiento}
 	\caption{ Graph of the Training Process }
 	\label{fig_sim}
 	\end{figure}
-
-
-Although results given for the net are excellents, one of the main purposes of this paper is the implementation in real time, so the number of parameters to be computed must be a problem, so we considered to modify the net in order to improve the processing time. To achive this, it was neccesary to reduce the number of filters of cNET from 64 to 16, this permitted to reduce the number of parameters to 1651376(it's a 25\% of parameters than the original net), and what about the precision of the net, it was slighty affected but it reach a 97.2\% of accuracy, the results of the processing will be explained with more detail in the next section.
+	
+The before pictures shows the schematic of the cNET of 16 filters and its process of training.Note that by reducing the number of filters the network gained accuracy because it does not have so much data to process.\\
 
 	\section{Test}
 
-For this stage, we considered an extra dataset with 200 images of maize plants in stage of V3-V7 and 203 images of weed, obtained in maize crops, the results were comparated between cNET with 64 and 16 filters in the Table \ref{table:3}.\\  
+For this stage, we considered an extra dataset with 200 images of maize plants in stage of V3-V7 and 203 images of weed, obtained in maize crops, the results were comparated between cNET with 64 and 16 filters in the Table \ref{table:4}.\\  
 \begin{table}[h!]
 \centering
 \begin{tabular}{|l|c|c|p{2cm}|}  
@@ -558,7 +577,7 @@ For this stage, we considered an extra dataset with 200 images of maize plants i
   \hline
 \end{tabular}
 \caption{Test}
-\label{table:3}
+\label{table:4}
 \end{table}
 
 Like the table shown the results were achieved by the GPU processor, it is the best option to classificate a large amount of images however this project is thought to be portable, so we consider the RaspBerry Pi for the analysis of performance. With cNET of 64 filters the results fo time of classification was 615 miliseconds, so it time isn\'t the optimum for our objective that it is the processing in a real time.\\
