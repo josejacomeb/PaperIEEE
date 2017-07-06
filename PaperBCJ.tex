@@ -374,7 +374,7 @@ Email: \IEEEauthorrefmark{1}accordova@espe.edu.ec,
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-Today the computation stays i 
+Deep Learning has played a very important role in modern times, being very used in artificial vision and especially in pattern recognition, which opens many doors in the fields of application among which is agriculture of presicion. In this paper we present the study of a convolutional neural network applied to the classification of plants of maize and weeds in real time, directed to fields of maize in its initial stage. The algorithm has two stages, segmentation of images and classification. In the segmentation it is sought to separate from the image the plants individually. While the classification is given through the convolutional neural network, previously trained with a dataset generated through the segmentation stage.The performance of the network is illustrated by analysis and comparisons with different network architectures, then with the network that presented better results, we experimented by modifying its number of filters, to analyze their behavior. Finally, the resulting network was tested on different processors to compare classification times.\\
 \end{abstract}
 
 % no keywords
@@ -391,26 +391,6 @@ Today the computation stays i
 % For peerreview papers, this IEEEtran command inserts a page break and
 % creates the second title. It will be ignored for other modes.
 \IEEEpeerreviewmaketitle
-
-
-
-\section{Introduction}
-% no \IEEEPARstart
-
-% You must have at least 2 lines in the paragraph with the drop letter
-% (should never be an issue)
-I wish you the best of success.
-
-\hfill mds
- 
-\hfill August 26, 2015
-
-\subsection{Subsection Heading Here}
-Subsection text here.
-
-
-\subsubsection{Subsubsection Heading Here}
-Subsubsection text here.
 
 \section{Introduction}
 During the last centuries, huge progress has taken place in science and technology developments. Significant milestones such as Communications, Numerical Computer Control and the miniaturization of components have benefited social and industrial sectors on its approach to solve specific problems. 
@@ -546,31 +526,31 @@ Although results given for the net are excellents, one of the main purposes of t
 For this stage, we considered an extra dataset with 200 images of maize plants and 203 images of weed, the results were comparated between cNET with 64 and 16 filters, each one would be  
 \begin{table}[h!]
 \centering
-\begin{tabular}{|l|c|c|c|} 
+\begin{tabular}{|l|c|c|p{2cm}|}  
  \hline
  \multicolumn{4}{ |c| }{GPU} \\
  \hline
-   & \% Accuracy Weed & \% Accuracy Maize  & Average time of classification   \\ 
+   cNET & \% Accuracy Weed & \% Accuracy Maize  & Average time of classification   \\ 
  \hline 
- cNET(64 Filters) & 81.6 & 88.36 & 2.34 ms  \\ [0.75ex]
+ 64 Filters & 81.6 & 88.36 & 2.34 ms  \\ [0.75ex]
  \hline
- cNET(16 Filters) & 85.71 & 87.13 & 951  $\mu$ s \\ [0.75ex]
+ 16 Filters & 85.71 & 87.13 & 951  $\mu$ s \\ [0.75ex]
   \hline
  \multicolumn{4}{ |c| }{CPU} \\
  \hline
    & \% Accuracy Weed & \%Accuracy Maize  & Average time of classification \\ 
  \hline 
- cNET(64 Filters) & 81.6 & 88.36 & 51.6 ms  \\ [0.75ex]
+ 64 Filters & 81.6 & 88.36 & 51.6 ms  \\ [0.75ex]
  \hline
- cNET(16 Filters) & 85.71 & 87.13 & 17.23 ms \\ [0.75ex]
+ 16 Filters & 85.71 & 87.13 & 17.23 ms \\ [0.75ex]
   \hline
  \multicolumn{4}{ |c| }{CPU Raspberry Pi 3} \\
  \hline
    & \% Accuracy Weed & \%Accuracy Maize  & Average time of classification\\ 
  \hline 
- cNET(64 Filters) & 81.6 & 88.36 & 615 ms  \\ [0.75ex]
+ 64 Filters & 81.6 & 88.36 & 615 ms  \\ [0.75ex]
  \hline
- cNET(16 Filters) & 85.71 & 87.13 & 161 s \\ [0.75ex]
+ 16 Filters & 85.71 & 87.13 & 161 s \\ [0.75ex]
   \hline
 \end{tabular}
 \caption{Test}
