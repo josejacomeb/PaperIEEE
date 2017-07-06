@@ -376,7 +376,7 @@ Email: \IEEEauthorrefmark{1}accordova@espe.edu.ec,
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-Deep Learning has played a very important role in modern times, being very used in artificial vision and especially in pattern recognition, which opens many doors in the fields of application among which is agriculture of presicion. In this paper we present the study of a convolutional neural network applied to the classification of plants of maize and weeds in real time, directed to fields of maize in its initial stage. The algorithm has two stages, segmentation of images and classification. In the segmentation it is sought to separate from the image the plants individually. While the classification is given through the convolutional neural network, previously trained with a dataset generated through the segmentation stage.The performance of the network is illustrated by analysis and comparisons with different network architectures, then with the network that presented better results, we experimented by modifying its number of filters, to analyze their behavior. Finally, the resulting network was tested on different processors to compare classification times.\\
+Deep Learning has played a very important role in modern times, being very used in Artificial Vision and especially in Pattern Recognition, which opens many doors in the fields of application among which is precision agriculture. In this paper we present the study of a convolutional neural network with two classes applied to the classification of plants of maize and weeds in real time, focused to fields of maize in its initial stage. The algorithm has two stages, segmentation of images and classification.  In the segmentation we wanted to separate the target plant from the original image. While the classification is possible through a convolutional neural network, previously trained with a dataset generated through the segmentation stage. The performance of the network is illustrated by analysis and comparisons with different network architectures, then with the network that presented better results in training, we experimented by modifying its number of filters, to analyze their  behavior. Finally, the resulting network was tested on different processors to compare classification times.\\
 \end{abstract}
 
 % no keywords
@@ -407,39 +407,36 @@ Industry transformation is a science evolution example; manufacturing, food, and
 Nowadays, one of agriculture challenges is the development of precision agriculture techniques focused on Weed and Crop segmentation. There are studies that show the impact of Weed in corn crops \cite{suarez2005distintos}; its yield is affected by 5000 kg/ha. Currently, growing development of Artificial Vision and Machine Learning algorithms allow researchers to propose solutions for Weed Segmentation in Crops. 
 \\
 
-One of the first approximations to the algorithms of detection of Crops was  developed in 1996\cite{brivot1996segmentation}, this algorithm permitted to segment crops from weed, it could be possible by the use of IR Images, the image is processed by a hysteresis umbral and the method of Min Neighbouring to identify the row of crops. In recent years the implementation of Machine Learning has opened new possibilities for differentiate the Weed from the crops, recently \cite{cheng2015feature} there had been developed an algorithm by the use of Harris Corner detector, Feature Detector and using the DBSCAN (Density-based spartial clustering of apllications with noise) , it demonstrates an effectiveness of  98\% in the identification of Weeds in the Rice, Araguez \textit{et. al} \cite{equipo2006proceedings}  performed their segmentation through the analysis of the green hystogram and performing the segmentation of the crop and weed by classifiers not specified in the document. 
+One of the first approximations to the algorithms of detection of Crops was  developed in 1996 \cite{brivot1996segmentation}, this algorithm permitted to segment crops from weed, it could be possible by the use of IR Images, the image is processed by a hysteresis umbral and the method of Min Neighbouring to identify the row of crops. In recent years the implementation of Machine Learning has opened new possibilities for differentiate the Weed from the crops, recently \cite{cheng2015feature} there had been developed an algorithm by the use of Harris Corner detector, Feature Detector and using the DBSCAN (Density-based spartial clustering of apllications with noise) , it demonstrates an effectiveness of  98\% in the identification of Weeds in the Rice, Araguez \textit{et. al} \cite{equipo2006proceedings}  performed their segmentation through the analysis of the green hystogram and performing the segmentation of the crop and weed by classifiers not specified in the document. 
 \\
 
-Hong and Lei \cite{jeon2011robust} developed their approximation by using an optimal method for detection in various types of luminosity, they achived this by the use an ANN for weed and maize classification, with a precision of 92.5\%,  also there had been developed \cite{hlaing2014weed} through binarization methods of OTSU and Watershed for the segmentation of the images, while the classification was given through a areas analysis to perform a thresholding, although the method is computationally effective when the Weed distribution does not resemble the size to the crop plant, its error increases when there is more density of crop than of weed. Romeo \textit{et. al} \cite{romeo2012crop} propose to use a fuzzy clustering approach to correctly segment the crop green and the same algorithm to classify the soil crop.
+Hong and Lei \cite{jeon2011robust} developed their approximation by using an optimal method for detection in various types of luminosity, they achived this by the use an ANN for weed and maize classification, with a precision of 92.5\%,  also there had been developed an algorithm \cite{hlaing2014weed}, that through binarization methods of OTSU and Watershed for the segmentation of the images. While its classification was given through an areas analysis to perform a thresholding, although the method is computationally effective when the Weed distribution does not resemble the size to the crop plant, its error increases when there is more density of crop than of weed. Romeo \textit{et. al} \cite{romeo2012crop} propose to use a fuzzy clustering approach to correctly segment the crop green.
 \\
 
-The segmentation of weed and crops is not closed to color images, using a multispectral camera  \cite{potena2016fast} permitted to obtain RGB and NIR images, for the segmentation and classification, then the images used a light CNN for the first process and a Deep CNN for classification in Crops, its accuracy is up to 98\% in the identification of weeds. One of the most dificults things for the identification of crops is the generation of Datasets due to presence of Weed in the images of training, but there could be correctly generated by a Convolutional Neural Network \cite{di2016automatic} achieving a acceptable accuracy for the generation of Datasets 
+The segmentation of weed and crops is not closed to color images, using a multispectral camera  \cite{potena2016fast} permitted to obtain RGB and NIR images, for the segmentation and classification, then the images used a light CNN for the first process and a Deep CNN for classification in Crops, its accuracy is up to 98\% in the identification of weeds. One of the most dificults things for the identification of crops is the generation of Datasets due to presence of Weed in the images of training, but there could be correctly generated by a Convolutional Neural Network \cite{di2016automatic} achieving a acceptable accuracy for the generation of Datasets. 
 \\
 
 \section{Matherials and Methods}
 The development of the model for the weed and maize detection algorithm using convolutional neural networks is described below.
 \\
 \subsection{Hardware}
-For the training and image capturing stages, the following elements were used: a Raspberry Pi 3 with Pi Camera V2.1 for image recording, it was configured to obtain a video at a resolution of 640x480 pixels in order to improve the performance of image processing. Due to the popularity of the GPU computing, it was neccesary to consider hardware compatible with Parallel Computing like the Graphic Cards manufactured by NVIDIA, they have the advantage of better times of processing compared to CPU, in order to optimize the time of image processing and training of Deep Learning Models, so we used a Computer with a Nvidia Graphics Card GTX950M.
+For the training and image capturing stages, the following elements were used: a Raspberry Pi 3 with Pi Camera V2.1 for image acquisition, it was configured to obtain a video at a resolution of 1280x720 pixels in order to get more detail in the segmented images. Due to the popularity of the GPU computing, it was neccesary to consider hardware compatible with Parallel Computing like the Graphic Cards manufactured by NVIDIA, they have the advantage of better times of processing compared to CPU, in order to optimize the time of image processing and training of Deep Learning Models, so we used a Computer with a Nvidia Graphics Card GTX950M. Also it was neccesary to consider the use of a CPU Core i7 2.7 Ghz, 8 cores and the CPU of the Raspberry Pi 3, a ARM Cortex-A53, 1.2GHz, 4 cores for testing the classification of images of the Network.   
 \\
 
 \subsection{Software}
 
-For the application in this documents requires the use of powerful libraries of Image Processing and Deep Learning Development, we considered to use Open Software for extend its use  in future prototypes, due to this considerations we had chosen the OpenCV library for its computational efficiency and focus on real-time application \cite{opencv_library} in this  case, it was used for acquisition and segmentation of the sample images. Also we had considered Caffe because it is intended to use in training and developing general-purpose Convolutionals Neural Networks and other Deep Lerning models \cite{jia2014caffe} with fully support of CUDA GPU Computation and a generous database of resources for learning,	
+For the application in this documents it requires the use of powerful libraries of Image Processing and Deep Learning Development, we considered to use Open Software for extend its use in future prototypes, due to this considerations we had chosen the OpenCV library for its computational efficiency and focus on real-time application \cite{opencv_library} in this  case, it was used for acquisition and segmentation of the sample images. Also we had considered Caffe because it is intended to use in training and developing general-purpose Convolutionals Neural Networks and other Deep Lerning models \cite{jia2014caffe} with fully support of CUDA GPU Computation and a generous database of resources for learning,	
 \\
 
 Also in the development stage was important the use of Linux OS , its features are: lightweight and free OS also fully compatible with the software mentioned above. For the main computer was used Ubuntu Linux 16.04 for its official support to CUDA, Caffe and OpenCV, also in the Raspberry Pi we used the Pixel OS for acquire images and processing of the CNN.
 \\
 
 \subsection{Dataset Description}
-Due to the lack of datasets of Weed and Maize plants, it was neccesary to search crops of maize in its initial stage, for that purpose we had traslated to P\'illaro, it is a city located in the Tungurahua Province on the center of the  the Ecuadorian Highlands region, P\'illaro is recognized producer of Andean Crops such as: Maize, Potatoes and Fruits so here we could find many crops of Maize useful for our purpose. \\
+Due to the lack of datasets of Weed and Maize plants, it was neccesary to search crops of maize in its initial stage, for that purpose we had traslated to P\'illaro, it is a city located in the Tungurahua Province on the center of the Ecuadorian Highlands region, P\'illaro is recognized producer of Andean Crops such as: Maize, Potatoes and Fruits so here we could find many crops of Maize useful for our purpose. \\
 
-<<<<<<< Updated upstream
-Samples were obtained from images captured in those maize fields, we considered to choose maize crops where we could visually discriminate the plants of the crop and the weed. Maize in stages V3-V7(3-7 leafs) \cite{Fassio} were used to take samples. To record the samples we centered the camera insuring that the capture shows all features of the maize plant, it was possible by monitoring the get of samples by an external display. An examples of the images captured are shown below. 
-=======
-Samples were obtained from images captured in those maize fields , we considered to choose maize crops where we could visually discriminate the plants of the crop and the weed. Maize in stages V3-V7(3-7 leafs) \cite{fassio1998maiz} were used to take samples. To record the samples we centered the camera insuring that the capture shows all features of the maize plant, it was possible by monitoring the get of samples by an external display. An examples of the images captured are shown below. 
->>>>>>> Stashed changes
-\\
+
+Samples were obtained from images captured in those maize fields , we considered to choose maize crops where we could visually discriminate the plants of the crop and the weed. Maize in stages V3-V7(3-7 leafs) \cite{fassio1998maiz} were used to take samples. To record the samples we centered the camera over the target plant, insuring that the capture shows all features of the maize plant, it was possible by monitoring the get of samples by an external display. An examples of the images captured are shown below. 
+
 
 	\begin{figure}[h]
 	\centering
@@ -447,8 +444,10 @@ Samples were obtained from images captured in those maize fields , we considered
 	\caption{Crops chosen to obtain samples, notice that it is easy to discrimante weed from maize}
 	\label{fig_sim}
 	\end{figure}
+
+Also it was neccesary  to obtain images of the most common weed plants of the maize crops in Pillaro, to allow the Network to discriminate both classes of the Dataset. \\
 	
-Then, through a digital image processing, the images were segmented to differentiate them from the soil and other non-plant elements, then the images were masked to provide the dataset features of color of the Maize and Weed. Once the segmented images were obtained, they were removed those that had a resolution lower than 64x64 pixels, because it's smaller than size of input layer of the network, besides it was not convenient its processing since its total area was much smaller than the samples of corn, which is the purpose of this document.\\
+Then, through a digital image processing, the images were segmented to differentiate them from the soil and other non-plant elements, then the images were masked to provide the dataset features of color of the Maize and Weed. Once the segmented images were obtained, they were removed those that had a resolution lower than 64x64 pixels, because it's smaller than size of input layer of the network, besides it was not convenient its processing since its total area was much smaller than the samples of corn, which is the purpose of this document, later, the images were saved in a png format. The process described before, was illustrated in the next figure. \\
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=3.2in]{procesamiento}
@@ -465,7 +464,7 @@ To highlight we had labelled the samples manually in two classes. In the followi
 	\label{fig_sim}
 	\end{figure}
 	
-Once we completed the processing of the images were obtained 2369 images of Maize and 632 images of Weed, \textbf{Seng} \cite{lee2015deep} said that once CNN has reached an acceptable accuracy, the dataset could extend by Geometric Transformations, in addition \cite{sladojevic2016deep}  they measure that this allows to reduce the overfitting and to improve the presicion in the training, reason why we use rotations that go from the 30 to the 330 degrees in steps of 30, obtaining in this way to increase the date for 12 times and have better chances of recognizing plants that are in any orientation. \\
+Once we completed the processing of the images, it were obtained 2835 images of Maize and 880 images of Weed, Lee \textit{et. al} \cite{lee2015deep} said that once CNN has reached an acceptable accuracy, the dataset could extend by Geometric Transformations, in addition \cite{sladojevic2016deep}  they mention that this allows to reduce the overfitting and to improve the precision in the training, reason why we made 11 rotations each 30 degrees, obtaining in this way to increase the dataset in 12 times and have better chances of recognizing plants that are in any orientation. \\
 
 For the Validation Phase, we had chosen randomly a fifth part of the total images of each class, so we have the following chart with the distribution of the dataset.
 
@@ -475,8 +474,8 @@ For the Validation Phase, we had chosen randomly a fifth part of the total image
  \hline
  Phase & Train & Validation & Test & Total \\ [1ex] 
  \hline
- Maize & 7581 & 1895 & 787 & 9476 \\ 
- Weed & 2023 & 505 & 300 & 2528\\ 
+ Maize & 25695 & 8325 & 200 & 34220  \\ 
+ Weed & 8560 & 2000 & 200 & 10760\\ 
  \hline
 \end{tabular}
 \caption{Distribution of the Dataset of each class}
