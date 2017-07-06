@@ -455,7 +455,7 @@ Then, through a digital image processing, the images were segmented to different
 	\label{fig_sim}
 	\end{figure}
 	
-To highlight we had labelled the samples manually in two classes. In the following image we present the final results of the processed images that conform the dataset.\\
+It should be noted that we had manually labeled the samples in two classes, maize and grass, having no account that the images are not repeated. In the following image we present the final results of the processed images that conform the dataset.\\
 	
 	\begin{figure}[h]
 	\centering
@@ -470,9 +470,9 @@ For the Validation Phase, we had chosen randomly a fifth part of the total image
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{| c | c | c | c | c |} 
+\begin{tabular}{| c  c  c  c  c |} 
  \hline
- Phase & Train & Validation & Test & Total \\ [1ex] 
+ \textbf{Phase} & \textbf{Train} & \textbf{Validation} &\textbf{Test}  & \textbf{Total} \\ [1ex] 
  \hline
  Maize & 25695 & 8325 & 200 & 34220  \\ 
  Weed & 8560 & 2000 & 200 & 10760\\ 
@@ -492,7 +492,7 @@ One of the characteristics of the CNN is that they can have multiple architectur
 \centering
 \begin{tabular}{|l c c c c|} 
  \hline
- Parameters & LeNet & AlexNet & cNET & sNET \\ [0.75ex] 
+ \textbf{Parameters }& \textbf{LeNet} & \textbf{AlexNet} & \textbf{cNET} & \textbf{sNET} \\ [0.75ex] 
  \hline
  Input size of images & 32x32 & 64x64 & 64x64 & 64x64 \\ 
  Layers numbers & 9 & 11 & 8 & 4\\
@@ -514,7 +514,7 @@ Although results given for the net are excellents, one of the main purposes of t
 \centering
 \begin{tabular}{|l c c |} 
  \hline
- Parameters & cNET 16 filters & cNET 64 filters \\ [0.75ex] 
+ \textbf{Parameters} & \textbf{cNET 16 filters} & \textbf{cNET 64 filters} \\ [0.75ex] 
  \hline
  Number of parameters & 1651376 & 6421568 \\ 
  Iterations & 9000 & 9000  \\ 
@@ -527,6 +527,8 @@ Although results given for the net are excellents, one of the main purposes of t
 \end{table}
 
 This permitted to reduce the number of parameters to 1651376(it's a 25\% of parameters than the original net), and what about the precision of the net, it was slighty affected but it reach a 97.2\% of accuracy.\\
+
+Once the network architecture was chosen, it is constituted as follows: the input, a 64x64 RGB image layer followed by a convolution layer which reduces the image by taking only its main characteristics, then a layer of pooling which finds the maximum values of the characteristics found in the previous layer, followed by a second convolution, and a second layer of pooling, and finally two layers of type fully connected, from which in the end we have the output representing the two classes established in this network.\\
 	
 	\begin{figure}[h]
 	\centering
@@ -535,6 +537,10 @@ This permitted to reduce the number of parameters to 1651376(it's a 25\% of para
 	\label{fig_sim}
 	\end{figure}
 	
+
+	
+The follow picture shows the schematic of the cNET of 16 filters and its process of training.Note that by reducing the number of filters the network gained accuracy because it does not have so much data to process.\\
+
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=2.4in]{entrenamiento}
@@ -542,38 +548,36 @@ This permitted to reduce the number of parameters to 1651376(it's a 25\% of para
 	\label{fig_sim}
 	\end{figure}
 	
-The before pictures shows the schematic of the cNET of 16 filters and its process of training.Note that by reducing the number of filters the network gained accuracy because it does not have so much data to process.\\
-
 	\section{Test}
 
 For this stage, we considered an extra dataset with 200 images of maize plants in stage of V3-V7 and 203 images of weed, obtained in maize crops, the results were comparated between cNET with 64 and 16 filters in the Table \ref{table:4}.\\  
 \begin{table}[h!]
 \centering
-\begin{tabular}{|l|c|c|p{2cm}|}  
+\begin{tabular}{|p{1.1cm}|p{1.9cm}|p{1.95cm}|p{2cm}|}  
  \hline
- \multicolumn{4}{ |c| }{GPU} \\
+ \multicolumn{4}{ |c| }{\textbf{GPU}} \\
  \hline
-   cNET & \% Accuracy Weed & \% Accuracy Maize  & Average time of classification   \\ 
+   \textbf{cNET} & \textbf{Accuracy Weed} & \textbf{Accuracy Maize} & \textbf{Average time of classification}   \\ 
  \hline 
- 64 Filters & 81.6 & 88.36 & 2.34 ms  \\ [0.75ex]
+ 64 Filters & 95.05\% & 74.75\% & 2.34 ms  \\ [0.75ex]
  \hline
- 16 Filters & 85.71 & 87.13 & 951  $\mu$ s \\ [0.75ex]
+ 16 Filters & 94.55\% & 87.13\% & 951  $\mu$s \\ [0.75ex]
   \hline
- \multicolumn{4}{ |c| }{CPU} \\
+ \multicolumn{4}{ |c| }{\textbf{CPU}} \\
  \hline
-   & \% Accuracy Weed & \%Accuracy Maize  & Average time of classification \\ 
+   \textbf{cNET} & \textbf{Accuracy Weed} & \textbf{Accuracy Maize} & \textbf{Average time of classification}   \\ 
  \hline 
- 64 Filters & 81.6 & 88.36 & 51.6 ms  \\ [0.75ex]
+ 64 Filters & 95.05\% & 74.75\% & 51.6 ms  \\ [0.75ex]
  \hline
- 16 Filters & 85.71 & 87.13 & 17.23 ms \\ [0.75ex]
+ 16 Filters & 94.55\% & 87.13\% & 17.23 ms \\ [0.75ex]
   \hline
- \multicolumn{4}{ |c| }{CPU Raspberry Pi 3} \\
+ \multicolumn{4}{ |c| }{\textbf{CPU Raspberry Pi 3}} \\
  \hline
-   & \% Accuracy Weed & \%Accuracy Maize  & Average time of classification\\ 
+   \textbf{cNET} & \textbf{Accuracy Weed} & \textbf{Accuracy Maize} & \textbf{Average time of classification}   \\
  \hline 
- 64 Filters & 81.6 & 88.36 & 615 ms  \\ [0.75ex]
+ 64 Filters & 95.05 \% & 74.75\% & 615 ms  \\ [0.75ex]
  \hline
- 16 Filters & 85.71 & 87.13 & 161 s \\ [0.75ex]
+ 16 Filters & 94.55\% & 87.13\% & 161 ms \\ [0.75ex]
   \hline
 \end{tabular}
 \caption{Test}
