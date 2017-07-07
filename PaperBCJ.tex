@@ -398,9 +398,7 @@ Deep Learning has played a very important role in modern times, being very used 
 During the last centuries, significant progress has taken place in science and technology developments. Significant milestones in diverse areas such as communications, numerical computer control and the miniaturization of components have benefited industrial sectors, providing new means to approach problems differently. 
 \\
 
-The availability of leading edge technologies  has considerably increased, thus becoming more accessible to people. This effect of globalization has allowed many countries to have access to state-of-the-art technological products, promoting its application in different areas to generate alternative and more efficient solutions to conventional problems. 
-
-\\
+The availability of leading edge technologies  has considerably increased, thus becoming more accessible to people. This effect of globalization has allowed many countries to have access to state-of-the-art technological products, promoting its application in different areas to generate alternative and more efficient solutions to conventional problems. \\
 
 Technological advances have caused industry transformations; manufacturing, food processing, and information industries among others, have gone through dramatic changes with industrial revolution. However there are fields that have not been significantly influenced by technological development in Ecuador, as it is the case of agroindustry. Agriculture in Ecuador has undergone some changes since colonial times; while it is true that there are efficient agricultural practices, the lack of technological resources make it impossible for the country to exploit its true potential as an agricultural producer. Also, the excessive use of pesticides have a negative effect on the production, soil, and water quality. 
 \\
@@ -529,11 +527,11 @@ Although results given for the net are excellents, one of the main purposes of t
 
 This permitted to reduce the number of parameters to 1651376(it's a 25\% of parameters than the original net), and what about the precision of the net, it was slighty affected but it reach a 97.2\% of accuracy.\\
 
-Once the network architecture was chosen, it is constituted as follows: the input, a 64x64 RGB image layer followed by a convolution layer which reduces the image by taking only its main characteristics, then a layer of pooling which finds the maximum values of the characteristics found in the previous layer, followed by a second convolution, and a second layer of pooling, and finally two layers of type fully connected, from which in the end we have the output representing the two classes established in this network.\\
+The complete network model is formed as follows: the input layer where an RGB image 64x64 pixels, followed by a convolution layer of 16 filters, a kernel of 5 and a stride of 1 pixel, this layer  obtaining only its main characteristics, then a pooling layer is applied, which has the function to find the maximum values of the previous layer with a kernel size and stride of 2, then again a second layer of convolution is applied that has 16 filters, 5 kernels and a stride of 1, followed by a new layer of pooling with a kernel size and stride of 2 again obtained a size of 16x16x16 and finally the layers of type fully-connected with a total of 478 neurons, where the last two neurons that is the output represent the two classes established in this network.\\
 	
 	\begin{figure}[h]
 	\centering
-	\includegraphics[width=3.6 in]{arquitectura}
+	\includegraphics[width=3.5 in]{arquitectura}
 	\caption{ The schematic of CNet }
 	\label{fig_sim}
 	\end{figure}
