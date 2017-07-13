@@ -399,7 +399,6 @@ During the last centuries, significant progress has taken place in science and t
 \\
 
 The availability of leading edge technologies  has considerably increased, thus becoming more accessible to people. This effect of globalization has allowed many countries to have access to state-of-the-art technological products, promoting its application in different areas to generate alternative and more efficient solutions to conventional problems. 
-
 \\
 
 Technological advances have caused industry transformations; manufacturing, food processing, and information industries among others, have gone through dramatic changes with industrial revolution. However there are fields that have not been significantly influenced by technological development in Ecuador, as it is the case of agroindustry. Agriculture in Ecuador has undergone some changes since colonial times; while it is true that there are efficient agricultural practices, the lack of technological resources make it impossible for the country to exploit its true potential as an agricultural producer. Also, the excessive use of pesticides have a negative effect on the production, soil, and water quality. 
@@ -448,7 +447,11 @@ Samples were obtained from images captured in those maize fields , we considered
 
 Also it was neccesary  to obtain images of the most common weed plants of the maize crops in Pillaro, to allow the Network to discriminate both classes of the Dataset. \\
 	
-Then, through a digital image processing, the images were segmented to differentiate them from the soil and other non-plant elements, then the images were masked to provide the dataset features of color of the Maize and Weed. Once the segmented images were obtained, they were removed those that had a resolution lower than 64x64 pixels, because it's smaller than size of input layer of the network, besides it was not convenient its processing since its total area was much smaller than the samples of corn, which is the purpose of this document, later, the images were saved in a png format. The process described before, was illustrated in the next figure. \\
+Then, through a digital image processing, as first stage the image was normalized in its green channel, so it improve the detection of green color due it eliminates lights and shadows of the image, afeter we extracted the green color, through the next equation \cite{wang2013path}. 
+\begin{equation}
+	S = 2*G - R - B
+\end{equation} 
+After the images were segmented to differentiate them from the soil and other non-plant elements, then the images were masked to provide the dataset features of color of the Maize and Weed. Once the segmented images were obtained, they were removed those that had a resolution lower than 64x64 pixels, because it's smaller than size of input layer of the network, besides it was not convenient its processing since its total area was much smaller than the samples of corn, which is the purpose of this document, later, the images were saved in a png format. The process described before, was illustrated in the next figure. \\
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=3.2in]{procesamiento}
