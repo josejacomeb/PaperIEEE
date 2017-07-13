@@ -398,8 +398,12 @@ Deep Learning has played a very important role in modern times, being very used 
 During the last centuries, significant progress has taken place in science and technology developments. Significant milestones in diverse areas such as communications, numerical computer control and the miniaturization of components have benefited industrial sectors, providing new means to approach problems differently. 
 \\
 
+<<<<<<< HEAD
 The availability of leading edge technologies  has considerably increased, thus becoming more accessible to people. This effect of globalization has allowed many countries to have access to state-of-the-art technological products, promoting its application in different areas to generate alternative and more efficient solutions to conventional problems. 
 \\
+=======
+The availability of leading edge technologies  has considerably increased, thus becoming more accessible to people. This effect of globalization has allowed many countries to have access to state-of-the-art technological products, promoting its application in different areas to generate alternative and more efficient solutions to conventional problems. \\
+>>>>>>> master
 
 Technological advances have caused industry transformations; manufacturing, food processing, and information industries among others, have gone through dramatic changes with industrial revolution. However there are fields that have not been significantly influenced by technological development in Ecuador, as it is the case of agroindustry. Agriculture in Ecuador has undergone some changes since colonial times; while it is true that there are efficient agricultural practices, the lack of technological resources make it impossible for the country to exploit its true potential as an agricultural producer. Also, the excessive use of pesticides have a negative effect on the production, soil, and water quality. 
 \\
@@ -459,7 +463,7 @@ After the images were segmented to differentiate them from the soil and other no
 	\label{fig_sim}
 	\end{figure}
 	
-To highlight we had labelled the samples manually in two classes. In the following image we present the final results of the processed images that conform the dataset.\\
+It should be noted that we had manually labeled the samples in two classes, maize and grass, having no account that the images are not repeated. In the following image we present the final results of the processed images that conform the dataset.\\
 	
 	\begin{figure}[h]
 	\centering
@@ -474,9 +478,9 @@ For the Validation Phase, we had chosen randomly a fifth part of the total image
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{| c | c | c | c | c |} 
+\begin{tabular}{| c  c  c  c  c |} 
  \hline
- Phase & Train & Validation & Test & Total \\ [1ex] 
+ \textbf{Phase} & \textbf{Train} & \textbf{Validation} &\textbf{Test}  & \textbf{Total} \\ [1ex] 
  \hline
  Maize & 25695 & 8325 & 200 & 34220  \\ 
  Weed & 8560 & 2000 & 200 & 10760\\ 
@@ -496,7 +500,7 @@ One of the characteristics of the CNN is that they can have multiple architectur
 \centering
 \begin{tabular}{|l c c c c|} 
  \hline
- Parameters & LeNet & AlexNet & cNET & sNET \\ [0.75ex] 
+ \textbf{Parameters }& \textbf{LeNet} & \textbf{AlexNet} & \textbf{cNET} & \textbf{sNET} \\ [0.75ex] 
  \hline
  Input size of images & 32x32 & 64x64 & 64x64 & 64x64 \\ 
  Layers numbers & 9 & 11 & 8 & 4\\
@@ -518,7 +522,7 @@ Although results given for the net are excellents, one of the main purposes of t
 \centering
 \begin{tabular}{|l c c |} 
  \hline
- Parameters & cNET 16 filters & cNET 64 filters \\ [0.75ex] 
+ \textbf{Parameters} & \textbf{cNET 16 filters} & \textbf{cNET 64 filters} \\ [0.75ex] 
  \hline
  Number of parameters & 1651376 & 6421568 \\ 
  Iterations & 9000 & 9000  \\ 
@@ -531,14 +535,20 @@ Although results given for the net are excellents, one of the main purposes of t
 \end{table}
 
 This permitted to reduce the number of parameters to 1651376(it's a 25\% of parameters than the original net), and what about the precision of the net, it was slighty affected but it reach a 97.2\% of accuracy.\\
+
+The complete network model is formed as follows: the input layer where an RGB image 64x64 pixels, followed by a convolution layer of 16 filters, a kernel of 5 and a stride of 1 pixel, this layer  obtaining only its main characteristics, then a pooling layer is applied, which has the function to find the maximum values of the previous layer with a kernel size and stride of 2, then again a second layer of convolution is applied that has 16 filters, 5 kernels and a stride of 1, followed by a new layer of pooling with a kernel size and stride of 2 again obtained a size of 16x16x16 and finally the layers of type fully-connected with a total of 478 neurons, where the last two neurons that is the output represent the two classes established in this network.\\
 	
 	\begin{figure}[h]
 	\centering
-	\includegraphics[width=3.6 in]{arquitectura}
+	\includegraphics[width=3.5 in]{arquitectura}
 	\caption{ The schematic of CNet }
 	\label{fig_sim}
 	\end{figure}
 	
+
+	
+The follow picture shows the schematic of the cNET of 16 filters and its process of training.Note that by reducing the number of filters the network gained accuracy because it does not have so much data to process.\\
+
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=2.4in]{entrenamiento}
@@ -546,38 +556,36 @@ This permitted to reduce the number of parameters to 1651376(it's a 25\% of para
 	\label{fig_sim}
 	\end{figure}
 	
-The before pictures shows the schematic of the cNET of 16 filters and its process of training.Note that by reducing the number of filters the network gained accuracy because it does not have so much data to process.\\
-
 	\section{Test}
 
 For this stage, we considered an extra dataset with 200 images of maize plants in stage of V3-V7 and 203 images of weed, obtained in maize crops, the results were comparated between cNET with 64 and 16 filters in the Table \ref{table:4}.\\  
 \begin{table}[h!]
 \centering
-\begin{tabular}{|l|c|c|p{2cm}|}  
+\begin{tabular}{|p{1.1cm}|p{1.9cm}|p{1.95cm}|p{2cm}|}  
  \hline
- \multicolumn{4}{ |c| }{GPU} \\
+ \multicolumn{4}{ |c| }{\textbf{GPU}} \\
  \hline
-   cNET & \% Accuracy Weed & \% Accuracy Maize  & Average time of classification   \\ 
+   \textbf{cNET} & \textbf{Accuracy Weed} & \textbf{Accuracy Maize} & \textbf{Average time of classification}   \\ 
  \hline 
- 64 Filters & 81.6 & 88.36 & 2.34 ms  \\ [0.75ex]
+ 64 Filters & 95.05\% & 74.75\% & 2.34 ms  \\ [0.75ex]
  \hline
- 16 Filters & 85.71 & 87.13 & 951  $\mu$ s \\ [0.75ex]
+ 16 Filters & 94.55\% & 87.13\% & 951  $\mu$s \\ [0.75ex]
   \hline
- \multicolumn{4}{ |c| }{CPU} \\
+ \multicolumn{4}{ |c| }{\textbf{CPU}} \\
  \hline
-   & \% Accuracy Weed & \%Accuracy Maize  & Average time of classification \\ 
+   \textbf{cNET} & \textbf{Accuracy Weed} & \textbf{Accuracy Maize} & \textbf{Average time of classification}   \\ 
  \hline 
- 64 Filters & 81.6 & 88.36 & 51.6 ms  \\ [0.75ex]
+ 64 Filters & 95.05\% & 74.75\% & 51.6 ms  \\ [0.75ex]
  \hline
- 16 Filters & 85.71 & 87.13 & 17.23 ms \\ [0.75ex]
+ 16 Filters & 94.55\% & 87.13\% & 17.23 ms \\ [0.75ex]
   \hline
- \multicolumn{4}{ |c| }{CPU Raspberry Pi 3} \\
+ \multicolumn{4}{ |c| }{\textbf{CPU Raspberry Pi 3}} \\
  \hline
-   & \% Accuracy Weed & \%Accuracy Maize  & Average time of classification\\ 
+   \textbf{cNET} & \textbf{Accuracy Weed} & \textbf{Accuracy Maize} & \textbf{Average time of classification}   \\
  \hline 
- 64 Filters & 81.6 & 88.36 & 615 ms  \\ [0.75ex]
+ 64 Filters & 95.05 \% & 74.75\% & 615 ms  \\ [0.75ex]
  \hline
- 16 Filters & 85.71 & 87.13 & 161 s \\ [0.75ex]
+ 16 Filters & 94.55\% & 87.13\% & 161 ms \\ [0.75ex]
   \hline
 \end{tabular}
 \caption{Test}
