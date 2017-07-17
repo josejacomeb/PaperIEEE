@@ -417,23 +417,38 @@ The segmentation of weed and crops is not closed to color images, using a multis
 \\
 
 \section{Matherials and Methods}
-The development of the model for the weed and maize detection algorithm using convolutional neural networks is described below.
+
+El desarrollo del modelo para la identificacion de mala hierba y maiz usando Redes Neuronales Convoluciones se describe abajo: 
+\\
+
+The development of the model for the weed and maize identification algorithm using convolutional neural networks is described below.
 \\
 \subsection{Hardware}
+
+Para la etapa de entranamiento y captura de imagenes, los siguientes elementos fueron utilizados: Una Raspberry Pi 3 con su modulo de camara V2.1 para la adquisicion de imagenes, fue configurado para obtener video en resolucion de 1280x720 pixeles con el fin de obtener mayor detalle en la segmentacion de imagenes. Debido a la popularidad de la computacion por GPU, fue necesario consider hardware compatible con computacion paralela como las tarjetas graficas fabricadas por NVIDIA, estas tienen la ventaja de poseer mejores tiempos de procesamiento comparados con la CPU, con lo cual se logra optimizar los tiempos de procesamiento y entrenamiento de Modelos de Deep Learning, entonces, utilizamos un computador con una tarjeta Grafica NVIDIA GTX950M. Tambien fue necesario considerar el uso de un CPU Core i7 2.7Ghz, 8 Nucles and el CPU de la propia Raspberry Pi 3, un ARM 3, a ARM Cortex-A53, 1.2GHz, 4 nucles para probar los tiemposde clasificacion de imagenes en las arquitecturas de red.  \\
+
 For the training and image capturing stages, the following elements were used: a Raspberry Pi 3 with Pi Camera V2.1 for image acquisition, it was configured to obtain a video at a resolution of 1280x720 pixels in order to get more detail in the segmented images. Due to the popularity of the GPU computing, it was neccesary to consider hardware compatible with Parallel Computing like the Graphic Cards manufactured by NVIDIA, they have the advantage of better times of processing compared to CPU, in order to optimize the time of image processing and training of Deep Learning Models, so we used a Computer with a Nvidia Graphics Card GTX950M. Also it was neccesary to consider the use of a CPU Core i7 2.7 Ghz, 8 cores and the CPU of the Raspberry Pi 3, a ARM Cortex-A53, 1.2GHz, 4 cores for testing the classification of images of the Network.   
 \\
 
 \subsection{Software}
 
-For the application in this documents it requires the use of powerful libraries of Image Processing and Deep Learning Development, we considered to use Open Software for extend its use in future prototypes, due to this considerations we had chosen the OpenCV library for its computational efficiency and focus on real-time application \cite{opencv_library} in this  case, it was used for acquisition and segmentation of the sample images. Also we had considered Caffe because it is intended to use in training and developing general-purpose Convolutionals Neural Networks and other Deep Lerning models \cite{jia2014caffe} with fully support of CUDA GPU Computation and a generous database of resources for learning,	
+Para la aplicacion en este documento, se requiere el uso de Poderosas librerias de desarrollo para el procesamiento de imagenes y deep Learning, consideramos el uso de software libre para extender su uso en futuros prototipos, debido a esta consideracion hemos escogido la libreria de OpenCV debido a su eficiencia computacional y su enfoque a aplicaciones en tiempo real, para este caso fue utilizada(en referencia a OpenCV) para la adquisicion y segmentacion de las imagenes de muestra. Tambien hemos considerado Caffe debido a que esta desstinado a el entrenamiento y desarrollo de Redes Neuronales Convolucionales de Proposito General y otros modelos de Deep Learning con soporte completo de la Libreria de Computacion GPU CUDA y una generosa base de datos de recursos para aprendizaje  \\
+
+For the application in this documents it requires the use of powerful libraries of Image Processing and Deep Learning Development, we considered to use Open Software for extend its use in future prototypes, due to this considerations we had chosen the OpenCV library for its computational efficiency and focus on real-time application \cite{opencv_library} in this  case, it was used for acquisition and segmentation of the sample images. Also we had considered Caffe because it is intended to use in training and developing general-purpose Convolutionals Neural Networks and other Deep Lerning models \cite{jia2014caffe} with fully support of CUDA GPU Computation Library and a generous database of resources for learning,	
 \\
 
-Also in the development stage was important the use of Linux OS , its features are: lightweight and free OS also fully compatible with the software mentioned above. For the main computer was used Ubuntu Linux 16.04 for its official support to CUDA, Caffe and OpenCV, also in the Raspberry Pi we used the Pixel OS for acquire images and processing of the CNN.
+Tambien el la etapa de desarrollo fue importante el suo del Sistema Operativo Linux, sus caracteristicas son: Sistema Operativo Ligero y Libre tambien completamente compatible con el software mencionado anteriormente. En la computadora principal fue usado la Distribucion Ubuntu Linux 16.04 por su soporte oficial a CUDA, Caffe y OpenCV, tambien en la Raspberry Pi fue usado el Sistema Operativo Pixel para adquirir imagenes y probar el rendimiento de clasificacion la Red Neuronal Convolucional \\
+
+Also in the development stage was important the use of Linux OS , its features are: lightweight and free OS also fully compatible with the software mentioned above. For the main computer was used Ubuntu Linux 16.04 for its official support to CUDA, Caffe and OpenCV, also in the Raspberry Pi we used the Pixel OS for acquire images and test the classification performace of the CNN.
 \\
 
 \subsection{Dataset Description}
-Due to the lack of datasets of Weed and Maize plants, it was neccesary to search crops of maize in its initial stage, for that purpose we had traslated to P\'illaro, it is a city located in the Tungurahua Province on the center of the Ecuadorian Highlands region, P\'illaro is recognized producer of Andean Crops such as: Maize, Potatoes and Fruits so here we could find many crops of Maize useful for our purpose. \\
 
+Debido a la falta de datasets de plantas de Maize y Mala Hierba, fue necesario la busqueda de cultivos de maiz en su etapa inicial, para ese proposito nos hemos traslatado a Pillaro, esta ciudad es localizada en la Provincia de Tungurahua, en el Centro de la Sierra Ecuatoriana. Pillaro es un productor reconocido de  cultivos andinos como: Maiz, Papas y frutas, por lo que podemos encontrar aqui muchos cultivos de maiz que sean utiles para nuestro proposito \\
+
+Due to the lack of datasets of Weed and Maize plants, it was neccesary to search crops of maize in its initial stage, for that purpose we had traslated to P\'illaro, it is a city located in the Tungurahua Province, on the center of the Ecuadorian Highlands region P\'illaro is recognized producer of Andean Crops such as: Maize, Potatoes and Fruits so here we could find many crops of Maize useful for our purpose. \\
+
+Las muestras fueron obtenidas de imagenes capturas en esos campos de maiz, consideramos escoger cultivos de maiz donde podamos visualmente discrimiar las plantas del cultivo de la mala yerba. Las etapas del Maiz (V3-V7) fueron usadas para tomar muestras. Para obtener las muestra, centramos la camara sobre la platna objetivo, asegurandonos que la captura muestre todas las caracteristicas de la planta de maiz, esto fue posible al monitorear el proceso por una pantalla externa. Unas muestras de las imagenes capturadas son mostradas a continuacion: \\
 
 Samples were obtained from images captured in those maize fields , we considered to choose maize crops where we could visually discriminate the plants of the crop and the weed. Maize in stages V3-V7(3-7 leafs) \cite{fassio1998maiz} were used to take samples. To record the samples we centered the camera over the target plant, insuring that the capture shows all features of the maize plant, it was possible by monitoring the get of samples by an external display. An examples of the images captured are shown below. 
 
@@ -445,13 +460,21 @@ Samples were obtained from images captured in those maize fields , we considered
 	\label{fig_sim}
 	\end{figure}
 
-Also it was neccesary  to obtain images of the most common weed plants of the maize crops in Pillaro, to allow the Network to discriminate both classes of the Dataset. \\
+Tambien fue necesario obtener imagenes de las malas hierbas mas comunes en los campos de maiz de Pillaro, para permitir a la Red discrimiar entre las dos clases definidas en el Dataset.\\
+
+Also it was neccesary to obtain images of the most common weed plants of the maize crops in Pillaro, to allow the Network to discriminate both classes of the Dataset. \\
+
+Entonces, a traves de un proceso de procesamiento digital de imagenes, como primera fase, la imagen fue normalizada en su canal verde, esto mejora la deteccion del color verde porque elimina las luces y las sombras de la imagen, despues extrajimos el color verde de la imagen con la ecuacion descrita opr Wang, Men, Luo and Mei, para obtener una imagen final en escala de grises, despues se aplico una Umbralizacion de OTSU para obtener una mascara binaria \\
 	
 Then, through a digital image processing, as first stage the image was normalized in its green channel, it improves the detection of green color due it eliminates lights and shadows of the image, after we extracted the green color to obtain a grayscale image, through the next equation described by Wang, Meng, Luo and Mei \cite{wang2013path}, then we applied a OTSU Thresholding to grayscale image in order to obtain a binary mask.  
 \begin{equation}
 	S = 2*G - R - B
 \end{equation} 
-After the images were segmented to differentiate them from the soil and other non-plant elements, the original images were masked to provide the dataset features of color of the Maize and Weed. Once the segmented images were obtained, they were removed those that had a resolution lower than 64x64 pixels, because it's smaller than size of input layer of the network, besides it was not convenient its processing since its total area was much smaller than the samples of corn, which is the purpose of this document, later, the images were saved in a png format. The process described before, was illustrated in the next figure. \\
+
+Despues de la imagen fue segmentada, para diferenciarla del suelo y otros elementos que no sean plantas, las imagenes originales fueron enmascaradas con la mascara binaria para proveer al Dataset caracteristicas de Color del Maiz y de la Mala Hierba. Una vez ue las imagenes segmentedas fueron obtenidas, removimos aquellas que tenian una resolucion menor a 64x64 pixeles debido a que son mas pequenhas que el tamanho de entrada de la red, ademas no es conveniente procesarlas debido a que su area total es mucho mas pequenha que la de las muestras de maiz, las cuales son el proposito de este documento, despues las imagenes se almacenan en un formato Png. El proceso se ilustra de mejor manera en la siguiente figura. \\
+
+After the images were segmented to differentiate them from the soil and other non-plant elements, the original images were masked with the binary mask to provide the dataset features of color of the Maize and Weed. Once the segmented images were obtained, we were removed those that had a resolution lower than 64x64 pixels, because it's smaller than size of input layer of the network, besides it was not convenient its processing since its total area was much smaller than the samples of corn, which is the purpose of this document, later, the images were saved in a png format. The process described before, was illustrated in the next figure. \\
+
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=3.2in]{procesamiento}
@@ -459,7 +482,9 @@ After the images were segmented to differentiate them from the soil and other no
 	\label{fig_sim}
 	\end{figure}
 	
-It should be noted that we had manually labeled the samples in two classes, maize and grass, having no account that the images are not repeated. In the following image we present the final results of the processed images that conform the dataset.\\
+Debemos acotar que hemos etiquetado manualmente las imagenes en dos clases, maiz y mala hierba, teniendo en cuenta que las imagenes no se repitan(\textbf{corregir}). En la presente imagen presentamos los resultados finales de las imagenes procesadas que conforman el dataset.    \\
+
+It should be noted that we had manually labeled the samples in two classes, maize and weed, having no account that the images are not repeated. In the following image we present the final results of the processed images that conform the dataset.\\
 	
 	\begin{figure}[h]
 	\centering
@@ -468,7 +493,11 @@ It should be noted that we had manually labeled the samples in two classes, maiz
 	\label{fig_sim}
 	\end{figure}
 	
+Una vez completada el procesamiento de imagenes, donde fueron obtenidas 2835 imagenes de maiz y 880 images de Mala Hierba, Lee et. Al dicen que una vez que la CNN ha alcanzado una precision aceptable, el dataset se puede extender por transformaciones geometricas, en adicion sladojevic mencionan que esto permite a reducir el sobreajuste y para mejorar la precision en el entrenamiento, razon por la cual hizimos 11 rotaciones cada 30 grados, obteniendo de esta forma el incremento(corregir) del dataset en 12 veces y tener mejores probabilidades de reconocer als plantas en cualquier orientaciones. \\
+	
 Once we completed the processing of the images, it were obtained 2835 images of Maize and 880 images of Weed, Lee \textit{et. al} \cite{lee2015deep} said that once CNN has reached an acceptable accuracy, the dataset could extend by Geometric Transformations, in addition \cite{sladojevic2016deep}  they mention that this allows to reduce the overfitting and to improve the precision in the training, reason why we made 11 rotations each 30 degrees, obtaining in this way to increase the dataset in 12 times and have better chances of recognizing plants that are in any orientation. \\
+
+Para la fase de validacion, hemos escogido aletariamente la quinta parte del total de imagenes de cada clase, asi que tenemos la siguiente tabla con la distribucion del dataset.\\
 
 For the Validation Phase, we had chosen randomly a fifth part of the total images of each class, so we have the following chart with the distribution of the dataset.
 
