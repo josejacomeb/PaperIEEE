@@ -376,8 +376,6 @@ Email: \IEEEauthorrefmark{1}accordova@espe.edu.ec,
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-Deep Learning ha tenido un papel muy importante en los tiempos modernos, siendo muy utilizado en vision artificial y especialmente en reconocimiento de patrones, lo cual abre muchas puertas en los campos de aplicacion siendo uno de ellos la agricultura de presicion.En este paper presentamos el estudio una red neuronal convolucional aplicada a la  clasificacion de plantas de maiz y de mala hierba en tiempo real, dirigida a campos de maiz en su etapa inicial.El algoritmo cuenta con dos etapas, segmentacion de imagenes y la clasificacion. En la  segmentacion se busca separar de la imagen las plantas de forma individual. Mientras que la clasificacion se da a traves de la red neuronal convolucional, previamente entrenada con un dataset generado mediante la etapa de segmentacion. El rendimiento de la red se ilustra mediante analisis y comparaciones con diferentes arquitecturas de red, luego con la red que presento mejores resultados, se experimeto modificando su numero de filtros, para analizar su comportamiento. Finalmente con la red resultante se implemet\'o en diferentes procesadores para comparar tiempos de clasificacion.\\
-
 Deep Learning has played a very important role in modern times, being very used in Artificial Vision and especially in Pattern Recognition, which opens many doors in the fields of application among which is precision agriculture. In this paper we present the study of a convolutional neural network with two classes applied to the classification of plants of maize and weeds in real time, focused to fields of maize in its initial stage. The algorithm has two stages, segmentation of images and classification.  In the segmentation we wanted to separate the target plant from the original image. While the classification is possible through a convolutional neural network, previously trained with a dataset generated through the segmentation stage. The performance of the network is illustrated by analysis and comparisons with different network architectures, then with the network that presented better results in training, we experimented by modifying its number of filters, to analyze their  behavior. Finally, the resulting network was tested on different processors to compare classification times.\\
 \end{abstract}
 
@@ -439,7 +437,7 @@ Para la aplicacion en este documento, se requiere el uso de Poderosas librerias 
 For the application in this documents it requires the use of powerful libraries of Image Processing and Deep Learning Development, we considered to use Open Software for extend its use in future prototypes, due to this considerations we had chosen the OpenCV library for its computational efficiency and focus on real-time application \cite{opencv_library} in this  case, it was used for acquisition and segmentation of the sample images. Also we had considered Caffe because it is intended to use in training and developing general-purpose Convolutionals Neural Networks and other Deep Lerning models \cite{jia2014caffe} with fully support of CUDA GPU Computation Library and a generous database of resources for learning,	
 \\
 
-Tambien el la etapa de desarrollo fue importante el uso del Sistema Operativo Linux, sus caracteristicas son: Sistema Operativo Ligero y Libre tambien completamente compatible con el software mencionado anteriormente. En la computadora principal fue usado la Distribucion Ubuntu Linux 16.04 por su soporte oficial a CUDA, Caffe y OpenCV, tambien en la Raspberry Pi fue usado el Sistema Operativo Pixel para adquirir imagenes y probar el rendimiento de clasificacion la Red Neuronal Convolucional \\
+Tambien el la etapa de desarrollo fue importante el suo del Sistema Operativo Linux, sus caracteristicas son: Sistema Operativo Ligero y Libre tambien completamente compatible con el software mencionado anteriormente. En la computadora principal fue usado la Distribucion Ubuntu Linux 16.04 por su soporte oficial a CUDA, Caffe y OpenCV, tambien en la Raspberry Pi fue usado el Sistema Operativo Pixel para adquirir imagenes y probar el rendimiento de clasificacion la Red Neuronal Convolucional \\
 
 Also in the development stage was important the use of Linux OS , its features are: lightweight and free OS also fully compatible with the software mentioned above. For the main computer was used Ubuntu Linux 16.04 for its official support to CUDA, Caffe and OpenCV, also in the Raspberry Pi we used the Pixel OS for acquire images and test the classification performace of the CNN.
 \\
@@ -495,9 +493,9 @@ It should be noted that we had manually labeled the samples in two classes, maiz
 	\label{fig_sim}
 	\end{figure}
 	
-Una vez completada el procesamiento de imagenes, donde fueron obtenidas 2835 imagenes de maiz y 880 images de Mala Hierba, Lee et. Al dicen que una vez que la CNN ha alcanzado una precision aceptable, el dataset se puede extender por transformaciones geometricas, en adicion sladojevic mencionan que esto permite a reducir el sobreajuste y para mejorar la precision en el entrenamiento, razon por la cual se realizaron 11 rotaciones cada 30 grados, obteniendo de esta forma el incremento(corregir) del dataset en 12 veces y tener mejores probabilidades de reconocer als plantas en cualquier orientaciones. \\
+Una vez completada el procesamiento de imagenes, donde fueron obtenidas 2835 imagenes de maiz y 880 images de Mala Hierba, Lee et. Al dicen que una vez que la CNN ha alcanzado una precision aceptable, el dataset se puede extender por transformaciones geometricas, en adicion sladojevic mencionan que esto permite a reducir el sobreajuste y para mejorar la precision en el entrenamiento, razon por la cual hizimos 11 rotaciones cada 30 grados, obteniendo de esta forma el incremento(corregir) del dataset en 12 veces y tener mejores probabilidades de reconocer als plantas en cualquier orientaciones. \\
 	
-Once we completed the processing of the images, it were obtained 2835 images of Maize and 880 images of Weed, Lee \textit{et. al} \cite{lee2015deep} said that once CNN has reached an acceptable accuracy, the dataset could extend by Geometric Transformations, in addition \cite{sladojevic2016deep}  they mention that this allows to reduce the overfitting and to improve the precision in the training, reason for which 11 rotations were performed each 30 degrees, obtaining in this way to increase the dataset in 12 times and have better chances of recognizing plants that are in any orientation. \\
+Once we completed the processing of the images, it were obtained 2835 images of Maize and 880 images of Weed, Lee \textit{et. al} \cite{lee2015deep} said that once CNN has reached an acceptable accuracy, the dataset could extend by Geometric Transformations, in addition \cite{sladojevic2016deep}  they mention that this allows to reduce the overfitting and to improve the precision in the training, reason why we made 11 rotations each 30 degrees, obtaining in this way to increase the dataset in 12 times and have better chances of recognizing plants that are in any orientation. \\
 
 Para la fase de validacion, hemos escogido aletariamente la quinta parte del total de imagenes de cada clase, asi que tenemos la siguiente tabla con la distribucion del dataset.\\
 
@@ -527,7 +525,7 @@ Despues que el ultimo paso ha sido terminado, fue necesario clasificar las image
 	 
 Una de las caracteristicas de las CNN is que estas pueden tener multiples arquitecturas, cada arquitectura puede alcanzar diferentes resultados dependiendo de la aplicacion, para el presente documento hemos considerado cuatro arquitecturas de CNN: Dos modelos fueron escogidos del Caffe Zoo Model(es un recurso libre liberado por los Desarrolladores de Caffe) Lenet y AlexNet, tambien Potena y Nardi han usado adicionalmente dos tios de modelos, sNET y cNET, estos han sido exitosamente probados en la clasificacion de plantas en cultivos, con las redes secogidas, cada una fue entrenada con un mismo Solver de Tipo AdaDelta, con el mismo Dataset y los resultados del entrenamiento son los siguientes: \\
 
-One of the characteristics of the CNN is that they can have multiple architectures, each architecture can reach different result depending of the application , for the present document was considered four CNN architectures: Two models were chose of the Caffe Zoo Model(it's a free resource provided by Caffe Developers), LeNet and AlexNet also Potena and Nardi had used two additional types of Models, sNET and cNET, they were sucessfully proved in identification of plants in crops\cite{potena2016fast}, with the Nets chosen, each one was trained with a same solver of type AdaDelta and with the same dataset, the results of training are the following. \\
+One of the characteristics of the CNN is that they can have multiple architectures, each architecture can reach different result depending of the application , for the present document we have considered four CNN architectures: Two models were chose of the Caffe Zoo Model(it's a free resource provided by Caffe Developers), LeNet and AlexNet also Potena and Nardi had used two additional types of Models, sNET and cNET, they were sucessfully proved in identification of plants in crops\cite{potena2016fast}, with the Nets chosen, each one was trained with a same Solver of type AdaDelta and with the same dataset, the results of training are the following. \\
 \begin{table}[h!]
 \centering
 \begin{tabular}{|l c c c c|} 
@@ -542,7 +540,7 @@ One of the characteristics of the CNN is that they can have multiple architectur
   Loss(\%) & 32.80 & 15.32 & 13.72 & 15.32 \\ [1ex] 
  \hline 
 \end{tabular}
-\caption{Distribution of the Dataset of each class}
+\caption{Comparison of the 4 types of CNN}
 \label{table:2}
 \end{table}
 
@@ -550,9 +548,8 @@ Dentro de los parametros mostrados en la Tabla, consideramos la red que alcanze 
 
 Inside of the shown parameters in the Table \ref{table:2}, we considered the net who achieved the highest rate of accuracy and lowest rate of loss, clearly the cNET is the chosen due it shows a precission near to human classification.\\
 
-
-Aunque  los resultados de la red son excelentes,una de las propuestas de este trabajo es la implementacion en tiempo real,por lo que el numero de parametros a ser procesados sera importante, por lo que se conisdero modificar la red para mejorar el tiempo de procesamiento, para lograr esto fue encesario reducir el n\'umero de filtros de la cNET de 64 hasta 16.\\	
-
+Aunque lo resultados dados de la red fueron excelentes, uno de los propositos principales de este documento es una aproximacion de procesamiento en tiempo real, entonces el numero de parametros a ser computados va a ser un problema, entonces consideramos modificar la red para mejorar el tiempo de procesamiento. Para lograr esto, fue necesario reducir el numero de filtros de cNET de 64 a 16, en la tabla siguiente se muestran los resultados del entrenamiento para los dos tipos de red. \\
+	
 Although results given for the net are excellents, one of the main purposes of this paper is the implementation in real time, so the number of parameters to be computed must be a problem, so we considered to modify the net in order to improve the processing time. To achive this, it was neccesary to reduce the number of filters of cNET from 64 to 16.\\
 
 \begin{table}[h!]
@@ -567,27 +564,28 @@ Although results given for the net are excellents, one of the main purposes of t
   Loss(\%) & 8.39 & 14.48  \\ [1ex] 
  \hline 
 \end{tabular}
-\caption{Distribution of the Dataset of each class}
+\caption{Comparison between cNET of 16 and 64 filters}
 \label{table:3}
 \end{table}
 
-Esto permitió reducir el número de parámetros a 1651376 (es un 25 \% de parámetros que la red original),donde la precisión de la red, fue ligeramente afectada pero alcanza un 97.2 \% de exactitud.\\
+Esta reduccion permitio reducir el numero de parametros de 1651376(es un 25\% de parametros de la red original), y acerca de la precision d ela red, fue affectada un poco pero asi consigue un 97.2\% de precision en el entrenamiento.  \\
 
-This permitted to reduce the number of parameters to 1651376(it's a 25\% of parameters than the original net), where the precision of the net, it was slighty affected but it reach a 97.2\% of accuracy.\\
+This reduction permitted to reduce the number of parameters to 1651376(it's a 25\% of parameters than the original net), and what about the precision of the net, it was slighty affected but it reach a 97.2\% of accuracy.\\
 
-El modelo completo de la red queda formado de la siguiente manera: la capa de entrada donde ingresa una imagen RGB 64x64 pixeles, seguida por una capa de convolucion de 5 kernels y un stride de 1 píxel, capa que reduce la imagen a un de tamaño de 16x32x32 obteniendo solamente sus características principales, luego se aplica una capa de pooling, que tiene la funcion de encontrar los valores máximos de la capa anterior mediante 16 filtros, dejando un tamaño de 32x32x48, entonces nuevamente se aplica una segunda capa de convolucion que tiene 5 kernels y un stride de 1, logrando un tamaño de 32x32x16 seguida por una nueva  capa de pooling con 16 filtros de tamaño 32x16x16 y finalmente las capas de tipo fully-connected con un total de 478 neuronas, donde las dos ultimas neuronas que estana la salida representan las dos clases establecidas en esta red.\\
-The complete network model is formed as follows: the input layer where an RGB image 64x64 pixels, followed by a convolution layer of 16 filters, a kernel of 5 and a stride of 1 pixel, this layer  obtaining only its main characteristics, then a pooling layer is applied, which has the function to find the maximum values of the previous layer with a kernel size and stride of 2, then again a second layer of convolution is applied that has 16 filters, 5 kernels and a stride of 1, followed by a new layer of pooling with a kernel size and stride of 2 again obtained a size of 16x16x16 and finally the layers of type fully-connected with a total of 478 neurons, where the last two neurons that is the output represent the two classes established in this network.\\
+Entonces el modelo completo de red se forma de la siguiente manera: La capa de entrada que recibe una imagen RGB de 64x64 pixeles, seguida por una capa de convolucion de 16 filtros, un kernel de 5 y stride de 1 pixel, esta capa obtiene solo las principales caracteristicas de la imagen, despues una capa de pooling es aplicada, la cual tiene la funcion de encontrar los maximos valores de las capas, con un tamanho de kernel y stride de 2, despues nuevamente se aplica una segunda capa de convolucion que tiene 16 filtros, ancho de kernel de 5 y un stride de 1, seguido nuevamente de una nueva  capa de pooling con un tamanho de kernel y de stride de 2, obteniendo asi una imagen de salida de de tamanho 16x16x16 y finalmente se completa la red con tres capas consecutivas fully-connected, la primera con 384 neuronas, la segunda con 192 y la ultima con dos neuronas que representara la capa las dos clases que se busca  clasificar, el modelo resultante se muestra en la siguiente imagen \\
+
+So, the complete network model is formed as follows: the input layer where an RGB image 64x64 pixels, followed by a convolution layer of 16 filters, a kernel of 5 and a stride of 1 pixel, this layer  obtaining only the main characteristics of the image, then a pooling layer is applied, which has the function to find the maximum values of the previous layer with a kernel size and stride of 2, then again a second layer of convolution is applied that has 16 filters, size of kernel 5 and a stride of 1, followed by a new layer of pooling with a kernel size and stride of 2, so the result image was has size of 16x16x16 and finally the net is completed with three fully-connected layers, the first with 384 neurons, the next with 192 and the last with 2 neurons which represent the both classes  the layers of type fully-connected with a total of 478 neurons, where the last two neurons that is the output represent the two classes to classify, the result model is shown in the next graph.\\
 	
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=3.5 in]{arquitectura}
-	\caption{ The schematic of CNet }
+	\caption{ The schematic of cNET }
 	\label{fig_sim}
 	\end{figure}
 	
-
+En la grafica de entrenamiento que se muestra a continuacion podemos apreciar el resultado final de precision de la red, la 9000 iteraciones fueron necesarias para reducir el la capa de Loss al minimo y la arquitectura demostro alcanzar rapidamente un valor aceptable de precision, notose que reduciendo el numero de filtros la red gano en precision porque las imagenes del dataset no tienen demasiadas caracteristicas para procesar, por lo que la red fue mejor solucionable con un numero menor parametros de red\\
 	
-The follow picture shows the schematic of the cNET of 16 filters and its process of training.Note that by reducing the number of filters the network gained accuracy because it does not have so much data to process.\\
+In the graph of training shown below, we can appreciate the final result of the net accuracy, 9000 iterations were neccesary to reduce the Loss value to its minimun and the architecture shows that it can reach an acceptable accuracy with few iterations. Note that by reducing the number of filters the network gained accuracy because the dataset does not have so much features learn, so the net found a better solution with a less number of parameters.      \\
 
 	\begin{figure}[h]
 	\centering
@@ -596,17 +594,19 @@ The follow picture shows the schematic of the cNET of 16 filters and its process
 	\label{fig_sim}
 	\end{figure}
 	
-	\section{Test}
-Para esta etapa se consideró un conjunto de datos adicional con 200 imágenes de plantas de maíz en estadio de V3-V7 y 203 imágenes de malezas, obtenidas en cultivos de maíz, los resultados fueron comparados entre cNET con 64 y 16 filtros en la Tabla\\
+\section{Test}
 
-For this stage, we considered an extra dataset with 200 images of maize plants in stage of V3-V7 and 203 images of weed, obtained in maize crops, the results were comparated between cNET with 64 and 16 filters in the Table \ref{table:4}.\\  
+Para esta etapa, consideramos otro dataset con 202 imagenes de plantas de maiz en la etapa V3-V7 y 202 dos imagenes de mala hierba obtenidas en campos de maiz diferentes a los que pertenecen al dataset de entrenamiento, para esta prueba se ha medido los tiempos de clasificacion promedio de diez clasificaciones de este dataset en los distintos hardwares que poseemos, empezamos con la clasificacion en Caffe sin modificaciones de software. Los resultados fueron comparados entre la red cNET de 64 y 16 filtros y se muestran en la siguiente Tabla\\
+
+For this stage, we considered another dataset with 202 images of maize plants in stage V3-V7 and 202 images of weed, obtained in different maize crops that the training dataset. For this test we have measured the average time of ten classifications of each image of this dataset with the hardware that we own, we started the classification in Caffe without modifications in Software.  The results were comparated between cNET with 64 and 16 filters and there are shown in the next Table \ref{table:4}.\\  
+
 \begin{table}[h!]
 \centering
 \begin{tabular}{|p{1.1cm}|p{1.9cm}|p{1.95cm}|p{2cm}|}  
  \hline
  \multicolumn{4}{ |c| }{\textbf{GPU}} \\
  \hline
-   \textbf{cNET} & \textbf{Accuracy Weed} & \textbf{Accuracy Maize} & \textbf{Average time of classification}   \\ 
+   \textbf{cNET} & \textbf{Accuracy Weed} & \textbf{Accuracy Maize} & \textbf{Average time of classification/image}   \\ 
  \hline 
  64 Filters & 95.05\% & 74.75\% & 2.34 ms  \\ [0.75ex]
  \hline
@@ -614,7 +614,7 @@ For this stage, we considered an extra dataset with 200 images of maize plants i
   \hline
  \multicolumn{4}{ |c| }{\textbf{CPU}} \\
  \hline
-   \textbf{cNET} & \textbf{Accuracy Weed} & \textbf{Accuracy Maize} & \textbf{Average time of classification}   \\ 
+   \textbf{cNET} & \textbf{Accuracy Weed} & \textbf{Accuracy Maize} & \textbf{Average time of classification/image}   \\ 
  \hline 
  64 Filters & 95.05\% & 74.75\% & 51.6 ms  \\ [0.75ex]
  \hline
@@ -622,7 +622,7 @@ For this stage, we considered an extra dataset with 200 images of maize plants i
   \hline
  \multicolumn{4}{ |c| }{\textbf{CPU Raspberry Pi 3}} \\
  \hline
-   \textbf{cNET} & \textbf{Accuracy Weed} & \textbf{Accuracy Maize} & \textbf{Average time of classification}   \\
+   \textbf{cNET} & \textbf{Accuracy Weed} & \textbf{Accuracy Maize} & \textbf{Average time of classification/image}   \\
  \hline 
  64 Filters & 95.05 \% & 74.75\% & 615 ms  \\ [0.75ex]
  \hline
@@ -633,9 +633,32 @@ For this stage, we considered an extra dataset with 200 images of maize plants i
 \label{table:4}
 \end{table}
 
-Como se muestra en la tabla, los resultados alcanzados por el procesador GPU, es la mejor opci\'on para clasificar una gran cantidad de imágenes sin embargo este proyecto se piensa que es port\'atil, por lo que consideramos el RaspBerry Pi para el an\'alisis de rendimiento. Con cNET de 64 filtros los resultados para el tiempo de clasificaci\'on fue de 615 milisegundos, por lo que el tiempo no es el \'optimo para nuestro objetivo que es el procesamiento en tiempo real.\\
+Como la tabla muestra, los mejores resultados en tiempos de clasificacion fueron alcanzados por el procesador por GPU, esta es la mejor opcion para clasificar una gran cantidad de imagenes, sin embargo este proyecto esta psenado para ser portable, por lo que consideramos al Raspberry Pi para el analisis del rendimiento de classificacion. Con la cNET de 64 filtros, los ersultos de tiempo de clasificacion fueron de 615 milisegundos, pero este tiempo no es optimo para nuestro objetivo que es la aproximacion de clasificacion en tiempo real.  \\
 
-Like the table shown the results were achieved by the GPU processor, it is the best option to classificate a large amount of images however this project is thought to be portable, so we consider the RaspBerry Pi for the analysis of performance. With cNET of 64 filters the results fo time of classification was 615 miliseconds, so it time isn\'t the optimum for our objective that it is the processing in a real time.\\
+Like the table shown the best results in times of classification were achieved by the GPU processor, it is the best option to classificate a large amount of images however this project is thought to be portable, so we consider the RaspBerry Pi for the analysis of classification performance. With cNET of 64 filters the results of time of classification was 615 miliseconds, so it time isn\'t the optimum for our objective that it is the approximation to classification in a real time.\\
+
+Los resultados presentados anteriormente no son definitivos, pues Caffe presenta algunas formas de optimizar la clasificacion de datasets de imagenes, para este documento se ha utilizado el Agrupamiento de Imagenes en una sola estructura(Batch) para clasificar el dataset de cada clase en un  single forward pass y la utilizacion de Multithreading a traves del software matematico OpenBLAS. Para cada hardware se volvio a compilar Caffe con OpenBLAS en lugar de Atlas y en el programa se ingresaron todas las imagenes en un vector para ser clasificado un solo grupo de imagenes por cada clase, ademas se  configuro a OpenBLAS para que use 4 Nucleos del cada hardware para obtener resultados parejos, los resultados obtenidos son los siguientes. \\
+
+The results shown previously are not definitive because Caffe has ways to optimize the classification of datasets of images, for this document we used Batching to classify the dataset of each class in a single forward pass and the use of Multithreading by OpenBLAS Math Software. For each hardware, we recompiled Caffe with OpenBLAS instead of Atlas, in the program we entered all images in a vector to be classified in an only batch per each class, also we configure OpenBLAS to use the 4 cores of each hardware to obtain fair results, the obtained results are the following \\ 
+
+\begin{table}[h!]
+\centering
+\begin{tabular}[c c c c]{|p{2.2 cm}|p{1.1cm}|p{1.1cm}|p{2.4cm}|}  
+ \hline
+   \textbf{Hardware } & \textbf{Accuracy Weed} & \textbf{Accuracy Maize} &  \textbf{Average time of classification/image}\\ 
+ \hline 
+ GPU & 89.11\% & 92.08\% & 1.58 ms  \\ [0.95ex]
+ \hline
+ CPU & 89.11\% & 87.13\% & 10.92  ms \\ [0.95ex]
+  \hline
+   CPU(Raspberry Pi) & 89.11\% & 87.13\% & 150.8 ms \\ [0.95ex]
+  \hline
+\end{tabular}
+\caption{Test of cNET 16 filters with optimized software}
+\label{table:5}
+\end{table}
+
+Los resultados muestran que para el tiempo de Clasificacion por GPU ha empeorado un 66\%, principalmente debido a que la Libreria de OpenBLAS hace extenso uso de los hilos del CPU, con lo que no todos los parametros seran computados por GPU como en al anterior prueba. \\
 	
 	
 	% An example of a floating figure using the graphicx package.
@@ -736,20 +759,12 @@ Like the table shown the results were achieved by the GPU processor, it is the b
 
 
 \section{Conclusion}
-Este paper estudia una red neuronal convolucional para la clasificacion entre maiz y mala hierba, para lo cual se utilizo algunas arquitecturas de red, de donde la que proporciono mejores resultados fue la Cnet, con un 99\% de presicion en el entrenamiento al usar un datasetc de 44580 imagenes conteniendo las dos clases.  \\
-
 
 In this paper we have studied the application of Convolutional Neuronal Networks for Classification between Maize and Weed Plants, for that we have used some CNN Architectures, the Network with best results in precision was cNET, with a 99.33 \% of accuracy of training, using a dataset of both classes  of 44580 segmented images. \\
 
-Para buscar un procesamiento apropiado para trabajar en tiempo real, se experimento reduciendo el numero de filros de las capas de la red desde 64 hasta 16, logrando con esto disminuir el numero de parametros a ser computados durante la clasificacion, obteniendo tambien un tiempo de procesamiento de 2,5 veces menor al de la red original, este cambio tuvo un bajo impacto en la precision de entrenamiento de la red, pues este valor cayo en un 1\%, con respecto a la red original.  
-
-In order to search a right processing to work in real time, we have experimented to reduce the number of filters of the Layers of the Net from 64 to 16 filters, achiveiving to reduce the number of parameters to be computed during the classification , we obtained a classification time 2.5 times less than the original Net of 64 filters , this change had a small impact in the training accuray of the net, it value fell 1 \% in comparation with the original net. \\
-
-Ademas  nuestros experimentos al utilizar diferentes procesadores, demostraron que se obtienen mejores resultados en cuanto a velocidad al trabajar con una  a tarjeta grafica ENVIDIA que posee soporte CUDA debido a su arquitectura de computacion paralela, siendo este 10 veces mas rapido que el CPU normal y 100 veces mas rapido que una RaspBerry Pi3.\\
+In order to search a right processing to work in real time, we have experimented to reduce the number of filters of the Layers of the Net from 64 to 16 filters, achiveiving to reduce the number of parameters to be computed during the classification , we obteined a classification time 2.5 times less than the original Net of 64 filters , this change had a small impact in the training accuray of the net, it value fell 1 \% in comparation with the original net. \\
 
 Also, by using different methods to classify the images in our experiments, the results showed that the best time of classification was achieved by using a Nvidia Graphic Cards, this is due the Parallel Architecture that this GPU has and also it has fully support for the computation platform CUDA, it demostrated to be 18 times faster than a normal CPU and 170 times faster than a Raspberry Pi 3. \\
-
-El estudio demostro que es mejor obtener las imagenes para el dataset realizar algunos giros en las imagenes de las plantas del dataset, debido a que esto aporta mejoras en la identificacion de plantas, pues estas siempre tienen orientaciones diferentes.\\
 
 The study demostrated that is better to perform some geometrical tranformations to the Dataset images due it benefits to improve the  classification of plants because the plants ever have different orientations in the crop field. 
 
@@ -762,10 +777,7 @@ The study demostrated that is better to perform some geometrical tranformations 
 % use section* for acknowledgment
 \section*{Acknowledgment}
 
-Damos gracias a la Graja Agroecologica y Demostrativa de Pillaro y a dueños de cultivos de maiz de lugares aledaños.  que nos permitieron tomar muestras de plantas ,para la obtencion del dataset del proyecto.
-Este trabajo ha sido apoyada por la Universidad de las Fuerzas Armadas ESPE Extension Latacunga.
-
-The authors would like to thank to the "Granja Agroecol\'ogica y Demostrativa" of P\'illaro City and owners of corn crops of the city which allowed us to take samples of plants, to obtain to conform the dataset of the project. \\
+The authors would like to thank to the "Granja Agroecol\'ogica y Demostrativa" of P\'illaro City and owners of corn crops of the city which allowed us to take samples of plants, to conform the dataset of this project. \\
 
 This work has been supported by the University of the Army "ESPE"  Latacunga.  
 
