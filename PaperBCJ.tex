@@ -517,8 +517,13 @@ For the Validation Phase, we had chosen randomly a fifth part of the total image
 	
 	
 \subsection{Convolutional Neuronal Network}
-	After the last step have been terminated, it is neccesary classify the images of Maize and Weed, a high accurate method of Image Classification is Convolutional Neuronal Networks(CNN), those models are complex but efficient with a highly rate of discrimination and its demostrated that they have good results in Image Classification, Object Detection and Fine-Grained  Classification \cite{sharif2014cnn}. Their are also applied in Precision Agriculture \cite{potena2016fast} for the correct identification of plants.
-\\ 
+
+Despues que el ultimo paso ha sido terminado, fue necesario clasificar las imagenes del Maiz y Mala Hierba, un metodo muy preciso de Clasificacion de Imagenes son las Redes Neuronales Convolucionales(CNN), estos modelos son complejos pero eficientes  con un alto grado de discriminacion y han demostrado que tienen unos buenos resultados en la Clasificacion de Imagenes, Deteccion de Objetos y Fine*Grained Classification. Tambien son aplicados en la Agricultura de Precision para la correcta identificacion de plantas\\
+
+	After the last step have been terminated, it is neccesary classify the images of Maize and Weed, a high accurate method of Image Classification is Convolutional Neuronal Networks(CNN), those models are complex but efficient with a highly rate of discrimination and its demostrated that they have good results in Image Classification, Object Detection and Fine-Grained  Classification \cite{sharif2014cnn}. Their are also applied in Precision Agriculture \cite{potena2016fast} for the correct identification of plants.\\
+	
+	 
+Una de las caracteristicas de las CNN is que estas pueden tener multiples arquitecturas, cada arquitectura puede alcanzar diferentes resultados dependiendo de la aplicacion, para el presente documento hemos considerado cuatro arquitecturas de CNN: Dos modelos fueron escogidos del Caffe Zoo Model(es un recurso libre liberado por los Desarrolladores de Caffe) Lenet y AlexNet, tambien Potena y Nardi han usado adicionalmente dos tios de modelos, sNET y cNET, estos han sido exitosamente probados en la clasificacion de plantas en cultivos, con las redes secogidas, cada una fue entrenada con un mismo Solver de Tipo AdaDelta, con el mismo Dataset y los resultados del entrenamiento son los siguientes: \\
 
 One of the characteristics of the CNN is that they can have multiple architectures, each architecture can reach different result depending of the application , for the present document we have considered four CNN architectures: Two models were chose of the Caffe Zoo Model(it's a free resource provided by Caffe Developers), LeNet and AlexNet also Potena and Nardi had used two additional types of Models, sNET and cNET, they were sucessfully proved in identification of plants in crops\cite{potena2016fast}, with the Nets chosen, each one was trained with a same Solver of type AdaDelta and with the same dataset, the results of training are the following. \\
 \begin{table}[h!]
@@ -539,7 +544,11 @@ One of the characteristics of the CNN is that they can have multiple architectur
 \label{table:2}
 \end{table}
 
+Dentro de los parametros mostrados en la Tabla, consideramos la red que alcanze la mas alta tasa de precision y mas baja tasa de perdida, claramente la cNET es la escogida, debido a que esta presenta una precision cercana a la clasificacion humana\\
+
 Inside of the shown parameters in the Table \ref{table:2}, we considered the net who achieved the highest rate of accuracy and lowest rate of loss, clearly the cNET is the chosen due it shows a precission near to human classification.\\
+
+
 	
 Although results given for the net are excellents, one of the main purposes of this paper is the implementation in real time, so the number of parameters to be computed must be a problem, so we considered to modify the net in order to improve the processing time. To achive this, it was neccesary to reduce the number of filters of cNET from 64 to 16.\\
 
