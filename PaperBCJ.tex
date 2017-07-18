@@ -376,6 +376,9 @@ Email: \IEEEauthorrefmark{1}accordova@espe.edu.ec,
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
+
+-Deep Learning ha tenido un papel muy importante en los tiempos modernos, siendo muy utilizado en vision artificial y especialmente en reconocimiento de patrones, lo cual abre muchas puertas en los campos de aplicacion siendo uno de ellos la agricultura de presicion.En este paper presentamos el estudio una red neuronal convolucional aplicada a la  clasificacion de plantas de maiz y de mala hierba en tiempo real, dirigida a campos de maiz en su etapa inicial.El algoritmo cuenta con dos etapas, segmentacion de imagenes y la clasificacion. En la  segmentacion se busca separar de la imagen las plantas de forma individual. Mientras que la clasificacion se da a traves de la red neuronal convolucional, previamente entrenada con un dataset generado mediante la etapa de segmentacion. El rendimiento de la red se ilustra mediante analisis y comparaciones con diferentes arquitecturas de red, luego con la red que presento mejores resultados, se experimeto modificando su numero de filtros, para analizar su comportamiento. Finalmente con la red resultante se implemet\'o en diferentes procesadores para comparar tiempos de clasificacion.\\
+
 Deep Learning has played a very important role in modern times, being very used in Artificial Vision and especially in Pattern Recognition, which opens many doors in the fields of application among which is precision agriculture. In this paper we present the study of a convolutional neural network with two classes applied to the classification of plants of maize and weeds in real time, focused to fields of maize in its initial stage. The algorithm has two stages, segmentation of images and classification.  In the segmentation we wanted to separate the target plant from the original image. While the classification is possible through a convolutional neural network, previously trained with a dataset generated through the segmentation stage. The performance of the network is illustrated by analysis and comparisons with different network architectures, then with the network that presented better results in training, we experimented by modifying its number of filters, to analyze their  behavior. Finally, the resulting network was tested on different processors to compare classification times.\\
 \end{abstract}
 
@@ -760,11 +763,20 @@ Los resultados muestran que para el tiempo de Clasificacion por GPU ha empeorado
 
 \section{Conclusion}
 
+-Este paper estudia una red neuronal convolucional para la clasificacion entre maiz y mala hierba, para lo cual se utilizo algunas arquitecturas de red, de donde la que proporciono mejores resultados fue la Cnet, con un 99\% de presicion en el entrenamiento al usar un datasetc de 44580 imagenes conteniendo las dos clases.  \\
+
 In this paper we have studied the application of Convolutional Neuronal Networks for Classification between Maize and Weed Plants, for that we have used some CNN Architectures, the Network with best results in precision was cNET, with a 99.33 \% of accuracy of training, using a dataset of both classes  of 44580 segmented images. \\
+
+Para buscar un procesamiento apropiado para trabajar en tiempo real, se experimento reduciendo el numero de filros de las capas de la red desde 64 hasta 16, logrando con esto disminuir el numero de parametros a ser computados durante la clasificacion, obteniendo tambien un tiempo de procesamiento de 2,5 veces menor al de la red original, este cambio tuvo un bajo impacto en la precision de entrenamiento de la red, pues este valor cayo en un 1\%, con respecto a la red original.\\
 
 In order to search a right processing to work in real time, we have experimented to reduce the number of filters of the Layers of the Net from 64 to 16 filters, achiveiving to reduce the number of parameters to be computed during the classification , we obteined a classification time 2.5 times less than the original Net of 64 filters , this change had a small impact in the training accuray of the net, it value fell 1 \% in comparation with the original net. \\
 
+-Ademas  nuestros experimentos al utilizar diferentes procesadores, demostraron que se obtienen mejores resultados en cuanto a velocidad al trabajar con una  a tarjeta grafica ENVIDIA que posee soporte CUDA debido a su arquitectura de computacion paralela, siendo este 10 veces mas rapido que el CPU normal y 100 veces mas rapido que una RaspBerry Pi3.\\
+
 Also, by using different methods to classify the images in our experiments, the results showed that the best time of classification was achieved by using a Nvidia Graphic Cards, this is due the Parallel Architecture that this GPU has and also it has fully support for the computation platform CUDA, it demostrated to be 18 times faster than a normal CPU and 170 times faster than a Raspberry Pi 3. \\
+
+-El estudio demostro que es mejor obtener las imagenes para el dataset realizar algunos giros en las imagenes de las plantas del dataset, debido a que esto aporta mejoras en la identificacion de plantas, pues estas siempre tienen orientaciones diferentes.\\
+-
 
 The study demostrated that is better to perform some geometrical tranformations to the Dataset images due it benefits to improve the  classification of plants because the plants ever have different orientations in the crop field. 
 
@@ -776,6 +788,10 @@ The study demostrated that is better to perform some geometrical tranformations 
 
 % use section* for acknowledgment
 \section*{Acknowledgment}
+
+-Damos gracias a la Graja Agroecologica y Demostrativa de Pillaro y a dueños de cultivos de maiz de lugares aledaños.  que nos permitieron tomar muestras de plantas ,para la obtencion del dataset del proyecto.
++The authors would like to thank to the "Granja Agroecol\'ogica y Demostrativa" of P\'illaro City and owners of corn crops of the city which allowed us to take samples of plants, to conform the dataset of this project. \\
+-Este trabajo ha sido apoyada por la Universidad de las Fuerzas Armadas ESPE Extension Latacunga. \\
 
 The authors would like to thank to the "Granja Agroecol\'ogica y Demostrativa" of P\'illaro City and owners of corn crops of the city which allowed us to take samples of plants, to conform the dataset of this project. \\
 
