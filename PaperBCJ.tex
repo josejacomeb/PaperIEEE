@@ -661,7 +661,9 @@ The results shown previously are not definitive because Caffe has ways to optimi
 \label{table:5}
 \end{table}
 
-Los resultados muestran que para el tiempo de Clasificacion por GPU ha empeorado un 66\%, principalmente debido a que la Libreria de OpenBLAS hace extenso uso de los hilos del CPU, con lo que no todos los parametros seran computados por GPU como en al anterior prueba. \\
+Los resultados muestran que para el tiempo de Clasificacion por GPU ha empeorado un 66\%, principalmente debido a que la Libreria de OpenBLAS hace extenso uso de los hilos del CPU causando que no todos los parametros seran computados por GPU como en la anterior prueba. En cambio, cuando se utiliza el CPU los resultados son mejores, debido a que las operaciones se ejecutan utilizando cada uno de los nucleos disponibles, en el caso de la CPU se noto un 22\% y para 6.3\% para el Raspberry Pi  \\
+
+The results shown that classification time by GPU get worse by 66\%, mainly due OpenBLAS make extense use of CPU Threads causing that not all the parameters of the net were computed by GPU like 
 	
 	
 	% An example of a floating figure using the graphicx package.
