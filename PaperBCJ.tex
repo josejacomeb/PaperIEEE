@@ -690,15 +690,9 @@ The results shown previously are not definitive because Caffe has ways to optimi
  \hline 
  GPU & 89.11\% & 92.08\% & 1.58 ms \\ [0.95ex]
  \hline
-<<<<<<< HEAD
- CPU & 89.11\% & 92. 08\% & 10.92 ms \\ [0.95ex]
- \hline
- CPU(Raspberry Pi) & 92.08\% & 87.13\% & 150.8 ms \\ [0.95ex]
-=======
  CPU & 89.11\% & 92.08\% & 10.92 ms \\ [0.95ex]
  \hline
  CPU(Raspberry Pi) & 89.11\% & 92.08\% & 150.8 ms \\ [0.95ex]
->>>>>>> master
  \hline
 \end{tabular}
 \caption{Test of cNET 16 filters with optimized software}
@@ -711,6 +705,28 @@ Los resultados muestran que para el tiempo de Clasificacion por GPU ha empeorado
 
 The results show that for the GPU Classification time it has worsened by 66 \%, mainly because the OpenBLAS Library makes extensive use of the CPU threads causing that not all parameters will be computed by GPU as in the previous test. Instead, when the CPU is used the results are better, because the operations are executed using each of the four cores, in the case of the CPU we notice a 22 \% and for 6.3 \% for the Raspberry Pi \\
 	
+\begin{comment}	
+Ahora para comparar todos estos resultados tomando en cuenta que una imagen capturada por la camara a una altura de 1,5 m puede enfocar un aproximado de 6 plantas de maiz, y segun la cantidad de mala hierba, se considerara un promedio de 12 plantas, dando un total de 18 plantas aproximadamente. Con esto se analiza cuantos frames por segundo seria lo adecuado para la adquisicion de imagenes.
+\end{comment}	
+Now to compare all these results taking into account that an image captured by the camera at a height of 1.5 m can focus an approximate 6 plants of maize, and according to the amount of weed, an average of 12 plants, Giving a total of about 18 plants. This analyzes how many frames per second would be appropriate for the acquisition of images.
+\begin{table}[h!]
+\centering
+\begin{tabular}[c c c c]{|p{1.1 cm}|p{1.7cm}|p{1.7cm}|p{2.0cm}|} 
+ \hline
+ \textbf{Parameter} &\textbf{GPU(Without Threading) } & \textbf{CPU with Threading} & \textbf{RaspBerry Pi 3 with Threading} \\ 
+ \hline 
+ Time(s) & 0.0171 & 0.196 & 7.714  \\ [0.95ex]
+ \hline
+ FPS & 58.47  & 5.08 & 0.36  \\ [0.95ex]
+ \hline
+\end{tabular}
+\caption{Test of a complete image and the frames per second}
+\label{table:5}
+\end{table}
+
+
+
+
 	
 	% An example of a floating figure using the graphicx package.
 	% Note that \label must occur AFTER (or within) \caption.
