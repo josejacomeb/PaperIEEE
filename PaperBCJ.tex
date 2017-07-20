@@ -708,19 +708,19 @@ The results show that for the GPU Classification time it has worsened by 66 \%, 
 \begin{comment}	
 Ahora para comparar todos estos resultados tomando en cuenta que una imagen capturada por la camara a una altura de 1,5 m puede enfocar un aproximado de 6 plantas de maiz, y segun la cantidad de mala hierba, se considerara un promedio de 12 plantas, dando un total de 18 plantas aproximadamente. Con esto se analiza cuantos frames por segundo seria lo adecuado para la adquisicion de imagenes.
 \end{comment}	
-Now to compare all these results taking into account that an image captured by the camera at a height of 1.5 m can focus an approximate 6 plants of maize, and according to the amount of weed, an average of 12 plants, Giving a total of about 18 plants. This analyzes how many frames per second would be appropriate for the acquisition of images.
+Now to compare all these results taking into account that an image captured by the camera at a height of 1.5 m can focus an approximate 6 plants of maize, and according to the amount of weed, an average of 12 plants, Giving a total of about 18 plants. This analyzes how many frames per second(fps) would be appropriate for the acquisition of images.
 \begin{table}[h!]
 \centering
-\begin{tabular}[c c c c]{|p{1.1 cm}|p{1.7cm}|p{1.7cm}|p{2.0cm}|} 
+\begin{tabular}[c c c c]{|p{1.1 cm}|p{1.8cm}|p{1.8cm}|p{1.9cm}|} 
  \hline
- \textbf{Parameter} &\textbf{GPU(Without Threading) } & \textbf{CPU with Threading} & \textbf{RaspBerry Pi 3 with Threading} \\ 
+ \textbf{Parameter} &\textbf{GPU(Without Batching) } & \textbf{CPU with Batching} & \textbf{RaspBerry Pi 3 with Batching} \\ 
  \hline 
- Time(s) & 0.0171 & 0.196 & 7.714  \\ [0.95ex]
+ \textbf{Time(s)} & 0.0171 & 0.196 & 2.714  \\ [0.95ex]
  \hline
- FPS & 58.47  & 5.08 & 0.36  \\ [0.95ex]
+ \textbf{FPS} & 58.47  & 5.08 & 0.36  \\ [0.95ex]
  \hline
 \end{tabular}
-\caption{Test of a complete image and the frames per second}
+\caption{Test of comparation with the frames per second of the different processors}
 \label{table:5}
 \end{table}
 
@@ -851,12 +851,17 @@ Also, by using different methods to classify the images in our experiments, the 
 
 The study demostrated that is better to perform some geometrical tranformations to the Dataset images due it benefits to improve the classification of plants because the plants ever have different orientations in the crop field. \\
 
+\begin{comment}	
 -El uso de Multithreading y Batching a traves de la libreria OpenBLAS es muy beneficioso en el caso de usar CPU, aumentando la rapidez de procesamiento en el porcentaje superior al 20\%, con la Rasberry pi, se obtuvo una minima mejora, en cambio fue pejudicial con el uso de GPU , pues provoca que la rapidez se reduzca considerablemente. \\
+\end{comment}
+	
+The use of Multithreading and Batching through the library OpenBLAS is very beneficial in the case of using CPU, increasing the speed of processing in the percentage higher than 20 \%, with the Rasberry pi, a minimum improvement was obtained, instead it was pejudicioal with the use of GPU, because it causes that the speed is reduced considerably. \\
 
--The use of Multithreading and Batching through the library OpenBLAS is very beneficial in the case of using CPU, increasing the speed of processing in the percentage higher than 20 \%, with the Rasberry pi, a minimum improvement was obtained, instead it was pejudicioal with the use of GPU, because it causes that the speed is reduced considerably. \\
+\begin{comment}	
+-En el caso de querer implementar el algoritmo en un sitema embedded, no se recomienda trabajar con procesador como el de la Rasp Berry Pi 3, pues tiene  un procesamiento muy lento debido a que los frames por segundo necesario para analizar las imagenes es significativamente bajo, por lo que se debera elegir una targeta que disponga de GPU, sin necesidad del uso de Multithreading y Batching. 
+\end{comment}
 
-
-
+In the case of wanting to implement the algorithm in an embedded system, it is not recommended to work with a processor like Rasp Berry Pi 3, because it has a very slow processing because the frames per second needed to analyze the images is significantly low, So you should choose a card that has GPU, without the need for Multithreading and Batching. \\
    
 
 
