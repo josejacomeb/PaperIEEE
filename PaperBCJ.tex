@@ -652,9 +652,9 @@ The results shown previously are not definitive because Caffe has ways to optimi
  \hline 
  GPU & 89.11\% & 92.08\% & 1.58 ms \\ [0.95ex]
  \hline
- CPU & 89.11\% & 87.13\% & 10.92 ms \\ [0.95ex]
+ CPU & 89.11\% & 92.08\% & 10.92 ms \\ [0.95ex]
  \hline
- CPU(Raspberry Pi) & 89.11\% & 87.13\% & 150.8 ms \\ [0.95ex]
+ CPU(Raspberry Pi) & 89.11\% & 92.08\% & 150.8 ms \\ [0.95ex]
  \hline
 \end{tabular}
 \caption{Test of cNET 16 filters with optimized software}
@@ -780,7 +780,16 @@ Also, by using different methods to classify the images in our experiments, the 
 -El estudio demostro que es mejor obtener las imagenes para el dataset realizar algunos giros en las imagenes de las plantas del dataset, debido a que esto aporta mejoras en la identificacion de plantas, pues estas siempre tienen orientaciones diferentes.\\
 -
 
-The study demostrated that is better to perform some geometrical tranformations to the Dataset images due it benefits to improve the classification of plants because the plants ever have different orientations in the crop field. 
+The study demostrated that is better to perform some geometrical tranformations to the Dataset images due it benefits to improve the classification of plants because the plants ever have different orientations in the crop field. \\
+
+-El uso de Multithreading y Batching a traves de la libreria OpenBLAS es muy beneficioso en el caso de usar CPU, aumentando la rapidez de procesamiento en el porcentaje superior al 20\%, con la Rasberry pi, se obtuvo una minima mejora, en cambio fue pejudicial con el uso de GPU , pues provoca que la rapidez se reduzca considerablemente. \\
+
+-The use of Multithreading and Batching through the library OpenBLAS is very beneficial in the case of using CPU, increasing the speed of processing in the percentage higher than 20 \%, with the Rasberry pi, a minimum improvement was obtained, instead it was pejudicioal with the use of GPU, because it causes that the speed is reduced considerably. \\
+
+
+
+   
+
 
 
 
