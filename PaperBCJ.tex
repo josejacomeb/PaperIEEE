@@ -721,7 +721,7 @@ For the estimation of the frames per second for each device, its optimal configu
  \hline
  \textbf{Parameter} &\textbf{GPU(Without Threading) } & \textbf{CPU with Threading} & \textbf{RaspBerry Pi 3 with Threading} \\ 
  \hline 
- Time(s) & 0.0171 & 0.196 & 7.714  \\ [0.95ex]
+ Time(s) & 0.0171 & 0.196 & 2.714  \\ [0.95ex]
  \hline
  FPS & 58.47  & 5.08 & 0.36  \\ [0.95ex]
  \hline
@@ -868,7 +868,11 @@ The study demonstrated that is better to perform some geometrical transformation
 
 The use of Multithreading and Batching through the library OpenBLAS is very beneficial in the case of using CPU, increasing the speed of processing in the percentage higher than 20 \%. However with the Rasberry pi, a minimum improvement was obtained, instead the use of GPU was prejudicial because it causes the speed to be reduced considerably. \\
 
-
+\begin{comment}	
+En el caso de querer implementar el algoritmo en un sitema embedded, no se recomienda trabajar con procesador como el de la Rasp Berry Pi 3, pues tiene  un procesamiento muy lento debido a que los frames por segundo necesario para analizar las imagenes es significativamente bajo, por lo que se debera elegir una targeta que disponga de GPU, sin necesidad del uso de Multithreading y Batching. 
+\end{comment}
+ 
+In the case of wanting to implement the algorithm in an embedded system, it is not recommended to work with a processor like Rasp Berry Pi 3, because it has a very slow processing because the frames per second needed to analyze the images is significantly low, So you should choose a card that has GPU, without the need for Multithreading and Batching. \\
 
    
 
