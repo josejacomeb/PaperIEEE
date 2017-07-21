@@ -635,7 +635,7 @@ In the training graph shown below, the final net accuracy result can be apprecia
 Para esta etapa, consideramos otro dataset con 202 imagenes de plantas de maiz en la etapa V3-V7 y 202 dos imagenes de mala hierba obtenidas en campos de maiz diferentes a los que pertenecen al dataset de entrenamiento, para esta prueba se ha medido los tiempos de clasificacion promedio de diez clasificaciones de este dataset en los distintos hardwares que poseemos, empezamos con la clasificacion en Caffe sin modificaciones de software. Los resultados fueron comparados entre la red cNET de 64 y 16 filtros y se muestran en la siguiente Tabla
 \end{comment}	
 
-For this stage, another dataset was considered with 202 images of maize plants in stage V3-V7 and 202 images of weeds, obtained in different maize crops than the ones used for the the training dataset. In order to have a reliable value for this test its considered to classify ten times the dataset (CLARIFICAR IDEA). The average image classification time was obtained with the chosen hardware, the classification started in Caffe without modifications in the software. The results were comparated between cNET arquitecture with 64 and 16 filters, these are shown in the next Table \ref{table:4}.\\ 
+For this stage, another dataset was considered with 202 images of maize plants in stage V3-V7 and 202 images of weeds, obtained in different maize crops than the ones used for gathering the training dataset images. Ten measurements of the mean classification time of the test dataset were obtained for each one of the different hardwares previously selected to run performance tests. Classification tests were started with Caffe without any software modifications. The obtained results were compared between cNET arquitecture with 64 and 16 filters, these are shown in the next Table \ref{table:4}.\\ 
 
 \begin{table}[h!]
 \centering
@@ -674,13 +674,13 @@ For this stage, another dataset was considered with 202 images of maize plants i
 Como la tabla muestra, los mejores resultados en tiempos de clasificacion fueron alcanzados por el procesador por GPU, esta es la mejor opcion para clasificar una gran cantidad de imagenes, sin embargo este proyecto esta psenado para ser portable, por lo que consideramos al Raspberry Pi para el analisis del rendimiento de classificacion. Con la cNET de 64 filtros, los ersultos de tiempo de clasificacion fueron de 615 milisegundos, pero este tiempo no es optimo para nuestro objetivo que es la aproximacion de clasificacion en tiempo real. 
 \end{comment}	
 
-As the table shows, the best results in classification time were achieved by the GPU processor, thus it is the best option to classify a large amount of images. However this project is thought to be portable, so the Raspberry Pi was selected for the classification performance analysis. Despite the fact that the classification time resul for the cNET of 64 filters was 615 miliseconds, this  time is not optimum for the approximation of real time classification.\\
+As the table shows, the best results in classification time were achieved by the GPU processor, thus it is the best option to classify a large amount of images. However, this project is thought to be implemented in an autonomous system so the Raspberry Pi was selected for the classification performance analysis due to its portability. The resulting classification time for the cNET of 64 filters was 615 miliseconds, however this  time is not optimum for an approximation of real time classification.\\
 
 \begin{comment}	
 Los resultados presentados anteriormente no son definitivos, pues Caffe presenta algunas formas de optimizar la clasificacion de datasets de imagenes, para este documento se ha utilizado el Agrupamiento de Imagenes en una sola estructura(Batch) para clasificar el dataset de cada clase en un single forward pass y la utilizacion de Multithreading a traves del software matematico OpenBLAS. Para cada hardware se volvio a compilar Caffe con OpenBLAS en lugar de Atlas y en el programa se ingresaron todas las imagenes en un vector para ser clasificado un solo grupo de imagenes por cada clase, ademas se configuro a OpenBLAS para que use 4 Nucleos del cada hardware para obtener resultados parejos, los resultados obtenidos son los siguientes. 
 \end{comment}	
 
-The results shown previously are not definitive because Caffe has ways to optimize image dataset classification. In this research project, batching was used to classify the dataset of each class in a single forward pass and the use of Multithreading by OpenBLAS math software (ORDENAR IDEA). For each hardware, Caffe was recompiled with OpenBLAS instead of Atlas. In the program, all images  were entered in a vector to be classified in an only batch per each class. Also, OpenBLAS was configured to use the 4 cores of each hardware to obtain fair results, the obtained results are the following. \\ 
+The results shown previously are not definitive because Caffe has ways to optimize image dataset classification. Multithreading was applied to this research project with the help of the mathematical software OpenBLAS. Also, batching was used to classify each class dataset in a single forward pass. For each hardware, Caffe was recompiled with OpenBLAS instead of Atlas. In the program, all images  were entered in a vector to be classified in an only batch per each class (ACLARAR IDEA). Also, OpenBLAS was configured to use the 4 cores of each hardware to obtain even results, the obtained results are the following. \\ 
 
 \begin{table}[h!]
 \centering
@@ -703,12 +703,12 @@ The results shown previously are not definitive because Caffe has ways to optimi
 Los resultados muestran que para el tiempo de Clasificacion por GPU ha empeorado un 66\%, principalmente debido a que la Libreria de OpenBLAS hace extenso uso de los hilos del CPU causando que no todos los parametros seran computados por GPU como en la anterior prueba. En cambio, cuando se utiliza el CPU los resultados son mejores, debido a que las operaciones se ejecutan utilizando cada uno de los nucleos disponibles, en el caso de la CPU se noto un 22\% y para 6.3\% para el Raspberry Pi
 \end{comment}	
 
-The results show that for the GPU classification time has decreased by 66 \%, mainly because the OpenBLAS Library makes an extensive use of the CPU threads, causing that not all parameters will be computed by GPU as in the previous test. Instead, when the CPU is used the results are better, because the operations are executed using each of the four cores. In the case of the CPU, otice a 22 \% and for 6.3 \% for the Raspberry Pi \\
+The results show that for the GPU, classification time has decreased by 66 \%, mainly because the OpenBLAS Library makes an extensive use of the CPU threads, causing that not all parameters will be computed by GPU as in the previous test. On the other hand, when the CPU is used the results are better, because the operations are executed using each of the four cores. In the case of the CPU, notice a 22 \% and for 6.3 \% for the Raspberry Pi.(REVISAR) \\
 	
 \begin{comment}	
 Ahora para comparar todos estos resultados tomando en cuenta que una imagen capturada por la camara a una altura de 1,5 m puede enfocar un aproximado de 6 plantas de maiz, y segun la cantidad de mala hierba, se considerara un promedio de 12 plantas, dando un total de 18 plantas aproximadamente. Con esto se analiza cuantos frames por segundo seria lo adecuado para la adquisicion de imagenes.
 \end{comment}	
-Now to compare all these results taking into account that an image captured by the camera at a height of 1.5 m can focus an approximate 6 plants of maize, and according to the amount of weed, an average of 12 plants, Giving a total of about 18 plants. This analyzes how many frames per second would be appropriate for the acquisition of images.
+Lastly, an image captured by the camera at a height of 1.5 m can focus an approximate 6 plants of maize. Taking into account the number of weeds, an average of 12 plants can show up in the image. The total number of plants per image would round 18 plants considering maize and weeds as well. This aids to determine how many frames per second would be appropriate for the acquisition of images.
 \begin{table}[h!]
 \centering
 \begin{tabular}[c c c c]{|p{1.1 cm}|p{1.7cm}|p{1.7cm}|p{2.0cm}|} 
@@ -831,31 +831,31 @@ Now to compare all these results taking into account that an image captured by t
 -Este paper estudia una red neuronal convolucional para la clasificacion entre maiz y mala hierba, para lo cual se utilizo algunas arquitecturas de red, de donde la que proporciono mejores resultados fue la Cnet, con un 97.26\% de presicion en el entrenamiento al usar un datasetc de 44580 imagenes conteniendo las dos clases. \\
 \end{comment}	
 
-In this paper  we have studied the application of Convolutional Neuronal Networks for Classification between Maize and Weed Plants, for that we have used some CNN Architectures, the Network with best results in precision was cNET, with a 97.23 \% of accuracy of training, using a dataset of both classes of 44580 segmented images. \\
+In this paper presented an analysis of a Convolutional Neuronal Networks application for classification between maize plants and weeds. With this purpose, several CNN Architectures were tested, the network that presented the best results in precision (de que?) was cNET, with a 97.23 \% of accuracy of training, using a dataset of both classes of 44580 segmented images. \\
 
 \begin{comment}	
 Para buscar un procesamiento apropiado para trabajar en tiempo real, se experimento reduciendo el numero de filros de las capas de la red desde 64 hasta 16, logrando con esto disminuir el numero de parametros a ser computados durante la clasificacion, obteniendo tambien un tiempo de procesamiento de 2,5 veces menor al de la red original, este cambio tuvo un bajo impacto en la precision de entrenamiento de la red, pues este valor cayo en un 1\%, con respecto a la red original.
 \begin{end}	
 
-In order to search a right processing to work in real time, we have experimented to reduce the number of filters of the Layers of the Net from 64 to 16 filters, achiveiving to reduce the number of parameters to be computed during the classification , we obteined a classification time 2.5 times less than the original Net of 64 filters , this change had a small impact in the training accuracy of the net, it value increased 1 \% in comparation with the original net. \\
+In order to have adequate image processing that could be implemented to work in real time, the number of the network filter layers was reduced from 64 to 16, achieving to reduce the number of parameters to be computed during the classification. A classification time reduced by 2.5 times compared the original Net of 64 filters was obtained. This change had a small impact in the training accuracy of the net, its value increased 1 \% in comparison to the original net. \\
 
 \begin{comment}	
 -Ademas nuestros experimentos al utilizar diferentes procesadores, demostraron que se obtienen mejores resultados en cuanto a velocidad al trabajar con una a tarjeta grafica ENVIDIA que posee soporte CUDA debido a su arquitectura de computacion paralela, siendo este 10 veces mas rapido que el CPU normal y 100 veces mas rapido que una RaspBerry Pi3.
 \end{comment}	
 
-Also, by using different methods to classify the images in our experiments, the results showed that the best time of classification was achieved by using a Nvidia Graphic Cards, this is due the Parallel Architecture that this GPU has and also it has fully support for the computation platform CUDA, it demostrated to be 18 times faster than a normal CPU and 170 times faster than a Raspberry Pi 3. \\
+Also, by using different methods to classify the images in our experiments, the results showed that the best time of classification was achieved by using a Nvidia Graphic Cards, this was due to the parallel architecture that this GPU has. Also, it(que cosa?) was fully supported for the computational platform CUDA, it demonstrated to be 18 times faster than a normal CPU and 170 times faster than a Raspberry Pi 3. \\
 
 \begin{comment}	
 -El estudio demostro que es mejor obtener las imagenes para el dataset realizar algunos giros en las imagenes de las plantas del dataset, debido a que esto aporta mejoras en la identificacion de plantas, pues estas siempre tienen orientaciones diferentes.
 \end{comment}	
 
-The study demostrated that is better to perform some geometrical tranformations to the Dataset images due it benefits to improve the classification of plants because the plants ever have different orientations in the crop field. \\
+The study demonstrated that is better to perform some geometrical transformations to the dataset images due to the benefits it offers, such as the improvement in  plant classification since the plants will have different orientations in the crop field. \\
 
 \begin{comment}
 -El uso de Multithreading y Batching a traves de la libreria OpenBLAS es muy beneficioso en el caso de usar CPU, aumentando la rapidez de procesamiento en el porcentaje superior al 20\%, con la Rasberry pi, se obtuvo una minima mejora, en cambio fue pejudicial con el uso de GPU , pues provoca que la rapidez se reduzca considerablemente. \\
 \end{comment}
 
--The use of Multithreading and Batching through the library OpenBLAS is very beneficial in the case of using CPU, increasing the speed of processing in the percentage higher than 20 \%, with the Rasberry pi, a minimum improvement was obtained, instead it was pejudicioal with the use of GPU, because it causes that the speed is reduced considerably. \\
+-The use of Multithreading and Batching through the library OpenBLAS is very beneficial in the case of using CPU, increasing the speed of processing in the percentage higher than 20 \%. However with the Rasberry pi, a minimum improvement was obtained, instead the use of GPU was prejudicial because it causes the speed to be reduced considerably. \\
 
 
 
@@ -876,7 +876,7 @@ The study demostrated that is better to perform some geometrical tranformations 
 -Este trabajo ha sido apoyada por la Universidad de las Fuerzas Armadas ESPE Extension Latacunga. 
 \end{comment}	
 
-The authors would like to thank to the "Granja Agroecol\'ogica y Demostrativa" of P\'illaro City and owners of corn crops of the city which allowed us to take samples of plants, to conform the dataset of this project. \\
+The authors would like to thank the "Granja Agroecol\'ogica y Demostrativa" of P\'illaro City and the owners of corn crops of the city whom allowed us to take samples of plants, to conform the dataset of this project. \\
 
 This work has been supported by the University of the Army "ESPE" Latacunga. 
 
