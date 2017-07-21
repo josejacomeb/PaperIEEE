@@ -472,7 +472,7 @@ Samples were obtained from images captured in different maize fields. Crops wher
 	\centering
 	\includegraphics[width=3.2in]{entradamaiz}
 	\caption{Crops chosen to obtain samples, notice that it is easy to discrimante weed from maize}
-	\label{fig_sim}
+	\label{figure1}
 	\end{figure}
 \begin{comment}
 Tambien fue necesario obtener imagenes de las malas hierbas mas comunes en los campos de maiz de Pillaro, para permitir a la Red discrimiar entre las dos clases definidas en el Dataset.
@@ -497,7 +497,7 @@ Afterwards, the images were segmented in order to differentiate them from the so
 	\centering
 	\includegraphics[width=3.2in]{procesamiento}
 	\caption{Preprocessing to obtain samples for the dataset}
-	\label{fig_sim}
+	\label{figure2}
 	\end{figure}
 
 \begin{comment}	
@@ -510,7 +510,7 @@ It should be noted that samples were manually labeled into two classes; maize an
 	\centering
 	\includegraphics[width=2.5in]{im1}
 	\caption{ Segmented and Masked images of dataset Above: Weed, Below: Maize}
-	\label{fig_sim}
+	\label{figure3}
 	\end{figure}
 
 \begin{comment}	
@@ -578,10 +578,10 @@ Dentro de los parametros mostrados en la Tabla, consideramos la red que alcanze 
 Based on the performance parameters shown on the table \ref{table:2}, the network that achieved the highest rate of accuracy and lowest rate of loss was selected; clearly the cNET presented a superior performance due to its near-to-human classification precision.\\
 
 \begin{comment}	
-Aunque lo resultados dados de la red fueron excelentes, uno de los propositos principales de este documento es una aproximacion de procesamiento en tiempo real, entonces el numero de parametros a ser computados va a ser un problema, entonces consideramos modificar la red para mejorar el tiempo de procesamiento. Para lograr esto, fue necesario reducir el numero de filtros de cNET de 64 a 16, en la tabla siguiente se muestran los resultados del entrenamiento para los dos tipos de red. 
+Aunque lo resultados dados de la red fueron excelentes, uno de los propositos principales de este documento es una aproximacion de procesamiento en tiempo real, entonces el numero de parametros a ser computados va a ser un problema, entonces consideramos modificar la red para mejorar el tiempo de procesamiento. Para lograr esto, fue necesario reducir el numero de filtros de cNET de 64 a 16. se selecciono este valor debido a que es el m[inimo valor para que el entregamiento de la red siga manteniendo su precision. 
 \end{comment}	
 	
-Although results given by this type of network are excellent, one of the main purposes of this paper was the implementation of this system in real time. The number of parameters to be computed by the selected network were numerous, so it is necessary to make network modifications in order to improve its processing speed. To achieve this, it was necessary to reduce the number of filters of cNET from 64 to 16.\\
+Although results given by this type of network are excellent, one of the main purposes of this paper was the implementation of this system in real time. The number of parameters to be computed by the selected network were numerous, so it is necessary to make network modifications in order to improve its processing speed. To achieve this, it was necessary to reduce the number of filters of cNET from 64 to 16. This final number of filters used in the network was selected because this is the minimum number of filters that allow to maintain training accuracy. \\
 
 \begin{table}[h!]
 \centering
@@ -609,13 +609,13 @@ This filter reduction permitted to decrease the number of parameters to 1651376 
 Entonces el modelo completo de red se forma de la siguiente manera: La capa de entrada que recibe una imagen RGB de 64x64 pixeles, seguida por una capa de convolucion de 16 filtros, un kernel de 5 y stride de 1 pixel, esta capa obtiene solo las principales caracteristicas de la imagen, despues una capa de pooling es aplicada, la cual tiene la funcion de encontrar los maximos valores de las capas, con un tamanho de kernel y stride de 2, despues nuevamente se aplica una segunda capa de convolucion que tiene 16 filtros, ancho de kernel de 5 y un stride de 1, seguido nuevamente de una nueva capa de pooling con un tamanho de kernel y de stride de 2, obteniendo asi una imagen de salida de de tamanho 16x16x16 y finalmente se completa la red con tres capas consecutivas fully-connected, la primera con 384 neuronas, la segunda con 192 y la ultima con dos neuronas que representara la capa las dos clases que se busca clasificar, el modelo resultante se muestra en la siguiente imagen
 \end{comment}	
 
-Thus, the complete network model was conformed by the following components: an input layer where an RGB image of 64x64 pixels is received, followed by a convolution layer of 16 filters, a kernel of 5 and a stride of 1 pixel (this layer only obtains the main characteristics of the image), then a pooling layer is applied, which has the function to find the maximum values of the previous layer with a value of kernel size and stride of 2. Then again a second layer of convolution that has 16 filters is applied, the size of kernel is 5 and the stride is 1, followed by a new layer of pooling with a kernel size and stride of 2, so the resulting image had a size of 16x16x16. Finally, the network is completed with three consecutive fully-connected layers; the first with 384 neurons, the next with 192 and the last with 2 neurons. The type of layers fully-connected contain a total of 478 neurons, where the last two neurons that are the output represent the two classes to identify. The resulting model is shown in graph \ref{fig_sim}. \\
+Thus, the complete network model was conformed by the following components: an input layer where an RGB image of 64x64 pixels is received, followed by a convolution layer of 16 filters, a kernel of 5 and a stride of 1 pixel (this layer only obtains the main characteristics of the image), then a pooling layer is applied, which has the function to find the maximum values of the previous layer with a value of kernel size and stride of 2. Then again a second layer of convolution that has 16 filters is applied, the size of kernel is 5 and the stride is 1, followed by a new layer of pooling with a kernel size and stride of 2, so the resulting image had a size of 16x16x16. Finally, the network is completed with three consecutive fully-connected layers; the first with 384 neurons, the next with 192 and the last with 2 neurons. The type of layers fully-connected contain a total of 478 neurons, where the last two neurons that are the output represent the two classes to identify. The resulting model is shown in graph \ref{figure4}. \\
 	
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=3.5 in]{arquitectura}
 	\caption{ The schematic of cNET }
-	\label{fig_sim}
+	\label{figure4}
 	\end{figure}
 	
 \begin{comment}		
@@ -628,7 +628,7 @@ In the training graph shown below, the final net accuracy result can be apprecia
 	\centering
 	\includegraphics[width=2.4in]{entrenamiento}
 	\caption{ Graph of the Training Process }
-	\label{fig_sim}
+	\label{figure5}
 	\end{figure}
 	
 \section{Test}
