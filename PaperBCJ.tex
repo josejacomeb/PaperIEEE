@@ -332,7 +332,7 @@
 % author names and affiliations
 % use a multiple column layout for up to three different
 % affiliations
-\author{\IEEEauthorblockN{Andrea Concepci\'on C\'ordova Cruzatty \IEEEauthorrefmark{1},
+\author{\IEEEauthorblockN{Andrea C\'ordova-Cruzatty \IEEEauthorrefmark{1},
 Mauricio Daniel Barreno Barreno \IEEEauthorrefmark{2} and Jos\'e Misael J\'acome Barrionuevo\IEEEauthorrefmark{3}}
 \IEEEauthorblockA{Department of Energy and Mechanics,
 University of the Army ESPE\\
@@ -378,7 +378,7 @@ Email: \IEEEauthorrefmark{1}accordova@espe.edu.ec,
 % in the abstract
 \begin{abstract}
 
-Deep Learning has played a very important role in modern times, being very used in Artificial Vision and especially in Pattern Recognition, which opens many doors in the fields of application among which is precision agriculture. In this paper the study of a convolutional neural network is presented, with two classes applied to the classification of plants of maize and weeds in real time, focused to fields of maize in its initial stage. The algorithm has two stages, segmentation of images and classification. Segmentation is intended to separate the target plant from the original image. While the classification is possible through a convolutional neural network, previously trained with a dataset generated through the segmentation stage. The performance of the network is illustrated by analysis and comparisons with different network architectures, then with the network that presented better results in training, (revisar esta linea) we experimented by modifying its number of filters, to analyze their behavior. Finally, the resulting network was tested on different processors to compare classification times.\\
+Deep Learning has played an important role in modern times, being widely used in artificial vision applications and specifically in pattern recognition. The versatility of deep learning has positioned it as a fit tool used in many fields of application, among which is precision agriculture. This paper presents a study of a convolutional neural network with two classes, applied for the classification between maize plants and weeds in real time, focused on maize crops in their initial development stages. The algorithm has two stages, segmentation of images and classification. Segmentation is intended to separate the target plant from the original image. While the classification is possible through a convolutional neural network, previously trained with a dataset generated through the segmentation stage. The performance of the network is illustrated by analysis and comparisons with different network architectures, then with the network that presented better results in training, (revisar esta linea) we experimented by modifying its number of filters, to analyze their behavior. Finally, the resulting network was tested on different processors to compare classification times.\\
 
 \begin{comment}
 -Deep Learning ha tenido un papel muy importante en los tiempos modernos, siendo muy utilizado en vision artificial y especialmente en reconocimiento de patrones, lo cual abre muchas puertas en los campos de aplicacion siendo uno de ellos la agricultura de presicion.En este paper presentamos el estudio una red neuronal convolucional aplicada a la clasificacion de plantas de maiz y de mala hierba en tiempo real, dirigida a campos de maiz en su etapa inicial.El algoritmo cuenta con dos etapas, segmentacion de imagenes y la clasificacion. En la segmentacion se busca separar de la imagen las plantas de forma individual. Mientras que la clasificacion se da a traves de la red neuronal convolucional, previamente entrenada con un dataset generado mediante la etapa de segmentacion. El rendimiento de la red se ilustra mediante analisis y comparaciones con diferentes arquitecturas de red, luego con la red que presento mejores resultados, se experimeto modificando su numero de filtros, para analizar su comportamiento. Finalmente con la red resultante se implemet\'o en diferentes procesadores para comparar tiempos de clasificacion.
@@ -851,7 +851,9 @@ Also, by using different methods to classify the images in our experiments, the 
 
 The study demostrated that is better to perform some geometrical tranformations to the Dataset images due it benefits to improve the classification of plants because the plants ever have different orientations in the crop field. \\
 
+\begin{comment}
 -El uso de Multithreading y Batching a traves de la libreria OpenBLAS es muy beneficioso en el caso de usar CPU, aumentando la rapidez de procesamiento en el porcentaje superior al 20\%, con la Rasberry pi, se obtuvo una minima mejora, en cambio fue pejudicial con el uso de GPU , pues provoca que la rapidez se reduzca considerablemente. \\
+\end{comment}
 
 -The use of Multithreading and Batching through the library OpenBLAS is very beneficial in the case of using CPU, increasing the speed of processing in the percentage higher than 20 \%, with the Rasberry pi, a minimum improvement was obtained, instead it was pejudicioal with the use of GPU, because it causes that the speed is reduced considerably. \\
 
