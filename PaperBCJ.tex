@@ -326,7 +326,7 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Precise Weed and Maize classification through Convolutional Neuronal Networks }
+\title{Precise Weed and Maize Classification through Convolutional Neuronal Networks }
 
 
 % author names and affiliations
@@ -378,7 +378,7 @@ Email: \IEEEauthorrefmark{1}accordova@espe.edu.ec,
 % in the abstract
 \begin{abstract}
 
-Deep Learning is playing an important role in big data processing for more accurate modeling of common productive processes. It is being widely used in artificial vision applications and specifically in pattern recognition. The versatility of deep learning has positioned it as a fit tool used in many fields of application, among which is precision agriculture. This paper presents the development of an algorithm capable of image segmentation and classification. Segmentation is intended to separate the target plant from the original image, while classification is meant to identify what images belong to the two defined classes. It applies a convolutional neural network (CNN) to discriminate maize plants from weeds in real time, at early crop development stages. It was applied to maize crop because it is a common staple crop in the Ecuadorian Highlands.  The convolutional neural network has been trained with a dataset generated in the segmentation stage. The performance of the network was analyzed with LeNET, AlexNet, cNET and sNET network architectures. The network architecture that presented the best training results was cNET based on its performance in terms of accuracy (96.4\%) and processing time of 161 miliseconds in a Raspberry Pi CPU. The minimum working filter number for this network architecture was 16.The best performing algorithms and processors have a significant potential for autonomous weed and crop classification systems in a real-time application.\\
+Deep Learning is playing an important role in big data processing for more accurate modeling of common productive processes. It is being widely used in artificial vision applications and specifically in pattern recognition. The versatility of deep learning has positioned it as a fit tool used in many fields of application, among which is precision agriculture. This paper presents the development of an algorithm capable of image segmentation and classification. Segmentation is intended to separate the target plant from the original image, while classification is meant to identify what images belong to the two defined classes. It applies a convolutional neural network (CNN) to discriminate maize plants from weeds in real time, at early crop development stages. It was applied to maize crop because it is a common staple crop in the Ecuadorian Highlands.  The convolutional neural network has been trained with a dataset generated in the segmentation stage. The performance of the network was analyzed with LeNET, AlexNet, cNET and sNET network architectures. The network architecture that presented the best training results was cNET based on its performance in terms of accuracy (96.4\%) and processing time of 161 miliseconds in a Raspberry Pi CPU. The minimum working filter number for this network architecture was 16. The best performing algorithms and processors have a significant potential for autonomous weed and crop classification systems in a real-time application.\\
 
 
 
@@ -462,13 +462,13 @@ Las muestras fueron obtenidas de imagenes capturas en esos campos de maiz, consi
 \end{comment}
 
 
-Samples were obtained from images captured in different maize fields. Crops where weed and maize plants could be visually discriminated were chosen in order to easily segment the images and provide reliable samples to the network, which allow the model to correctly learn all features of the real plant. Maize plants at a V3 to V7 develompent stage (3-7 leafs) \cite{fassio1998maiz} were used to take samples. To record the samples, a camera was centered over the target plant, insuring that the captured image showed all its features. This was achieved by monitoring the obtained samples through an external display. Examples of the images captured are shown on the figure \ref{figure1}. \\
+Samples were obtained from images captured in different maize fields. Crops where weed and maize plants could be visually discriminated were chosen in order to easily segment the images and provide reliable samples to the network, which allow the model to correctly learn all features of the real plant. Maize plants at a V3 to V7 development stage (3-7 leafs) \cite{fassio1998maiz} were used to take samples. To record the samples, a camera was centered over the target plant, insuring that the captured image showed all its features. This was achieved by monitoring the obtained samples through an external display. Examples of the images captured are shown on the Fig. \ref{figure1}. \\
 
 
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=3.2in]{entradamaiz}
-	\caption{Crops chosen to obtain samples, notice that it is easy to discrimante weed from maize}
+	\caption{Crops chosen to obtain samples, it is easy to discrimante weed from maize}
 	\label{figure1}
 	\end{figure}
 \begin{comment}
@@ -488,7 +488,7 @@ Then, through a first-stage digital image processing procedure, the images were 
 Despues de la imagen fue segmentada, para diferenciarla del suelo y otros elementos que no sean plantas, las imagenes originales fueron enmascaradas con la mascara binaria para proveer al Dataset caracteristicas de Color del Maiz y de la Mala Hierba. Una vez ue las imagenes segmentedas fueron obtenidas, removimos aquellas que tenian una resolucion menor a 64x64 pixeles debido a que son mas pequenhas que el tamanho de entrada de la red, ademas no es conveniente procesarlas debido a que su area total es mucho mas pequenha que la de las muestras de maiz, las cuales son el proposito de este documento, despues las imagenes se almacenan en un formato Png. El proceso se ilustra de mejor manera en la siguiente figura.
 \end{comment}
 
-Afterwards, the images were segmented in order to differentiate them from the soil and other non-plant elements. Original images were masked with the binary mask to provide the dataset with color features of maize and weed plants. Once the segmented images were obtained, the files that had a resolution lower than 64x64 pixels were removed because its size was smaller than the size of the network input layer. Besides, the processing of these small images was not convenient since its total area was much smaller than the maize sample images. Following, the images were saved in a png format. The entire process described before is illustrated in the next figure. \\
+Afterwards, the images were segmented in order to differentiate them from the soil and other non-plant elements. Original images were masked to provide the dataset with color features of maize and weed plants. Once the segmented images were obtained, the files that had a resolution lower than 64x64 pixels were removed because its size was smaller than the size of the network input layer. Besides, the processing of these small images was not convenient since its total area was much smaller than the maize sample images. Following, the images were saved in a png format. The entire process described before is illustrated in Fig. \ref{figure2}. \\
 
 	\begin{figure}[h]
 	\centering
@@ -520,9 +520,12 @@ Once image processing was completed, a set of 2835 maize images and 880 weed ima
 Para la fase de validacion, hemos escogido aletariamente la quinta parte del total de imagenes de cada clase, asi que tenemos la siguiente tabla con la distribucion del dataset.
 \end{comment}	
 
-For the validation phase, a fifth part of the total image set of each class was chosen, resulting in the following chart with the distribution of the dataset.\\
+For the validation phase, a fifth part of the total image set of each class was chosen, resulting in the following chart with the dataset distribution.\\
 
 \begin{table}[h!]
+\renewcommand{\arraystretch}{1.3}
+\caption{DATASET DISTRIBUTION OF EACH CLASS}
+\label{table:1}
 \centering
 \begin{tabular}{| c c c c c |} 
  \hline
@@ -532,8 +535,7 @@ For the validation phase, a fifth part of the total image set of each class was 
  Weed & 8560 & 2000 & 202 & 10762\\ 
  \hline
 \end{tabular}
-\caption{Distribution of the Dataset of each class}
-\label{table:1}
+
 \end{table}
 	
 	
@@ -543,13 +545,13 @@ For the validation phase, a fifth part of the total image set of each class was 
 Despues que el ultimo paso ha sido terminado, fue necesario clasificar las imagenes del Maiz y Mala Hierba, un metodo muy preciso de Clasificacion de Imagenes son las Redes Neuronales Convolucionales(CNN), estos modelos son complejos pero eficientes con un alto grado de discriminacion y han demostrado que tienen unos buenos resultados en la Clasificacion de Imagenes, Deteccion de Objetos y Fine*Grained Classification. Tambien son aplicados en la Agricultura de Precision para la correcta identificacion de plantas
 \end{comment}	
 
-	After the dataset was completed, it was neccesary to classify maize and weed images. Convolutional Neural Networks (CNN) can be used as a highly-accurate method for image classification, these models are complex but efficient with a high rate of discrimination and have proven to provide good results in image classification, object detection, and fine-grained classification \cite{sharif2014cnn}. CNN are widely used in precision agriculture \cite{potena2016fast} for the correct identification of plants.\\
+	After the dataset was completed, it was neccesary to classify maize and weed images. Convolutional Neural Networks (CNN) can be used as a highly-accurate method for image classification. These models are complex but efficient with a high rate of discrimination and have proven to provide good results in image classification, object detection, and fine-grained classification \cite{sharif2014cnn}. CNN are widely used in precision agriculture \cite{potena2016fast} for the correct identification of plants.\\
 	
 \begin{comment}	
 Una de las caracteristicas de las CNN is que estas pueden tener multiples arquitecturas, cada arquitectura puede alcanzar diferentes resultados dependiendo de la aplicacion, para el presente documento hemos considerado cuatro arquitecturas de CNN: Dos modelos fueron escogidos del Caffe Zoo Model(es un recurso libre liberado por los Desarrolladores de Caffe) Lenet y AlexNet, tambien Potena y Nardi han usado adicionalmente dos tios de modelos, sNET y cNET, estos han sido exitosamente probados en la clasificacion de plantas en cultivos, con las redes secogidas, cada una fue entrenada con un mismo Solver de Tipo AdaDelta, con el mismo Dataset y los resultados del entrenamiento son los siguientes:
 \end{comment}	
 
-One of the characteristics of CNN is that these can have multiple architectures, each architecture can reach different results depending on the application. For the present document four CNN architectures have been considered. Two arquitectures were chosen from the Caffe Zoo Model(a free resource provided by Caffe Developers), LeNet and AlexNet. Also, Potena and Nardi\cite{potena2016fast} used two additional types of architectures, sNET and cNET, which sucessfully proved an aceptable performance in plants and crop identification processes. With the four Nets chosen, each one was trained with the same solver of type Adam and with the same dataset. The training results are shown on table \ref{table:2}. \\
+One of the characteristics of CNN is these have multiple architectures, each architecture can reach different results depending on the application. For the present document four CNN architectures have been considered. Two arquitectures were chosen from the Caffe Zoo Model(a free resource provided by Caffe Developers), LeNet and AlexNet. Also, Potena and Nardi\cite{potena2016fast} used two additional types of architectures, sNET and cNET, which sucessfully proved an aceptable performance in plants and crop identification processes. With the four Nets chosen, each one was trained with the same solver of type Adam and with the same dataset. The training results are shown on table \ref{table:2}. \\
 \begin{table}[h!]
 \centering
 \begin{tabular}{|l c c c c|} 
@@ -578,7 +580,7 @@ Based on the performance parameters shown on the table \ref{table:2}, the networ
 Aunque lo resultados dados de la red fueron excelentes, uno de los propositos principales de este documento es una aproximacion de procesamiento en tiempo real, entonces el numero de parametros a ser computados va a ser un problema, entonces consideramos modificar la red para mejorar el tiempo de procesamiento. Para lograr esto, fue necesario reducir el numero de filtros de cNET de 64 a 16. se selecciono este valor debido a que es el m[inimo valor para que el entregamiento de la red siga manteniendo su precision. 
 \end{comment}	
 	
-Although results given by this type of network are excellent, one of the main purposes of this paper was the implementation of this system in real time. The number of parameters to be computed by the selected network were numerous, so it was necessary to make network modifications in order to improve its processing speed. To achieve this, it was necessary to reduce the number of filters of cNET from 64 to 16. This final number of filters used in the network was selected because this is the minimum number of filters that maintain an acceptable training accuracy. \\
+Although results given by this type of network are excellent, one of the main purposes of this paper is the implementation of a real time system. The number of parameters to be computed by the selected network were numerous, so it was necessary to make network modifications in order to improve its processing speed. To achieve this, it was necessary to reduce the number of filters of cNET from 64 to 16. This final number of filters used in the network was selected because this is the minimum number of filters that maintain an acceptable training accuracy. \\
 
 \begin{table}[h!]
 \centering
@@ -606,7 +608,7 @@ This filter reduction permitted to decrease the number of parameters to 1651376 
 Entonces el modelo completo de red se forma de la siguiente manera: La capa de entrada que recibe una imagen RGB de 64x64 pixeles, seguida por una capa de convolucion de 16 filtros, un kernel de 5 y stride de 1 pixel, esta capa obtiene solo las principales caracteristicas de la imagen, despues una capa de pooling es aplicada, la cual tiene la funcion de encontrar los maximos valores de las capas, con un tamanho de kernel y stride de 2, despues nuevamente se aplica una segunda capa de convolucion que tiene 16 filtros, ancho de kernel de 5 y un stride de 1, seguido nuevamente de una nueva capa de pooling con un tamanho de kernel y de stride de 2, obteniendo asi una imagen de salida de de tamanho 16x16x16 y finalmente se completa la red con tres capas consecutivas fully-connected, la primera con 384 neuronas, la segunda con 192 y la ultima con dos neuronas que representara la capa las dos clases que se busca clasificar, el modelo resultante se muestra en la siguiente imagen
 \end{comment}	
 
-Thus, the complete network model was conformed by an input layer where an RGB image of 64x64 pixels is received, followed by a convolution layer of 16 filters, a kernel of 5 and a stride of 1 pixel (this layer only obtains the main characteristics of the image), then a pooling layer is applied, which has the function to find the maximum values of the previous layer with a value of kernel size and stride of 2. Then again a second layer of convolution that has 16 filters is applied, the size of kernel is 5 and the stride is 1, followed by a new layer of pooling with a kernel size and stride of 2, so the resulting image had a size of 16x16x16. Finally, the network is completed with three consecutive fully-connected layers; the first with 384 neurons, the next with 192 and the last with 2 neurons. The type of layers fully-connected contain a total of 478 neurons, where the last two neurons that are the output represent the two classes to identify. The resulting model is shown in figure \ref{figure4}. \\
+Thus, the complete network model was conformed by an input layer where an RGB image of 64x64 pixels is received, followed by a convolution layer of 16 filters, a kernel of 5 and a stride of 1 pixel (this layer only obtains the main characteristics of the image), then a pooling layer is applied, which has the function to find the maximum values of the previous layer with a value of kernel size and stride of 2. Then again a second layer of convolution that has 16 filters is applied, the size of kernel is 5 and the stride is 1, followed by a new layer of pooling with a kernel size and stride of 2, so the resulting image had a size of 16x16x16. Finally, the network is completed with three consecutive fully-connected layers; the first with 384 neurons, the next with 192 and the last with 2 neurons. The type of fully-connected layers contain a total of 478 neurons, where the last two neurons are the output representing the two classes to identify. The resulting model is shown in Fig. \ref{figure4}. \\
 	
 	\begin{figure}[h]
 	\centering
@@ -716,7 +718,7 @@ For the estimation of the frames per second for each device, its optimal configu
 \centering
 \begin{tabular}[c c c c]{|p{1.1 cm}|p{1.7cm}|p{1.7cm}|p{2.0cm}|} 
  \hline
- \textbf{Parameter} &\textbf{GPU(Without Threading) } & \textbf{CPU with Threading} & \textbf{RaspBerry Pi 3 with Threading} \\ 
+ \textbf{Parameter} &\textbf{GPU(Without Threading) } & \textbf{CPU with Threading} & \textbf{Raspberry Pi 3 with Threading} \\ 
  \hline 
  Time(s) & 0.0171 & 0.196 & 2.714 \\ [0.95ex]
  \hline
@@ -848,7 +850,7 @@ This paper presented an analysis of a Convolutional Neuronal Networks applicatio
 
 
 \begin{comment}	
--Ademas nuestros experimentos al utilizar diferentes procesadores, demostraron que se obtienen mejores resultados en cuanto a velocidad al trabajar con una a tarjeta grafica ENVIDIA que posee soporte CUDA debido a su arquitectura de computacion paralela, siendo este 10 veces mas rapido que el CPU normal y 100 veces mas rapido que una RaspBerry Pi3.
+-Ademas nuestros experimentos al utilizar diferentes procesadores, demostraron que se obtienen mejores resultados en cuanto a velocidad al trabajar con una a tarjeta grafica ENVIDIA que posee soporte CUDA debido a su arquitectura de computacion paralela, siendo este 10 veces mas rapido que el CPU normal y 100 veces mas rapido que una Raspberry Pi3.
 \end{comment}	
 
 Also, by using different methods to classify the images in our experiments the results showed that the best time of classification was achieved by using a Nvidia Graphics Card. This was due to the parallel architecture that this GPU has. Also, this Graphics Card is fully supported for the computational platform CUDA, it demonstrated to be 18 times faster than a normal CPU and 170 times faster than a Raspberry Pi 3. \\
@@ -869,7 +871,7 @@ The use of Multithreading and Batching through the library OpenBLAS is very bene
 En el caso de querer implementar el algoritmo en un sitema embedded, no se recomienda trabajar con procesador como el de la Rasp Berry Pi 3, pues tiene un procesamiento muy lento debido a que los frames por segundo necesario para analizar las imagenes es significativamente bajo, por lo que se debera elegir una targeta que disponga de GPU, sin necesidad del uso de Multithreading y Batching. 
 \end{comment}
  
-In the case of wanting to implement the algorithm in an embedded system, it is not recommended to work with a processor like Rasp Berry Pi 3, because it has a very slow processing because the frames per second needed to analyze the images is significantly low, So you should choose a card that has GPU, without the need for Multithreading and Batching. \\
+In the case of implementing the algorithm in an embedded system, it is not recommended to work with a processor like Raspberry Pi 3, because it has a very slow processing because the frames per second needed to analyze the images is significantly low, So you should choose a card that has GPU, without the need for Multithreading and Batching. \\
 
  
 
