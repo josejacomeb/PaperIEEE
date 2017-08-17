@@ -314,9 +314,8 @@
 \usepackage{verbatim}
 \usepackage{array}
 \usepackage{filecontents}
-\usepackage{caption}
-\usepackage[noadjust]{cite}
-\captionsetup[table]{position=bottom} %% or below
+%\usepackage[noadjust]{cite}
+
 
 \begin{document}
 %
@@ -327,7 +326,6 @@
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
 \title{Precise Weed and Maize Classification through Convolutional Neuronal Networks }
-
 
 % author names and affiliations
 % use a multiple column layout for up to three different
@@ -363,16 +361,17 @@ Email: \IEEEauthorrefmark{1}accordova@espe.edu.ec,
 %\IEEEauthorblockA{\IEEEauthorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, California 90210--4321}}
 
 
-
-
 % use for special paper notices
 %\IEEEspecialpapernotice{(Invited Paper)}
 
 
 
+\IEEEoverridecommandlockouts
+\IEEEpubid{\makebox[\columnwidth]{\textbf{978-1-5386-3894-1/17/\$31.00~\copyright{}2017 IEEE} \hfill} \hspace{\columnsep}\makebox[\columnwidth]{ }}
 
 % make the title area
 \maketitle
+
 
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
@@ -433,7 +432,7 @@ The developed model for weed and maize identification algorithm using convolutio
 Para la etapa de entranamiento y captura de imagenes, los siguientes elementos fueron utilizados: Una Raspberry Pi 3 con su modulo de camara V2.1 para la adquisicion de imagenes, fue configurado para obtener video en resolucion de 1280x720 pixeles con el fin de obtener mayor detalle en la segmentacion de imagenes. Debido a la popularidad de la computacion por GPU(IDEA COMPLETADA) por sus ventajas en el desarrollo de modelos de Redes Neuronales Convolucionales, fue necesario consider hardware compatible con computacion paralela como las tarjetas graficas fabricadas por NVIDIA, estas tienen la ventaja de poseer mejores tiempos de procesamiento comparados con la CPU, con lo cual se logra optimizar los tiempos de clasificacion y entrenamiento de Modelos de Deep Learning, entonces, utilizamos un computador con una tarjeta Grafica NVIDIA GTX950M. Tambien fue necesario considerar el uso de un CPU Core i7 2.7Ghz, 8 Nucles and el CPU de la propia Raspberry Pi 3, un ARM 3, a ARM Cortex-A53, 1.2GHz, 4 nucles para probar el rendimiento de red en un sistema portable para su aplicacion en un sistema movil independiente . El hardware escogido sera probado para clasificar las imagenes y medir los tiempos de clasificacion para su posterior analisis. El hardware elegido será probado para clasificar imágenes, en cada clasificación se medirán los tiempos de procesamiento, para realizar un análisis si el hardware puede procesar en tiempo real 
 \end{comment} 
 
-A Raspberry Pi 3 with a V2.1 Pi camera for image acquisition was used for the training and image-capturing stages. The system was configured to obtain a video at a resolution of 1280x720 pixels in order to get more detail in the segmented images. Due to the popularity of GPU computing for its advantages in the development of models of Convolutional Neural Networks, such as a better processing speed, it was necessary to consider hardware compatible with parallel computing devices such as the Graphic Cards manufactured by NVIDIA. These cards have the advantage of a superior processing speed compared to a CPU in order to optimize image-processing time and deep learning Model's training process, thus the selected device was a computer with a Nvidia graphics card GTX950M. Also, it was necessary to consider the use of a Core i7 2.7 Ghz CPU of 8 cores and the CPU of the Raspberry Pi 3, with an ARM Cortex-A53, 1.2GHz, and 4 cores, in order to test their performance for a future application in an independent mobile system that could be implemented in an embedded system. The hardware chosen will be tested to classify images, in each classification a measurement of the processing time will be taken to later on analyze if the hardware can process information in real time. 
+A Raspberry Pi 3 with a V2.1 Pi camera for image acquisition was used for the training and image-capturing stages. The system was configured to obtain a video at a resolution of 1280x720 pixels in order to get more detail in the segmented images. Due to the popularity of GPU computing for its advantages in the development of models of Convolutional Neural Networks, such as a better processing speed, it was necessary to consider hardware compatible with parallel computing devices such as the Graphic Cards manufactured by NVIDIA. These cards have the advantage of a superior processing speed compared to a CPU in order to optimize image-processing time and deep learning Model's training process, thus the selected device was a computer with a Nvidia graphics card GTX950M. Also, it was necessary to consider the use of a Core i7 2.7 Ghz CPU of 8 cores and the CPU of the Raspberry Pi 3, with an ARM Cortex-A53, 1.2GHz, and 4 cores, in order to test their performance for a future application in an independent mobile system that could be implemented in an embedded system. The hardware chosen will be tested to classify images, in each classification a measurement of the processing time will be taken to later on \textbf{(revisar)} analyze if the hardware can process information in real time. 
 \\
 
 \subsection{Software}
@@ -447,7 +446,7 @@ The use of powerful libraries of image processing and deep learning development 
 Tambien el la etapa de desarrollo fue importante el suo del Sistema Operativo Linux, sus caracteristicas son: Sistema Operativo Ligero y Libre tambien completamente compatible con el software mencionado anteriormente. En la computadora principal fue usado la Distribucion Ubuntu Linux 16.04 por su soporte oficial a CUDA, Caffe y OpenCV, tambien en la Raspberry Pi fue usado el Sistema Operativo Pixel para adquirir imagenes y probar el rendimiento de clasificacion la Red Neuronal Convolucional
 \end{comment}
 
-Also, the use of Linux OS in the development stages was important due to its light operating system and free OS which is also fully compatible with OpenCV. The computer used in the project worked with Ubuntu Linux 16.04 due to its official support to CUDA, Caffe and OpenCV. Likewise, PIXEL Distribution derived from Debian Linux was used in Raspberry Pi for acquiring images and testing the CNN classification performance.
+Also, the use of Linux OS in the development stages was important due to its light operating system and free OS which is also fully compatible with the software chosen. The computer used in the project worked with Ubuntu Linux 16.04 due to its official support to CUDA, Caffe and OpenCV. Likewise, PIXEL Distribution derived from Debian Linux was used in Raspberry Pi for acquiring images and testing the CNN classification performance.
 \\
 
 \subsection{Dataset Description}
@@ -464,18 +463,19 @@ Las muestras fueron obtenidas de imagenes capturas en esos campos de maiz, consi
 
 Samples were obtained from images captured in different maize fields. Crops where weed and maize plants could be visually discriminated were chosen in order to easily segment the images and provide reliable samples to the network, which allow the model to correctly learn all features of the real plant. Maize plants at a V3 to V7 development stage (3-7 leafs) \cite{fassio1998maiz} were used to take samples. To record the samples, a camera was centered over the target plant, insuring that the captured image showed all its features. This was achieved by monitoring the obtained samples through an external display. Examples of the images captured are shown on the Fig. \ref{figure1}. \\
 
-
-	\begin{figure}[h]
+	\begin{figure}[h!]
 	\centering
 	\includegraphics[width=3.2in]{entradamaiz}
 	\caption{Crops chosen to obtain samples, it is easy to discrimante weed from maize}
 	\label{figure1}
 	\end{figure}
+	
 \begin{comment}
 Tambien fue necesario obtener imagenes de las malas hierbas mas comunes en los campos de maiz de Pillaro, para permitir a la Red discrimiar entre las dos clases definidas en el Dataset.
 \end{comment}
 
 Also, it was necessary to obtain images of the most common weed plants found in maize crops in P\'illaro, in order to allow the network to discriminate between maize and weeds. \\
+
 \begin{comment}
 Entonces, a traves de un proceso de procesamiento digital de imagenes, como primera fase, la imagen fue normalizada en su canal verde, esto mejora la deteccion del color verde porque elimina las luces y las sombras de la imagen, despues extrajimos el color verde de la imagen con la ecuacion descrita opr Wang, Men, Luo and Mei, para obtener una imagen final en escala de grises, despues se aplico una Umbralizacion de OTSU para obtener una mascara binaria 
 \end{comment}
@@ -484,11 +484,12 @@ Then, through a first-stage digital image processing procedure, the images were 
 \begin{equation}
 	S = 2*G - R - B
 \end{equation} 
+
 \begin{comment}
 Despues de la imagen fue segmentada, para diferenciarla del suelo y otros elementos que no sean plantas, las imagenes originales fueron enmascaradas con la mascara binaria para proveer al Dataset caracteristicas de Color del Maiz y de la Mala Hierba. Una vez ue las imagenes segmentedas fueron obtenidas, removimos aquellas que tenian una resolucion menor a 64x64 pixeles debido a que son mas pequenhas que el tamanho de entrada de la red, ademas no es conveniente procesarlas debido a que su area total es mucho mas pequenha que la de las muestras de maiz, las cuales son el proposito de este documento, despues las imagenes se almacenan en un formato Png. El proceso se ilustra de mejor manera en la siguiente figura.
 \end{comment}
 
-Afterwards, the images were segmented in order to differentiate them from the soil and other non-plant elements. Original images were masked to provide the dataset with color features of maize and weed plants. Once the segmented images were obtained, the files that had a resolution lower than 64x64 pixels were removed because its size was smaller than the size of the network input layer. Besides, the processing of these small images was not convenient since its total area was much smaller than the maize sample images. Following, the images were saved in a png format. The entire process described before is illustrated in Fig. \ref{figure2}. \\
+Afterwards, the images were segmented in order to differentiate them from the soil and other non-plant elements. Original images were masked to provide the dataset with color features of maize and weed plants. Once the segmented images were obtained, the files that had a resolution lower than 64x64 pixels were removed because its size was smaller than the size of the network input layer. Besides, the processing of these small images was not convenient since its total area was much smaller than the maize sample images. Following, the images were saved in a png format. The entire process described before is illustrated in Fig. \ref{figure2}. 
 
 	\begin{figure}[h]
 	\centering
@@ -501,12 +502,12 @@ Afterwards, the images were segmented in order to differentiate them from the so
 Debemos acotar que hemos etiquetado manualmente las imagenes en dos clases, maiz y mala hierba, teniendo en cuenta que las imagenes no se repitan(\textbf{corregir}). En la presente imagen presentamos los resultados finales de las imagenes procesadas que conforman el dataset. 
 \end{comment}
 
-It should be noted that samples were manually labeled into two classes; maize and weed, making sure that the images are not repeated. In the following image, final results of the processed images that conform the dataset are shown on the figure \ref{figure3}.\\
+It should be noted that samples were manually labeled into two classes; maize and weed, making sure that the images are not repeated. In the following image, final results of the processed images that conform the dataset are shown on the Fig. \ref{figure3}.\\
 	
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=2.5in]{im1}
-	\caption{ Segmented and Masked images of dataset Above: Weed, Below: Maize}
+	\caption{Segmented and Masked images of dataset Above: Weed, Below: Maize}
 	\label{figure3}
 	\end{figure}
 
@@ -520,11 +521,11 @@ Once image processing was completed, a set of 2835 maize images and 880 weed ima
 Para la fase de validacion, hemos escogido aletariamente la quinta parte del total de imagenes de cada clase, asi que tenemos la siguiente tabla con la distribucion del dataset.
 \end{comment}	
 
-For the validation phase, a fifth part of the total image set of each class was chosen, resulting in the following chart with the dataset distribution.\\
+For the validation phase, a fifth part of the total image set of each class was chosen, resulting in the following Table \ref{table:1} with the dataset distribution.
 
 \begin{table}[h!]
 \renewcommand{\arraystretch}{1.3}
-\caption{DATASET DISTRIBUTION OF EACH CLASS}
+\caption{Dataset distribution of each class}
 \label{table:1}
 \centering
 \begin{tabular}{| c c c c c |} 
@@ -535,7 +536,6 @@ For the validation phase, a fifth part of the total image set of each class was 
  Weed & 8560 & 2000 & 202 & 10762\\ 
  \hline
 \end{tabular}
-
 \end{table}
 	
 	
@@ -545,15 +545,18 @@ For the validation phase, a fifth part of the total image set of each class was 
 Despues que el ultimo paso ha sido terminado, fue necesario clasificar las imagenes del Maiz y Mala Hierba, un metodo muy preciso de Clasificacion de Imagenes son las Redes Neuronales Convolucionales(CNN), estos modelos son complejos pero eficientes con un alto grado de discriminacion y han demostrado que tienen unos buenos resultados en la Clasificacion de Imagenes, Deteccion de Objetos y Fine*Grained Classification. Tambien son aplicados en la Agricultura de Precision para la correcta identificacion de plantas
 \end{comment}	
 
-	After the dataset was completed, it was neccesary to classify maize and weed images. Convolutional Neural Networks (CNN) can be used as a highly-accurate method for image classification. These models are complex but efficient with a high rate of discrimination and have proven to provide good results in image classification, object detection, and fine-grained classification \cite{sharif2014cnn}. CNN are widely used in precision agriculture \cite{potena2016fast} for the correct identification of plants.\\
+After the dataset was completed, it was neccesary to classify maize and weed images. Convolutional Neural Networks (CNN) can be used as a highly-accurate method for image classification. These models are complex but efficient with a high rate of discrimination and have proven to provide good results in image classification, object detection, and fine-grained classification \cite{sharif2014cnn}. CNN are widely used in precision agriculture \cite{potena2016fast} for the correct identification of plants.\\
 	
 \begin{comment}	
 Una de las caracteristicas de las CNN is que estas pueden tener multiples arquitecturas, cada arquitectura puede alcanzar diferentes resultados dependiendo de la aplicacion, para el presente documento hemos considerado cuatro arquitecturas de CNN: Dos modelos fueron escogidos del Caffe Zoo Model(es un recurso libre liberado por los Desarrolladores de Caffe) Lenet y AlexNet, tambien Potena y Nardi han usado adicionalmente dos tios de modelos, sNET y cNET, estos han sido exitosamente probados en la clasificacion de plantas en cultivos, con las redes secogidas, cada una fue entrenada con un mismo Solver de Tipo AdaDelta, con el mismo Dataset y los resultados del entrenamiento son los siguientes:
 \end{comment}	
 
-One of the characteristics of CNN is these have multiple architectures, each architecture can reach different results depending on the application. For the present document four CNN architectures have been considered. Two arquitectures were chosen from the Caffe Zoo Model(a free resource provided by Caffe Developers), LeNet and AlexNet. Also, Potena and Nardi\cite{potena2016fast} used two additional types of architectures, sNET and cNET, which sucessfully proved an aceptable performance in plants and crop identification processes. With the four Nets chosen, each one was trained with the same solver of type Adam and with the same dataset. The training results are shown on table \ref{table:2}. \\
+One of the characteristics of CNN is these have multiple architectures, each architecture can reach different results depending on the application. For the present document four CNN architectures have been considered. Two arquitectures were chosen from the Caffe Zoo Model(a free resource provided by Caffe Developers), LeNet and AlexNet. Also, Potena and Nardi\cite{potena2016fast} used two additional types of architectures, sNET and cNET, which sucessfully proved an aceptable performance in plants and crop identification processes. With the four Nets chosen, each one was trained with the same solver of type Adam and with the same dataset. The training results are shown on Table \ref{table:2}. \\
 \begin{table}[h!]
 \centering
+\renewcommand{\arraystretch}{1.2}
+\caption{Comparison of the 4 types of CNN}
+\label{table:2}
 \begin{tabular}{|l c c c c|} 
  \hline
  \textbf{Parameters }& \textbf{LeNet} & \textbf{AlexNet} & \textbf{cNET} & \textbf{sNET} \\ [0.75ex] 
@@ -566,8 +569,6 @@ One of the characteristics of CNN is these have multiple architectures, each arc
  Loss(\%) & 32.80 & 15.32 & 13.72 & 15.32 \\ [1ex] 
  \hline 
 \end{tabular}
-\caption{Comparison of the 4 types of CNN}
-\label{table:2}
 \end{table}
 
 \begin{comment}	
@@ -580,10 +581,13 @@ Based on the performance parameters shown on the table \ref{table:2}, the networ
 Aunque lo resultados dados de la red fueron excelentes, uno de los propositos principales de este documento es una aproximacion de procesamiento en tiempo real, entonces el numero de parametros a ser computados va a ser un problema, entonces consideramos modificar la red para mejorar el tiempo de procesamiento. Para lograr esto, fue necesario reducir el numero de filtros de cNET de 64 a 16. se selecciono este valor debido a que es el m[inimo valor para que el entregamiento de la red siga manteniendo su precision. 
 \end{comment}	
 	
-Although results given by this type of network are excellent, one of the main purposes of this paper is the implementation of a real time system. The number of parameters to be computed by the selected network were numerous, so it was necessary to make network modifications in order to improve its processing speed. To achieve this, it was necessary to reduce the number of filters of cNET from 64 to 16. This final number of filters used in the network was selected because this is the minimum number of filters that maintain an acceptable training accuracy. \\
+Although results given by this type of network are excellent, one of the main purposes of this paper is the implementation of a real time system. The number of parameters to be computed by the selected network were numerous, so it was necessary to make network modifications in order to improve its processing speed. To achieve this, it was necessary to reduce the number of filters of cNET from 64 to 16. This final number of filters used in the network was selected because this is the minimum number of filters that maintain an acceptable training accuracy. The results of the experiment are shown in the Table \ref{table:3} \\
 
-\begin{table}[h!]
+\begin{table}[h]
 \centering
+\renewcommand{\arraystretch}{1.2}
+\caption{Comparison between cNET of 16 and 64 filters}
+\label{table:3}
 \begin{tabular}{|l c c |} 
  \hline
  \textbf{Parameters} & \textbf{cNET 16 filters} & \textbf{cNET 64 filters} \\ [0.75ex] 
@@ -594,8 +598,6 @@ Although results given by this type of network are excellent, one of the main pu
  Loss(\%) & 8.39 & 14.48 \\ [1ex] 
  \hline 
 \end{tabular}
-\caption{Comparison between cNET of 16 and 64 filters}
-\label{table:3}
 \end{table}
 
 \begin{comment}	
@@ -621,7 +623,7 @@ Thus, the complete network model was conformed by an input layer where an RGB im
 En la grafica de entrenamiento que se muestra a continuacion podemos apreciar el resultado final de precision de la red, la 9000 iteraciones fueron necesarias para reducir el la capa de Loss al minimo y la arquitectura demostro alcanzar rapidamente un valor aceptable de precision, notose que reduciendo el numero de filtros la red gano en precision porque las imagenes del dataset no tienen demasiadas caracteristicas para procesar, por lo que la red fue mejor solucionable con un numero menor parametros de red
 \end{comment}	
 	
-In the training graph shown below, the final net accuracy result can be appreciated; 9000 iterations were necessary to reduce the loss value to its minimum and the architecture shows that it can reach an acceptable accuracy within few iterations. Note that by reducing the number of filters the network gained accuracy because the dataset does not have too many features to process, so the network obtained a better solution with a fewer number of parameters. \\
+In the training graph shown in Fig. \ref{figure5}, the final net accuracy result can be appreciated; 9000 iterations were necessary to reduce the loss value to its minimum and the architecture shows that it can reach an acceptable accuracy within few iterations. Note that by reducing the number of filters the network gained accuracy because the dataset does not have too many features to process, so the network obtained a better solution with a fewer number of parameters. \\
 
 	\begin{figure}[h]
 	\centering
@@ -636,10 +638,13 @@ In the training graph shown below, the final net accuracy result can be apprecia
 Para esta etapa, consideramos otro dataset con 202 imagenes de plantas de maiz en la etapa V3-V7 y 202 dos imagenes de mala hierba obtenidas en campos de maiz diferentes a los que pertenecen al dataset de entrenamiento, para esta prueba se ha medido los tiempos de clasificacion promedio de diez clasificaciones de este dataset en los distintos hardwares que poseemos, empezamos con la clasificacion en Caffe sin modificaciones de software. Los resultados fueron comparados entre la red cNET de 64 y 16 filtros y se muestran en la siguiente Tabla
 \end{comment}	
 
-For this stage, another dataset was considered with 202 images of maize plants in stage V3-V7 and 202 images of weeds, obtained in different maize crops than the ones used for gathering the training dataset images. Ten measurements of the mean classification time of the test dataset were obtained for each one of the different hardwares previously selected to run performance tests. Classification tests were started with Caffe in vanilla version. The obtained results were compared between cNET arquitecture with 64 and 16 filters, these are shown on Table \ref{table:4}.\\ 
+For this stage, another dataset was considered with 202 images of maize plants in stage V3-V7 and 202 images of weeds, obtained in different maize crops than the ones used for \textbf{mejorar} gathering the training dataset images. Ten measurements of the mean classification time of the test dataset were obtained for each one of the different hardwares previously selected to run performance tests. Classification tests were started with Caffe in vanilla version. The obtained results were compared between cNET arquitecture with 64 and 16 filters, these are shown on Table \ref{table:4}.\\ 
 
-\begin{table}[h!]
+\begin{table}[h]
 \centering
+\renewcommand{\arraystretch}{1.2}
+\caption{Test with the three types of Hardware}
+\label{table:4}
 \begin{tabular}{|p{1.1cm}|p{1.5cm}|p{1.5cm}|p{2.1cm}|} 
  \hline
  \multicolumn{4}{ |c| }{\textbf{GPU}} \\
@@ -667,8 +672,6 @@ For this stage, another dataset was considered with 202 images of maize plants i
  16 Filters & 92.08\% & 89.11\% & 161 ms \\ [0.75ex]
  \hline
 \end{tabular}
-\caption{Test with the three types of Hardware}
-\label{table:4}
 \end{table}
 
 \begin{comment}	
@@ -681,57 +684,51 @@ As the table shows, the best results in classification time were achieved by the
 Los resultados presentados anteriormente no son definitivos, pues Caffe presenta algunas formas de optimizar la clasificacion de datasets de imagenes, para este documento se ha utilizado el Agrupamiento de Imagenes en una sola estructura(Batch) para clasificar el dataset de cada clase en un single forward pass y la utilizacion de Multithreading a traves del software matematico OpenBLAS. Para cada hardware se volvio a compilar Caffe con OpenBLAS en lugar de Atlas y en el programa se ingresaron todas las imagenes en un vector para ser clasificado un solo grupo de imagenes por cada clase, ademas se configuro a OpenBLAS para que use 4 Nucleos del cada hardware para obtener resultados parejos, los resultados obtenidos son los siguientes. 
 \end{comment}	
 
-The results shown previously are not definitive because Caffe has ways to optimize image dataset classification. Multithreading was applied to this research project with the help of the mathematical software OpenBLAS. Also, batching was used to classify each class dataset in a single forward pass. For each hardware, Caffe was recompiled with OpenBLAS instead of Atlas. In the program with cNET of 16 filters, all images were entered in a vector to be classified in an only batch per each class. Also, OpenBLAS was configured to use the 4 cores of each CPU hardware to obtain even results among these two devices. Since GPU has thousands of cores, this test could not be configured under the same restriction for this device. The obtained results are the following. \\ 
+The results shown previously are not definitive because Caffe has ways to optimize image dataset classification. Multithreading was applied to this research project with the help of the mathematical software OpenBLAS. Also, batching was used to classify each class dataset in a single forward pass. For each hardware, Caffe was recompiled with OpenBLAS instead of Atlas. In the program with cNET of 16 filters, all images were entered in a vector to be classified in an only batch per each class. Also, OpenBLAS was configured to use the 4 cores of each CPU hardware to obtain even results among these two devices. Since GPU has thousands of cores, this test could not be configured under the same restriction for this device. The obtained results are the shown in Table \ref{table:5}.
 
 \begin{table}[h!]
 \centering
-\begin{tabular}[c c c c]{|p{2.2 cm}|p{1.1cm}|p{1.1cm}|p{2.4cm}|} 
+\renewcommand{\arraystretch}{1.2}
+\caption{Test of cNET 16 filters with optimized software}
+\label{table:5}
+\begin{tabular}[c c c c]{|p{2.2 cm} p{1.1cm} p{1.1cm} p{2.4cm}|} 
  \hline
  \textbf{Hardware } & \textbf{Accuracy Weed} & \textbf{Accuracy Maize} & \textbf{Average time of classification/image}\\ 
  \hline 
  GPU & 92.08\% & 89.11\% & 1.58 ms \\ [0.95ex]
- \hline
  CPU & 92.08\% & 89.11\% & 10.92 ms \\ [0.95ex]
- \hline
  CPU(Raspberry Pi) & 92.08\% & 89.11\% & 150.8 ms \\ [0.95ex]
  \hline
 \end{tabular}
-\caption{Test of cNET 16 filters with optimized software}
-\label{table:5}
 \end{table}
 
 \begin{comment}	
 Los resultados muestran que para el tiempo de Clasificacion por GPU ha empeorado un 66\%, principalmente debido a que la Libreria de OpenBLAS hace extenso uso de los hilos del CPU causando que no todos los parametros seran computados por GPU como en la anterior prueba. En cambio, cuando se utiliza el CPU los resultados son mejores, debido a que las operaciones se ejecutan utilizando cada uno de los nucleos disponibles, en el caso de la CPU se noto un 22\% y para 6.3\% para el Raspberry Pi
 \end{comment}	
 
-The results show that for the GPU, classification time has increased by 66 \%, mainly because the OpenBLAS Library makes an extensive use of the CPU threads, 
-causing some parameters to be computed in the CPU in stead of the GPU, thus making the process slower. For the CPU the results are better because the operations are executed using each of the four cores, for this case a decrease in time of 22\% was obtained. Finally, the result for the Raspberry Pi CPU was a time decrease of 6.3 \%.\\
+The results show that for the GPU, classification time has increased by 66\%, mainly because the OpenBLAS Library makes an extensive use of the CPU threads, causing some parameters to be computed in the CPU instead of the GPU, thus making the process slower. For the CPU the results are better because the operations are executed using each of the four cores, for this case a decrease in time of 22\% was obtained. Finally, the result for the Raspberry Pi CPU was a time decrease of 6.3 \%.\\
 	
 \begin{comment}	
 Ahora para comparar todos estos resultados tomando en cuenta que una imagen capturada por la camara a una altura de 1,5 m puede enfocar un aproximado de 6 plantas de maiz, y segun la cantidad de mala hierba, se considerara un promedio de 12 plantas, dando un total de 18 plantas aproximadamente. Con esto se analiza cuantos frames por segundo seria lo adecuado para la adquisicion de imagenes.
 \end{comment}	
-Lastly, an image captured by the camera at a height of 1.5 m can focus an approximate 6 plants of maize. Taking into account the number of weeds, an average of 12 plants can show up in the image. The total number of plants per image would round 18 plants considering maize and weeds as well. This aids to determine how many frames per second would be appropriate for the acquisition of images.\\
+Lastly, an image captured by the camera at a height of 1.5 m can focus an approximate 6 plants of maize. Taking into account the number of weeds, an average of 12 plants can show up in the image. The total number of plants per image would round 18 plants considering maize and weeds as well. This aids to determine how many frames per second would be appropriate for the acquisition of images. \\
 
-For the estimation of the frames per second for each device, its optimal configuration was considered. The GPU classification time during the test without multithreading was considered for this device. For the CPU and the Raspberry Pi CPU, the results for classification time in the multithreading tests were considered. The devices that showed a realistic number of frames per second are the GPU and the CPU, while the Raspberry Pi CPU did not obtain an achievable rate.\\
+For the estimation of the frames per second for each device, its optimal configuration was considered. The GPU classification time during the test without multithreading was considered for this device. For the CPU and the Raspberry Pi CPU, the results for classification time in the multithreading tests were considered. The devices that showed a realistic number of frames per second are the GPU and the CPU, while the Raspberry Pi CPU did not obtain an achievable rate like it\'s shown in Table \ref{table:6}.\\
 
 \begin{table}[h!]
 \centering
-\begin{tabular}[c c c c]{|p{1.1 cm}|p{1.7cm}|p{1.7cm}|p{2.0cm}|} 
+\renewcommand{\arraystretch}{1.2}
+\caption{Test of a complete image and the frames per second}
+\label{table:6}
+\begin{tabular}[c c c c]{|p{1.1 cm} p{1.7cm} p{1.7cm} p{2.0cm}|} 
  \hline
  \textbf{Parameter} &\textbf{GPU(Without Threading) } & \textbf{CPU with Threading} & \textbf{Raspberry Pi 3 with Threading} \\ 
- \hline 
- Time(s) & 0.0171 & 0.196 & 2.714 \\ [0.95ex]
  \hline
+ Time(s) & 0.0171 & 0.196 & 2.714 \\ [0.95ex]
  FPS & 58.47 & 5.08 & 0.36 \\ [0.95ex]
  \hline
 \end{tabular}
-\caption{Test of a complete image and the frames per second}
-\label{table:5}
 \end{table}
-
-
-
-
 
 
 
@@ -865,13 +862,13 @@ The study demonstrated that is better to perform some geometrical transformation
 -El uso de Multithreading y Batching a traves de la libreria OpenBLAS es muy beneficioso en el caso de usar CPU, aumentando la rapidez de procesamiento en el porcentaje superior al 20\%, con la Rasberry pi, se obtuvo una minima mejora, en cambio fue pejudicial con el uso de GPU , pues provoca que la rapidez se reduzca considerablemente. \\
 \end{comment}
 
-The use of Multithreading and Batching through the library OpenBLAS is very beneficial in the case of using CPU, increasing the speed of processing in the percentage higher than 20 \%. However with the Rasberry pi, a minimum improvement was obtained, instead the use of GPU was prejudicial because it causes the speed to be reduced considerably. \\
+The use of Multithreading and Batching through the library OpenBLAS is very beneficial in the case of using CPU, increasing the speed of processing in the percentage higher than 20 \%. However with the Rasberry Pi, a minimum improvement was obtained, instead the use of GPU was prejudicial because it causes the speed to be reduced considerably. \\
 
 \begin{comment}	
 En el caso de querer implementar el algoritmo en un sitema embedded, no se recomienda trabajar con procesador como el de la Raspberry Pi 3, pues tiene un procesamiento muy lento debido a que los frames por segundo necesario para analizar las imagenes es significativamente bajo, por lo que se debera elegir una targeta que disponga de GPU, sin necesidad del uso de Multithreading y Batching. 
 \end{comment}
  
-In the case of implementing the algorithm in an embedded system, it is not recommended to work with a processor like Raspberry Pi 3, because it has a very slow processing because the frames per second needed to analyze the images is significantly low, So you should choose a card that has GPU, without the need for Multithreading and Batching. \\
+In the case of implementing the algorithm in an embedded system, it is not recommended to work with a processor like Raspberry Pi 3 for now(due they are promising advances in external Deep Lerning devices for embedded systems such as the Intel Movidius Neural Compute Stick), because it has a very slow processing because the frames per second needed to analyze the images is significantly low, so you should choose a card that has GPU, without the need for Multithreading and Batching. \\
 
  
 
@@ -920,9 +917,6 @@ This work has been supported by the University of the Army "ESPE" Latacunga.
 
 \bibliographystyle{IEEEtran}
 \bibliography{bibliografiapaper}
-
-
-
 
 % that's all folks
 \end{document}
