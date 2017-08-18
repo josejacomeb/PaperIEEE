@@ -408,16 +408,16 @@ Machine Learning, Convolutional Neural Networks, GPU Computation, Caffe, Segment
 \IEEEpeerreviewmaketitle
 
 \section{Introduction}
-During the last centuries, significant progress has taken place in science and technology developments. Significant milestones in diverse areas such as communications, numerical computer control and the miniaturization of components have benefited industrial and productive sectors, providing new means to approach problems in a different manner. The availability of leading edge technologies has considerably increased, thus becoming more accessible to people. This effect of globalization has allowed many countries to have access to state-of-the-art technological products, promoting its application in different areas to generate alternative and more efficient solutions to conventional problems. 
+During the last centuries, significant progress has taken place in science and technology developments. Significant milestones in diverse areas such as communications, numerical computer control and the miniaturization of components have benefited industrial and productive sectors \cite{davim2017microfabrication} , providing new means to approach problems in a different manner. The availability of leading edge technologies has considerably increased, thus becoming more accessible to people. This effect of globalization has allowed many countries to have access to state-of-the-art technological products\cite{grossman2015globalization}, promoting its application in different areas to generate alternative and more efficient solutions to conventional problems. 
 \\
 
-Technological advances have caused industry transformations; manufacturing, food processing, and information industries among others, have gone through dramatic changes with the new industrial revolution. However there are fields that have not been significantly influenced by technological development in Ecuador, as it is the case of agroindustry. Agriculture in Ecuador has undergone some changes since colonial times; while it is true that there are efficient agricultural practices, the lack of technological resources and applications make it impossible for the country to exploit its true potential as a clean and efficient agricultural producer. Also, the excessive use of pesticides have a negative effect on the production, soil, and water quality, which leads the new research efforts towards finding alternative solutions to weed control aspects. 
+Technological advances have caused industry transformations; manufacturing, food processing, agricultural industries among others, have gone through dramatic changes with the new industrial revolution such as the Agriculture of Precision(AP)  which has opened a new field for researching \cite{ortiz2012máquinas}. However there are fields that have not been significantly influenced by technological development in Ecuador, as it is the case of agroindustry. Agriculture in Ecuador has undergone some changes since colonial times;  while it is true that there are efficient agricultural practices, the lack of technological resources and applications make it impossible for the country to exploit its true potential as a clean and efficient agricultural producer, for the next years it will be planned to introduce some changes concerning to the innovation to improve production \cite{houtart2014desafio}. Also, the excessive use of pesticides have a negative effect on the production, soil, and water quality, which leads the new research efforts towards finding alternative solutions to weed control aspects. 
 \\
 
 Nowadays, one of agriculture's challenges is the development of precision agriculture techniques focused on weed and crop segmentation. There are studies that show the impact of weed in corn crops \cite{suarez2005distintos}; yield can be affected up to 5000 kg/ha. Currently, growing development of artificial vision and machine learning algorithms has allowed researchers to propose solutions for weed segmentation in different types of crops. These algorithms are intended to be used in different weed control systems, such as autonomous weed-removing robots.
 \\
 
-One of the first approximations for crop detection algorithms was developed in 1996 \cite{brivot1996segmentation}; this algorithm could segment crops from weeds by means of infrared (IR) Images. The images were processed by a hysteresis umbral and the Min Neighbouring method to identify the rows of a crop. In recent years the implementation of machine learning has opened new possibilities in weed and crop differentiation process. Recently, the use of Harris Corner detection techniques in CNNs was implemented with the use of Feature Detection, a machine-learning algorithm that uses DBSCAN (Density-based spartial clustering of aplications with noise) \cite{cheng2015feature}. This algorithm demonstrated an effectiveness of 98\% in the identification of rice weeds. Araguez \textit{et. al} \cite{equipo2006proceedings} implemented a segmentation algorithm through the analysis of the green histogram of the image and performed the crop and weed segmentation with unspecified classifiers.
+One of the first approximations for crop detection algorithms was developed in 1996 \cite{brivot1996segmentation}; this algorithm could segment crops from weeds by means of infrared(IR) images. The images were processed by a hysteresis umbral and the Min Neighbouring method to identify the rows of a crop. In recent years the implementation of machine learning has opened new possibilities in weed and crop differentiation process. Recently, the use of Harris Corner detection techniques in CNNs was implemented with the use of Feature Detection, a machine-learning algorithm that uses DBSCAN (Density-based spartial clustering of aplications with noise) \cite{cheng2015feature}. This algorithm demonstrated an effectiveness of 98\% in the identification of rice weeds. Araguez \textit{et. al} \cite{equipo2006proceedings} implemented a segmentation algorithm through the analysis of the green histogram of the image and performed the crop and weed segmentation with unspecified classifiers.
 \\
 
 Hong and Lei \cite{jeon2011robust} developed an approximation by using an optimal method for detection in various luminosity settings, they achived this by the use of an artificial neural network (ANN) for weed and maize classification with a precision of 92.5\%. Also, another algorithm that uses OTSU and Watershed binarization methods for image segmentation has been developed \cite{hlaing2014weed}. While classification in this algorithm was done through an area analysis to perform a thresholding and the method is computationally efficient when the weed distribution does not resemble the size of the crop plants, its error increases when crop density is higher compared to weeds. Romeo \textit{et. al} \cite{romeo2012crop} proposed to use a fuzzy clustering approach to correctly segment green within the crop.
@@ -482,8 +482,9 @@ Also, it was necessary to obtain images of the most common weed plants found in 
 Entonces, a traves de un proceso de procesamiento digital de imagenes, como primera fase, la imagen fue normalizada en su canal verde, esto mejora la deteccion del color verde porque elimina las luces y las sombras de la imagen, despues extrajimos el color verde de la imagen con la ecuacion descrita opr Wang, Men, Luo and Mei, para obtener una imagen final en escala de grises, despues se aplico una Umbralizacion de OTSU para obtener una mascara binaria 
 \end{comment}
 	
-Then, through a first-stage digital image processing procedure, the images were normalized in its green channel. This was done in order to improve green color detection based on the elimination of light and shadow in the images. Later, the green color was extracted from the images to obtain a grayscale equivalent; this was done through the following equation described by Wang, Meng, Luo and Mei \cite{wang2013path}. Following, an OTSU Thresholding was applied to the grayscale images in order to obtain a binary mask. 
+Then, through a first-stage digital image processing procedure, the images were normalized in its green channel. This was done in order to improve green color detection based on the elimination of light and shadow in the images. Later, the green color was extracted from the images to obtain a grayscale equivalent; this was done through   (\ref{eqn:1}) described by Wang, Meng, Luo and Mei \cite{wang2013path}. Following, an OTSU Thresholding was applied to the grayscale images in order to obtain a binary mask. 
 \begin{equation}
+\label{eqn:1}
 	S = 2*G - R - B
 \end{equation} 
 
@@ -504,12 +505,12 @@ Afterwards, the images were segmented in order to differentiate them from the so
 Debemos acotar que hemos etiquetado manualmente las imagenes en dos clases, maiz y mala hierba, teniendo en cuenta que las imagenes no se repitan(\textbf{corregir}). En la presente imagen presentamos los resultados finales de las imagenes procesadas que conforman el dataset. 
 \end{comment}
 
-It should be noted that samples were manually labeled into two classes; maize and weed, making sure that the images are not repeated. In the following image, final results of the processed images that conform the dataset are shown in Fig. \ref{figure3}.\\
+It should be noted that samples were manually labeled into two classes; maize and weed, making sure that the images are not repeated. In Fig. \ref{figure3}, final results of the processed images that conform the dataset are shown.\\
 	
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=2.5in]{im1}
-	\caption{Segmented and Masked images of dataset Above: Weed, Below: Maize}
+	\caption{Segmented and masked images of dataset Above: Maize, Below: Weed}
 	\label{figure3}
 	\end{figure}
 
@@ -577,13 +578,13 @@ One of the characteristics of CNN is these have multiple architectures, each arc
 Dentro de los parametros mostrados en la Tabla, consideramos la red que alcanze la mas alta tasa de precision y mas baja tasa de perdida, claramente la cNET es la escogida, debido a que esta presenta una precision cercana a la clasificacion humana
 \end{comment}	
 
-Based on the performance parameters shown in table \ref{table:2}, the network that achieved the highest rate of accuracy and lowest rate of loss was selected; clearly the cNET presented a superior performance due to its near-to-human classification precision.\\
+Based on the performance parameters shown in Table \ref{table:2}, the network that achieved the highest rate of accuracy and lowest rate of loss was selected; clearly the cNET presented a superior performance due to its near-to-human classification precision.\\
 
 \begin{comment}	
 Aunque lo resultados dados de la red fueron excelentes, uno de los propositos principales de este documento es una aproximacion de procesamiento en tiempo real, entonces el numero de parametros a ser computados va a ser un problema, entonces consideramos modificar la red para mejorar el tiempo de procesamiento. Para lograr esto, fue necesario reducir el numero de filtros de cNET de 64 a 16. se selecciono este valor debido a que es el m[inimo valor para que el entregamiento de la red siga manteniendo su precision. 
 \end{comment}	
 	
-Although results given by this type of network are excellent, one of the main purposes of this paper is the implementation of a real time system. The number of parameters to be computed by the selected network were numerous, so it was necessary to make network modifications in order to improve its processing speed. To achieve this, it was necessary to reduce the number of filters of cNET from 64 to 16. This final number of filters used in the network was selected because this is the minimum number of filters that maintain an acceptable training accuracy. The results of the experiment are shown in Table \ref{table:3} \\
+Although results given by this type of network are excellent, one of the main purposes of this paper is the implementation of a real time system. The number of parameters to be computed by the selected network were numerous, so it was necessary to make network modifications in order to improve its processing speed. To achieve this, it was necessary to reduce the number of filters of cNET from 64 to 16. This final number of filters used in the network was selected because this is the minimum number of filters that maintain an acceptable training accuracy. The results of the experiment are shown in Table \ref{table:3}.
 
 \begin{table}[h]
 \centering
@@ -597,7 +598,7 @@ Although results given by this type of network are excellent, one of the main pu
  Number of parameters & 1651376 & 6421568 \\ 
  Iterations & 9000 & 9000 \\ 
  Accuracy(\%) & 97.26 & 96.40 \\
- Loss(\%) & 8.39 & 14.48 \\ [1ex] 
+ Loss(\%) & 8.39 & 13.72 \\ [1ex] 
  \hline 
 \end{tabular}
 \end{table}
@@ -680,7 +681,7 @@ For this stage, another dataset was considered with 202 images of maize plants i
 Como la tabla muestra, los mejores resultados en tiempos de clasificacion fueron alcanzados por el procesador por GPU, esta es la mejor opcion para clasificar una gran cantidad de imagenes, sin embargo este proyecto esta psenado para ser portable, por lo que consideramos al Raspberry Pi para el analisis del rendimiento de classificacion. Con la cNET de 64 filtros, los ersultos de tiempo de clasificacion fueron de 615 milisegundos, pero este tiempo no es optimo para nuestro objetivo que es la aproximacion de clasificacion en tiempo real. 
 \end{comment}	
 
-As the table shows, the best results in classification time were achieved by the GPU processor, thus it is the best option to classify a large amount of images. However, this project is thought to be implemented in an autonomous system so the Raspberry Pi was selected for the classification performance analysis due to its portability. The resulting classification time for the cNET of 16 filters was 161 miliseconds, however this time is not optimum for an approximation of real time classification.\\
+As the Table \ref{table:4} shows, the best results in classification time were achieved by the GPU processor, thus it is the best option to classify a large amount of images. However, this project is thought to be implemented in an autonomous system so the Raspberry Pi was selected for the classification performance analysis due to its portability. The resulting classification time for the cNET of 16 filters was 161 miliseconds, however this time is not optimum for an approximation of real time classification.\\
 
 \begin{comment}	
 Los resultados presentados anteriormente no son definitivos, pues Caffe presenta algunas formas de optimizar la clasificacion de datasets de imagenes, para este documento se ha utilizado el Agrupamiento de Imagenes en una sola estructura(Batch) para clasificar el dataset de cada clase en un single forward pass y la utilizacion de Multithreading a traves del software matematico OpenBLAS. Para cada hardware se volvio a compilar Caffe con OpenBLAS en lugar de Atlas y en el programa se ingresaron todas las imagenes en un vector para ser clasificado un solo grupo de imagenes por cada clase, ademas se configuro a OpenBLAS para que use 4 Nucleos del cada hardware para obtener resultados parejos, los resultados obtenidos son los siguientes. 
@@ -708,19 +709,19 @@ The results shown previously are not definitive because Caffe has ways to optimi
 Los resultados muestran que para el tiempo de Clasificacion por GPU ha empeorado un 66\%, principalmente debido a que la Libreria de OpenBLAS hace extenso uso de los hilos del CPU causando que no todos los parametros seran computados por GPU como en la anterior prueba. En cambio, cuando se utiliza el CPU los resultados son mejores, debido a que las operaciones se ejecutan utilizando cada uno de los nucleos disponibles, en el caso de la CPU se noto un 22\% y para 6.3\% para el Raspberry Pi
 \end{comment}	
 
-The results show that for the GPU, classification time has increased by 66\%, mainly because the OpenBLAS Library makes an extensive use of the CPU threads, causing some parameters to be computed in the CPU instead of the GPU, thus making the process slower. For the CPU the results are better because the operations are executed using each of the four cores, for this case a decrease in time of 22\% was obtained. Finally, the result for the Raspberry Pi CPU was a time decrease of 6.3 \%.\\
+The results show that for the GPU, classification time has increased by 66\%, mainly because the OpenBLAS Library makes an extensive use of the CPU threads, causing some parameters to be computed in the CPU instead of the GPU, thus making the process slower. For the CPU the results are better because the operations are executed using each of the four cores, for this case a decrease in time of 22\% was obtained. Finally, the result for the Raspberry Pi CPU was a time decrease of 6.3\%.\\
 	
 \begin{comment}	
 Ahora para comparar todos estos resultados tomando en cuenta que una imagen capturada por la camara a una altura de 1,5 m puede enfocar un aproximado de 6 plantas de maiz, y segun la cantidad de mala hierba, se considerara un promedio de 12 plantas, dando un total de 18 plantas aproximadamente. Con esto se analiza cuantos frames por segundo seria lo adecuado para la adquisicion de imagenes.
 \end{comment}	
 Lastly, an image captured by the camera at a height of 1.5 m can focus an approximate 6 plants of maize. Taking into account the number of weeds, an average of 12 plants can show up in the image. The total number of plants per image would round 18 plants considering maize and weeds as well. This aids to determine how many frames per second would be appropriate for the acquisition of images. \\
 
-For the estimation of the frames per second for each device, its optimal configuration was considered. The GPU classification time during the test without multithreading was considered for this device. For the CPU and the Raspberry Pi CPU, the results for classification time in the multithreading tests were considered. The devices that showed a realistic number of frames per second are the GPU and the CPU, while the Raspberry Pi CPU did not obtain an achievable rate like it\'s shown in Table \ref{table:6}.\\
+For the estimation of the frames per second(FPS) for each device, its optimal configuration was considered. The GPU classification time during the test without multithreading was considered for this device. For the CPU and the Raspberry Pi CPU, the results for classification time in the multithreading tests were considered. The devices that showed a realistic number of frames per second are the GPU and the CPU, while the Raspberry Pi CPU did not obtain an achievable rate like it\'s shown in Table \ref{table:6}.
 
 \begin{table}[h!]
 \centering
 \renewcommand{\arraystretch}{1.2}
-\caption{Test of a complete image and the frames per second}
+\caption{Test of complete image classification in FPS}
 \label{table:6}
 \begin{tabular}[c c c c]{|p{1.1 cm} p{1.7cm} p{1.7cm} p{2.0cm}|} 
  \hline
@@ -864,7 +865,7 @@ The study demonstrated that is better to perform some geometrical transformation
 -El uso de Multithreading y Batching a traves de la libreria OpenBLAS es muy beneficioso en el caso de usar CPU, aumentando la rapidez de procesamiento en el porcentaje superior al 20\%, con la Rasberry pi, se obtuvo una minima mejora, en cambio fue pejudicial con el uso de GPU , pues provoca que la rapidez se reduzca considerablemente. \\
 \end{comment}
 
-The use of Multithreading and Batching through the library OpenBLAS is very beneficial in the case of using CPU, increasing the speed of processing in the percentage higher than 20 \%. However with the Rasberry Pi, a minimum improvement was obtained, instead the use of GPU was prejudicial because it causes the speed to be reduced considerably. \\
+The use of Multithreading and Batching through the library OpenBLAS is very beneficial in the case of using CPU, increasing the speed of processing in the percentage higher than 20 \%. However with the Raspberry Pi, a minimum improvement was obtained, instead the use of GPU was prejudicial because it causes the speed to be reduced considerably. \\
 
 \begin{comment}	
 En el caso de querer implementar el algoritmo en un sitema embedded, no se recomienda trabajar con procesador como el de la Raspberry Pi 3, pues tiene un procesamiento muy lento debido a que los frames por segundo necesario para analizar las imagenes es significativamente bajo, por lo que se debera elegir una targeta que disponga de GPU, sin necesidad del uso de Multithreading y Batching. 
