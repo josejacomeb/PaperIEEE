@@ -840,38 +840,38 @@ For the estimation of the frames per second(FPS) for each device, its optimal co
 Para buscar un procesamiento apropiado para trabajar en tiempo real, se experimento reduciendo el numero de filros de las capas de la red desde 64 hasta 16, logrando con esto disminuir el numero de parametros a ser computados durante la clasificacion, obteniendo tambien un tiempo de procesamiento de 2,5 veces menor al de la red original, este cambio tuvo un bajo impacto en la precision de entrenamiento de la red, pues este valor cayo en un 1\%, con respecto a la red original.
 \end{comment}	
 
-In order to have adequate image processing that could be implemented to work in real time, the number of the network filter layers was reduced from 64 to 16, achieving to reduce the number of parameters to be computed during the classification. A classification time reduced by 2.5 times compared the original Net of 64 filters was obtained. This change had a small impact in the training accuracy of the net, its value increased 1 \% in comparison to the original net. \\
+In order to have adequate image processing that could be implemented to work in real time, the number of network filter layers was reduced from 64 to 16, reducing the number of parameters to be computed during the classification. A classification time reduced by 2.5 times compared the original Net of 64 filters was obtained. This change had a small impact in the training accuracy of the net, its value increased 1 \% in comparison to the original net. \\
 
 \begin{comment}	
 -Este paper estudia una red neuronal convolucional para la clasificacion entre maiz y mala hierba, para lo cual se utilizo algunas arquitecturas de red, de donde la que proporciono mejores resultados fue la Cnet, con un 97.26\% de presicion en el entrenamiento al usar un datasetc de 44580 imagenes conteniendo las dos clases. \\
 \end{comment}	
 
-This paper presented an analysis of a Convolutional Neuronal Networks application for classification between maize plants and weeds. With this purpose, several CNN Architectures were tested, the network that presented the best results was cNET of 16 filters, with a 97.23 \% of training accuracy, using a dataset of both classes of 44580 segmented images. \\
+This paper presented an analysis of a Convolutional Neuronal Network application for classification between maize plants and weeds. With this purpose, several CNN Architectures were tested, the network that presented the best results was cNET of 16 filters, with a 97.23 \% of training accuracy, using a dataset of both classes of 44580 segmented images. \\
 
 
 \begin{comment}	
 -Ademas nuestros experimentos al utilizar diferentes procesadores, demostraron que se obtienen mejores resultados en cuanto a velocidad al trabajar con una a tarjeta grafica ENVIDIA que posee soporte CUDA debido a su arquitectura de computacion paralela, siendo este 10 veces mas rapido que el CPU normal y 100 veces mas rapido que una Raspberry Pi3.
 \end{comment}	
 
-Also, by using different methods to classify the images in our experiments the results showed that the best time of classification was achieved by using a Nvidia Graphics Card. This was due to the parallel architecture that this GPU has. Also, this Graphics Card is fully supported for the computational platform CUDA, it demonstrated to be 18 times faster than a normal CPU and 170 times faster than a Raspberry Pi 3. \\
+Also, by using different methods to classify images, the results showed that the best classification time was achieved by using a Nvidia Graphics Card. This was due to the parallel architecture that this GPU has. Also, this Graphics Card is fully supported for the computational platform CUDA, it demonstrated to be 18 times faster than a normal CPU and 170 times faster than a Raspberry Pi 3. \\
 
 \begin{comment}	
 -El estudio demostro que es mejor obtener las imagenes para el dataset realizar algunos giros en las imagenes de las plantas del dataset, debido a que esto aporta mejoras en la identificacion de plantas, pues estas siempre tienen orientaciones diferentes.
 \end{comment}	
 
-The study demonstrated that is better to perform some geometrical transformations to the dataset images due to the benefits it offers, such as the improvement in plant classification since the plants will have different orientations in the crop field. \\
+The study demonstrated that performimg geometrical transformations to the dataset images improves plant classification accuracy since the plants will have different orientations in the crop field. \\
 
 \begin{comment}
 -El uso de Multithreading y Batching a traves de la libreria OpenBLAS es muy beneficioso en el caso de usar CPU, aumentando la rapidez de procesamiento en el porcentaje superior al 20\%, con la Rasberry pi, se obtuvo una minima mejora, en cambio fue pejudicial con el uso de GPU , pues provoca que la rapidez se reduzca considerablemente. \\
 \end{comment}
 
-The use of Multithreading and Batching through the library OpenBLAS is very beneficial in the case of using CPU, increasing the speed of processing in the percentage higher than 20 \%. However with the Raspberry Pi, a minimum improvement was obtained, instead the use of GPU was prejudicial because it causes the speed to be reduced considerably. \\
+The use of Multithreading and Batching through the library OpenBLAS is beneficial when using a CPU, increasing the processing speed higher than 20 \%. In contrast, a minimum improvement was obtained with the Raspberry Pi. On the contrary, the use of a GPU was prejudicial because it reduces the processing speed considerably. \\
 
 \begin{comment}	
 En el caso de querer implementar el algoritmo en un sitema embedded, no se recomienda trabajar con procesador como el de la Raspberry Pi 3, pues tiene un procesamiento muy lento debido a que los frames por segundo necesario para analizar las imagenes es significativamente bajo, por lo que se debera elegir una targeta que disponga de GPU, sin necesidad del uso de Multithreading y Batching. 
 \end{comment}
  
-In the case of implementing the algorithm in an embedded system, it is not recommended to work with a processor like Raspberry Pi 3 for now(due they are promising advances in external Deep Lerning devices for embedded systems such as the Intel Movidius Neural Compute Stick), because it has a very slow processing because the frames per second needed to analyze the images is significantly low, so you should choose a card that has GPU, without the need for Multithreading and Batching. \\
+For implementing the algorithm in an embedded system, it is not recommended to work with a processor such as the Raspberry Pi 3 at the moment. This embedded system has a very slow processing speed because the frames per second used to analyze the images are significantly low, so a card that has GPU should be chosen, without the need for Multithreading and Batching. Even though there are promising advances in external Deep Lerning devices for embedded systems such as the Intel Movidius Neural Compute Stick, these systems are not yet available.  \\
 
  
 
