@@ -213,7 +213,7 @@
 % generate multiline equations as well as matrices, tables, etc., of high
 % quality.
 
-
+\usepackage{makecell}
 
 
 % *** SUBFIGURE PACKAGES ***
@@ -332,9 +332,9 @@
 % affiliations
 \author{\IEEEauthorblockN{C\'ordova-Cruzatty Andrea \IEEEauthorrefmark{1},
 Barreno Barreno Mauricio Daniel \IEEEauthorrefmark{2} and J\'acome Barrionuevo Jos\'e Misael \IEEEauthorrefmark{3}}
-\IEEEauthorblockA{Department of Energy and Mechanics,
-University of the Armed Forces ESPE\\
-Latacunga - Quijano y Ordo\~nez and Hermanas Pa\'ez \\
+\IEEEauthorblockA{Departamento de Energ\'ia y Mec\'anica,
+Universidad de las Fuerzas Armadas  ESPE\\
+Sangolqu\'i - Ecuador \\
 Email: \IEEEauthorrefmark{1}accordova@espe.edu.ec,
 \IEEEauthorrefmark{2}mdbarreno@espe.edu.ec,
 \IEEEauthorrefmark{3}jmjacome1@espe.edu.ec}}
@@ -379,7 +379,7 @@ Email: \IEEEauthorrefmark{1}accordova@espe.edu.ec,
 % in the abstract
 \begin{abstract}
 
-Deep Learning is playing an important role in big data processing for more accurate modeling of common productive processes. It is being widely used in artificial vision applications and specifically in pattern recognition. The versatility of deep learning has positioned it as a fit tool used in many fields of application, among which is precision agriculture. This paper presents the development of an algorithm capable of image segmentation and classification. Segmentation is intended to separate the target plant from the original image, while classification is meant to identify what images belong to the two defined classes. It applies a convolutional neural network (CNN) to discriminate maize plants from weeds in real time, at early crop development stages. It was applied to maize crop because it is a common staple crop in the Ecuadorian Highlands.  The convolutional neural network has been trained with a dataset generated in the segmentation stage. The performance of the network was analyzed with LeNET, AlexNet, cNET and sNET network architectures. The network architecture that presented the best training results was cNET based on its performance in terms of accuracy (96.4\%) and processing time of 161 miliseconds in a Raspberry Pi CPU. The minimum working filter number for this network architecture was 16. The best performing algorithms and processors have a significant potential for autonomous weed and crop classification systems in a real-time application.\\
+Deep Learning is playing an important role in big data processing for more accurate modeling of common productive processes. It is being widely used in artificial vision applications and specifically in pattern recognition. The versatility of deep learning has positioned it as a fit tool used in many fields of application, among which is precision agriculture. This paper presents the development of an algorithm capable of image segmentation and classification. Segmentation is intended to separate the target plant from the original image, while classification is meant to identify what images belong to the two defined classes. It applies a convolutional neural network (CNN) to discriminate maize plants from weeds in real time, at early crop development stages. It was applied to maize crop because it is a common staple crop in the Ecuadorian Highlands.  The convolutional neural network has been trained with a dataset generated in the segmentation stage. The performance of the network was analyzed with LeNET, AlexNet, cNET and sNET network architectures. The network architecture that presented the best training results was cNET based on its performance in terms of accuracy and processing time. The minimum working filter number for this network architecture was 16. The best performing algorithms and processors have a significant potential for autonomous weed and crop classification systems in a real-time application.\\
 
 
 
@@ -408,10 +408,10 @@ Machine Learning, Convolutional Neural Networks, GPU Computation, Caffe, Segment
 \IEEEpeerreviewmaketitle
 
 \section{Introduction}
-During the last centuries, significant progress has taken place in science and technology developments. Significant milestones in diverse areas such as communications, numerical computer control and the miniaturization of components have benefited industrial and productive sectors \cite{davim2017microfabrication}, providing new means to approach problems in a different manner. The availability of leading edge technologies has considerably increased, thus becoming more accessible to people. This effect of globalization has allowed many countries to have access to state-of-the-art technological products\cite{grossman2015globalization}, promoting its application in different areas to generate alternative and more efficient solutions to conventional problems. 
+During the last centuries, significant progress has taken place in science and technology developments. Significant milestones in diverse areas such as communications, numerical computer control and the miniaturization of components have benefited industrial and productive sectors \cite{davim2017microfabrication}, providing new means to approach problems in a different manner. The availability of leading edge technologies has considerably increased, thus becoming more accessible to people. This effect of globalization has allowed many countries to have access to state-of-the-art technological products \cite{grossman2015globalization}, promoting its application in different areas to generate alternative and more efficient solutions to conventional problems. 
 \\
 
-Technological advances have caused industry transformations; manufacturing, food processing, agricultural industries among others, have gone through dramatic changes with the new industrial revolution such as the Precision agriculture(PA)  which has opened a new field for researching \cite{ortiz2012máquinas}. However there are fields that have not been significantly influenced by technological development in Ecuador, as it is the case of agroindustry. Agriculture in Ecuador has undergone some changes since colonial times;  while it is true that there are efficient agricultural practices, the lack of technological resources and applications make it impossible for the country to exploit its true potential as a clean and efficient agricultural producer, for the next years it will be planned to introduce some changes concerning to the innovation to improve production \cite{houtart2014desafio}. Also, the excessive use of pesticides have a negative effect on the production, soil, and water quality, which leads the new research efforts towards finding alternative solutions to weed control aspects. 
+Technological advances have caused industry transformations; manufacturing, food processing, agricultural industries among others, have gone through dramatic changes with the new industrial revolution such as the Precision agriculture(PA)  which has opened a new field for researching  \cite{ortiz2012máquinas}. However there are fields that have not been significantly influenced by technological development in Ecuador, as it is the case of agroindustry. Agriculture in Ecuador has undergone some changes since colonial times;  while it is true that there are efficient agricultural practices, the lack of technological resources and applications make it impossible for the country to exploit its true potential as a clean and efficient agricultural producer, for the next years it will be planned to  introduce some changes concerning to the innovation to improve production \cite{houtart2014desafio}. Also, the excessive use of pesticides have a negative effect on the production, soil, and water quality, which leads the new research efforts towards finding alternative solutions to weed control aspects. 
 \\
 
 Nowadays, one of agriculture's challenges is the development of precision agriculture techniques focused on weed and crop segmentation. There are studies that show the impact of weed in corn crops \cite{suarez2005distintos}; yield can be affected up to 5000 kg/ha. Currently, growing development of artificial vision and machine learning algorithms has allowed researchers to propose solutions for weed segmentation in different types of crops. These algorithms are intended to be used in different weed control systems, such as autonomous weed-removing robots.
@@ -423,7 +423,7 @@ One of the first approximations for crop detection algorithms was developed in 1
 Hong and Lei \cite{jeon2011robust} developed an approximation by using an optimal method for detection in various luminosity settings, they achived this by the use of an artificial neural network (ANN) for weed and maize classification with a precision of 92.5\%. Also, another algorithm that uses OTSU and Watershed binarization methods for image segmentation has been developed \cite{hlaing2014weed}. While classification in this algorithm was done through an area analysis to perform a thresholding and the method is computationally efficient when the weed distribution does not resemble the size of the crop plants, its error increases when crop density is higher compared to weeds. Romeo \textit{et. al} \cite{romeo2012crop} proposed to use a fuzzy clustering approach to correctly segment green within the crop.
 \\
 
-Weed and crop segmentation is not limited to color images. In another application \cite{potena2016fast}, the use of a a multispectral camera permitted to obtain RGB and NIR images for the segmentation and classification purposes. The images used a light CNN for the first process and a deep CNN for classification, its accuracy was as high as 98\% in the identification of weeds. One of the most difficult things in crop identification is the generation of datasets due to weed presence in the training images, but these can be correctly generated by the use of a CNN \cite{di2016automatic}, achieving an acceptable accuracy for the generation of datasets. \\
+Weed and crop segmentation is not limited to color images. In another application \cite{potena2016fast}, the use of a multispectral camera permitted to obtain RGB and NIR images for the segmentation and classification purposes. The images used a light CNN for the first process and a deep CNN for classification, its accuracy was as high as 98\% in the identification of weeds. One of the most difficult things in crop identification is the generation of datasets due to weed presence in the training images, but these can be correctly generated by the use of a CNN \cite{di2016automatic}, achieving an acceptable accuracy for the generation of datasets. \\
 \section{Matherials and Methods}
 \begin{comment}
 El desarrollo del modelo para la identificacion de mala hierba y maiz usando Redes Neuronales Convoluciones se describe abajo: 
@@ -431,10 +431,10 @@ El desarrollo del modelo para la identificacion de mala hierba y maiz usando Red
 The developed model for weed and maize identification algorithm using convolutional neural networks is described below.
 \subsection{Hardware}
 \begin{comment}
-Para la etapa de entranamiento y captura de imagenes, los siguientes elementos fueron utilizados: Una Raspberry Pi 3 con su modulo de camara V2.1 para la adquisicion de imagenes, fue configurado para obtener video en resolucion de 1280x720 pixeles con el fin de obtener mayor detalle en la segmentacion de imagenes. Debido a la popularidad de la computacion por GPU(IDEA COMPLETADA) por sus ventajas en el desarrollo de modelos de Redes Neuronales Convolucionales, fue necesario consider hardware compatible con computacion paralela como las tarjetas graficas fabricadas por NVIDIA, estas tienen la ventaja de poseer mejores tiempos de procesamiento comparados con la CPU, con lo cual se logra optimizar los tiempos de clasificacion y entrenamiento de Modelos de Deep Learning, entonces, utilizamos un computador con una tarjeta Grafica NVIDIA GTX950M. Tambien fue necesario considerar el uso de un CPU Core i7 2.7Ghz, 8 Nucles and el CPU de la propia Raspberry Pi 3, un ARM 3, a ARM Cortex-A53, 1.2GHz, 4 nucles para probar el rendimiento de red en un sistema portable para su aplicacion en un sistema movil independiente . El hardware escogido sera probado para clasificar las imagenes y medir los tiempos de clasificacion para su posterior analisis. El hardware elegido será probado para clasificar imágenes, en cada clasificación se medirán los tiempos de procesamiento, para realizar un análisis si el hardware puede procesar en tiempo real 
+Para la etapa de entranamiento y captura de imagenes, los siguientes elementos fueron utilizados: Una Raspberry Pi 3 con su modulo de camara V2.1 para la adquisicion de imagenes, fue configurado para obtener video en resolucion de 1280x720 pixeles con el fin de obtener mayor detalle en la segmentacion de imagenes. Debido a la popularidad de la computacion por GPU(IDEA COMPLETADA) por sus ventajas en el desarrollo de modelos de Redes Neuronales Convolucionales, fue necesario consider hardware compatible con computacion paralela como las tarjetas graficas fabricadas por NVIDIA, estas tienen la ventaja de poseer mejores tiempos de procesamiento comparados con la CPU, con lo cual se logra optimizar los tiempos de clasificacion y entrenamiento de Modelos de Deep Learning, entonces, utilizamos un computador con una tarjeta Grafica NVIDIA GTX950M. Tambien fue necesario considerar el uso de un CPU Core i7 2.7GHz, 8 Nucles and el CPU de la propia Raspberry Pi 3, un ARM 3, a ARM Cortex-A53, 1.2GHz, 4 nucles para probar el rendimiento de red en un sistema portable para su aplicacion en un sistema movil independiente . El hardware escogido sera probado para clasificar las imagenes y medir los tiempos de clasificacion para su posterior analisis. El hardware elegido será probado para clasificar imágenes, en cada clasificación se medirán los tiempos de procesamiento, para realizar un análisis si el hardware puede procesar en tiempo real 
 \end{comment} 
 
-A Raspberry Pi 3 with a V2.1 Pi camera for image acquisition was used for the training and image-capturing stages. The system was configured to obtain a video at a resolution of 1280x720 pixels in order to get more detail in the segmented images. Due to the popularity of GPU computing for its advantages in the development of models of Convolutional Neural Networks, such as a better processing speed, it was necessary to consider hardware compatible with parallel computing devices such as the Graphic Cards manufactured by NVIDIA. These cards have the advantage of a superior processing speed compared to a CPU in order to optimize image-processing time and deep learning Model's training process, thus the selected device was a computer with a Nvidia graphics card GTX950M. Also, it was necessary to consider the use of a Core i7 2.7 Ghz CPU of 8 cores and the CPU of the Raspberry Pi 3, with an ARM Cortex-A53, 1.2GHz, and 4 cores, in order to test their performance for a future application in an independent mobile system that could be implemented in an embedded system. The hardware chosen will be tested to classify images, in each classification a measurement of the processing time will be taken to analyze if the hardware can process information in real time. 
+A Raspberry Pi 3 with a V2.1 Pi camera for image acquisition was used for the training and image-capturing stages. The system was configured to obtain a video at a resolution of 1280x720 pixels in order to get more detail in the segmented images. Due to the popularity of GPU computing for its advantages in the development of models of Convolutional Neural Networks, such as a better processing speed, it was necessary to consider hardware compatible with parallel computing devices such as the Graphic Cards manufactured by NVIDIA. These cards have the advantage of a superior processing speed compared to a CPU in order to optimize image-processing time and deep learning Model's training process, thus the selected device was a computer with a Nvidia graphics card GTX950M. Also, it was necessary to consider the use of a Core i7 2.7 GHz CPU of 8 cores and the CPU of the Raspberry Pi 3, with an ARM Cortex-A53, 1.2 GHz, and 4 cores, in order to test their performance for a future application in an independent mobile system that could be implemented in an embedded system. The hardware chosen will be tested to classify images, in each classification a measurement of the processing time will be taken to analyze if the hardware can process information in real time. 
 \\
 
 \subsection{Software}
@@ -463,7 +463,7 @@ Las muestras fueron obtenidas de imagenes capturas en esos campos de maiz, consi
 \end{comment}
 
 
-Samples were obtained from images captured in different maize fields. Crops where weed and maize plants could be visually discriminated were chosen in order to easily segment the images and provide reliable samples to the network, which allow the model to correctly learn all features of the real plant. Maize plants at a V3 to V7 development stage (3-7 leafs) \cite{fassio1998maiz} were used to take samples. To record the samples, a camera was centered over the target plant, insuring that the captured image showed all its features. This was achieved by monitoring the obtained samples through an external display. Examples of the images captured are shown in Fig. \ref{figure1}. \\
+Samples were obtained from images captured in different maize fields. Crops where weed and maize plants could be visually discriminated were chosen in order to easily segment the images and provide reliable samples to the network, which allow the model to correctly learn all features of the real plant. Maize plants at a V3 to V7 development stage (3-7 leafs)  \cite{fassio1998maiz} were used to take samples. To record the samples, a camera was centered over the target plant, insuring that the captured image showed all its features. This was achieved by monitoring the obtained samples through an external display. Examples of the images captured are shown in Fig. \ref{figure1}. \\
 
 	\begin{figure}[h!]
 	\centering
@@ -482,7 +482,7 @@ Also, it was necessary to obtain images of the most common weed plants found in 
 Entonces, a traves de un proceso de procesamiento digital de imagenes, como primera fase, la imagen fue normalizada en su canal verde, esto mejora la deteccion del color verde porque elimina las luces y las sombras de la imagen, despues extrajimos el color verde de la imagen con la ecuacion descrita opr Wang, Men, Luo and Mei, para obtener una imagen final en escala de grises, despues se aplico una Umbralizacion de OTSU para obtener una mascara binaria 
 \end{comment}
 	
-Then, through a first-stage digital image processing procedure, the images were normalized in its green channel. This was done in order to improve green color detection based on the elimination of light and shadow in the images. Later, the green color was extracted from the images to obtain a grayscale equivalent; this was done through   (\ref{eqn:1}) described by Wang, Meng, Luo and Mei \cite{wang2013path}. Following, an OTSU Thresholding was applied to the grayscale images in order to obtain a binary mask. 
+Then, through a first-stage digital image processing, the images were normalized in its green channel. This was done in order to improve green color detection based on the elimination of light and shadow in the images. Later, the green color was extracted from the images to obtain a grayscale equivalent; this was done through   (\ref{eqn:1}) described by Wang, Meng, Luo and Mei \cite{wang2013path}. Following, an OTSU Thresholding was applied to the grayscale images in order to obtain a binary mask. 
 \begin{equation}
 \label{eqn:1}
 	S = 2*G - R - B
@@ -518,13 +518,13 @@ It should be noted that samples were manually labeled into two classes; maize an
 Una vez completada el procesamiento de imagenes, donde fueron obtenidas 2835 imagenes de maiz y 880 images de Mala Hierba, Lee et. Al dicen que una vez que la CNN ha alcanzado una precision aceptable, el dataset se puede extender por transformaciones geometricas, en adicion sladojevic mencionan que esto permite a reducir el sobreajuste y para mejorar la precision en el entrenamiento, razon por la cual hizimos 11 rotaciones cada 30 grados, obteniendo de esta forma el incremento(corregir) del dataset en 12 veces y tener mejores probabilidades de reconocer als plantas en cualquier orientaciones. 
 \end{comment}
 	
-Once image processing was completed, a set of 2835 maize images and 880 weed images was obtained. Lee \textit{et. al} \cite{lee2015deep} said that once CNN has reached an acceptable accuracy, the dataset can be extended by means of geometric transformations. In addition, geometric transformations \cite{sladojevic2016deep} allow overfitting reduction and improve precision in the training process. For this reason, the obtained images were rotated every 30 degrees, obtaining an increment of the dataset by 12 times, thus increasing the chances of effectively recognizing plants that are in any orientation. \\
+Once image processing was completed, a set of 2835 maize images and 880 weed images was obtained. Lee \textit{et. al} \cite{lee2015deep} said that once CNN has reached an acceptable accuracy, the dataset can be extended by applying geometric transformations. In addition, geometric transformations  \cite{sladojevic2016deep} allow overfitting reduction and improve precision in the training process. For this reason, the obtained images were rotated every 30 degrees, obtaining an increment of the dataset by 12 times, thus increasing the chances of effectively recognizing plants that are in any orientation. \\
 
 \begin{comment}	
 Para la fase de validacion, hemos escogido aletariamente la quinta parte del total de imagenes de cada clase, asi que tenemos la siguiente tabla con la distribucion del dataset.
 \end{comment}	
 
-For the validation phase, a fifth part of the total image set of each class was chosen, resulting in the dataset distribution shown in Table \ref{table:1}.
+For the validation phase, randomly the fifth part of the total image set of each class was chosen, resulting in the dataset distribution shown in Table \ref{table:1}.
 
 \begin{table}[h!]
 \renewcommand{\arraystretch}{1.3}
@@ -548,13 +548,13 @@ For the validation phase, a fifth part of the total image set of each class was 
 Despues que el ultimo paso ha sido terminado, fue necesario clasificar las imagenes del Maiz y Mala Hierba, un metodo muy preciso de Clasificacion de Imagenes son las Redes Neuronales Convolucionales(CNN), estos modelos son complejos pero eficientes con un alto grado de discriminacion y han demostrado que tienen unos buenos resultados en la Clasificacion de Imagenes, Deteccion de Objetos y Fine*Grained Classification. Tambien son aplicados en la Agricultura de Precision para la correcta identificacion de plantas
 \end{comment}	
 
-After the dataset was completed, it was neccesary to classify maize and weed images. Convolutional Neural Networks (CNN) can be used as a highly-accurate method for image classification. These models are complex but efficient with a high rate of discrimination and have proven to provide good results in image classification, object detection, and fine-grained classification \cite{sharif2014cnn}. CNN are widely used in precision agriculture \cite{potena2016fast} for the correct identification of plants.\\
+After the dataset was completed, it was neccesary to classify maize and weed images. Convolutional Neural Networks (CNN) can be used as a highly-accurate method for image classification. These models are complex but efficient with a high rate of discrimination and have proven to provide good results in image classification, object detection, and fine-grained classification  \cite{sharif2014cnn}. CNN are widely used in precision agriculture  \cite{potena2016fast} for the correct identification of plants.\\
 	
 \begin{comment}	
 Una de las caracteristicas de las CNN is que estas pueden tener multiples arquitecturas, cada arquitectura puede alcanzar diferentes resultados dependiendo de la aplicacion, para el presente documento hemos considerado cuatro arquitecturas de CNN: Dos modelos fueron escogidos del Caffe Zoo Model(es un recurso libre liberado por los Desarrolladores de Caffe) Lenet y AlexNet, tambien Potena y Nardi han usado adicionalmente dos tios de modelos, sNET y cNET, estos han sido exitosamente probados en la clasificacion de plantas en cultivos, con las redes secogidas, cada una fue entrenada con un mismo Solver de Tipo AdaDelta, con el mismo Dataset y los resultados del entrenamiento son los siguientes:
 \end{comment}	
 
-One of the characteristics of CNN is these have multiple architectures, each architecture can reach different results depending on the application. For the present document four CNN architectures have been considered. Two arquitectures were chosen from the Caffe Zoo Model(a free resource provided by Caffe Developers), LeNet and AlexNet. Also, Potena and Nardi\cite{potena2016fast} used two additional types of architectures, sNET and cNET, which sucessfully proved an aceptable performance in plants and crop identification processes. With the four Nets chosen, each one was trained with the same solver of type Adam and with the same dataset. The training results are shown in Table \ref{table:2}. \\
+One of the characteristics of CNN is these have multiple architectures, each architecture can reach different results depending on the application. For the present document four CNN architectures have been considered. Two arquitectures were chosen from the Caffe Zoo Model(a free resource provided by Caffe Developers), LeNet and AlexNet. Also, Potena and Nardi  \cite{potena2016fast} used two additional types of architectures, sNET and cNET, which sucessfully proved an aceptable performance in plants and crop identification processes. With the four Nets chosen, each one was trained with the same solver of type Adam and with the same dataset. The training results are shown in Table \ref{table:2}. \\
 \begin{table}[h!]
 \centering
 \renewcommand{\arraystretch}{1.2}
@@ -723,9 +723,9 @@ For the estimation of the frames per second(FPS) for each device, its optimal co
 \renewcommand{\arraystretch}{1.2}
 \caption{Test of complete image classification in FPS}
 \label{table:6}
-\begin{tabular}[c c c c]{|p{1.1 cm} p{1.7cm} p{1.7cm} p{2.0cm}|} 
+\begin{tabular}[c c c c]{|p{1.0 cm} p{1.7cm} p{1.7cm} p{1.7cm}|} 
  \hline
- \textbf{Parameter} &\textbf{GPU(Without Threading) } & \textbf{CPU with Threading} & \textbf{Raspberry Pi 3 with Threading} \\ 
+ \textbf{Parameter} &\textbf{GPU(Without Threading) } & \textbf{CPU (Threading)} & \textbf{Raspberry Pi (Threading)} \\ 
  \hline
  Time(s) & 0.0171 & 0.196 & 2.714 \\ [0.95ex]
  FPS & 58.47 & 5.08 & 0.36 \\ [0.95ex]
@@ -840,7 +840,7 @@ For the estimation of the frames per second(FPS) for each device, its optimal co
 Para buscar un procesamiento apropiado para trabajar en tiempo real, se experimento reduciendo el numero de filros de las capas de la red desde 64 hasta 16, logrando con esto disminuir el numero de parametros a ser computados durante la clasificacion, obteniendo tambien un tiempo de procesamiento de 2,5 veces menor al de la red original, este cambio tuvo un bajo impacto en la precision de entrenamiento de la red, pues este valor cayo en un 1\%, con respecto a la red original.
 \end{comment}	
 
-In order to have adequate image processing that could be implemented to work in real time, the number of network filter layers was reduced from 64 to 16, reducing the number of parameters to be computed during the classification. A classification time reduced by 2.5 times compared the original Net of 64 filters was obtained. This change had a small impact in the training accuracy of the net, its value increased 1 \% in comparison to the original net. \\
+In order to have an adequate image processing that could be implemented to work in real time, the number of network filter layers was reduced from 64 to 16, reducing the number of parameters to be computed during the classification. A classification time reduced by 2.5 times compared the original Net of 64 filters was obtained. This change had a small impact in the training accuracy of the net, its value increased 1 \% in comparison to the original net. \\
 
 \begin{comment}	
 -Este paper estudia una red neuronal convolucional para la clasificacion entre maiz y mala hierba, para lo cual se utilizo algunas arquitecturas de red, de donde la que proporciono mejores resultados fue la Cnet, con un 97.26\% de presicion en el entrenamiento al usar un datasetc de 44580 imagenes conteniendo las dos clases. \\
@@ -859,7 +859,7 @@ Also, by using different methods to classify images, the results showed that the
 -El estudio demostro que es mejor obtener las imagenes para el dataset realizar algunos giros en las imagenes de las plantas del dataset, debido a que esto aporta mejoras en la identificacion de plantas, pues estas siempre tienen orientaciones diferentes.
 \end{comment}	
 
-The study demonstrated that performimg geometrical transformations to the dataset images improves plant classification accuracy since the plants will have different orientations in the crop field. \\
+The study demonstrated that performing geometrical transformations to the dataset images improves plant classification accuracy since the plants will have different orientations in the crop field. \\
 
 \begin{comment}
 -El uso de Multithreading y Batching a traves de la libreria OpenBLAS es muy beneficioso en el caso de usar CPU, aumentando la rapidez de procesamiento en el porcentaje superior al 20\%, con la Rasberry pi, se obtuvo una minima mejora, en cambio fue pejudicial con el uso de GPU , pues provoca que la rapidez se reduzca considerablemente. \\
@@ -892,7 +892,7 @@ For implementing the algorithm in an embedded system, it is not recommended to w
 
 The authors would like to thank the "Granja Agroecol\'ogica y Demostrativa" of P\'illaro City and the owners of corn crops of the city whom allowed us to take samples of plants, to conform the dataset of this project. \\
 
-This work has been supported by the University of the Army "ESPE" Latacunga. 
+This work has been supported by the Universidad de las Fuerzas Armadas ESPE. 
 
 
 % trigger a \newpage just before the given reference
