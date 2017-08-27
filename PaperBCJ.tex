@@ -309,11 +309,11 @@
 
 
 % correct bad hyphenation here
-\hyphenation{op-tical net-works semi-conduc-tor}
+%\hyphenation{op-tical net-works semi-conduc-tor}
 \usepackage{graphicx}
 \usepackage{verbatim}
-\usepackage{array}
-\usepackage{filecontents}
+%\usepackage{array}
+%\usepackage{filecontents}
 %\usepackage[noadjust]{cite}
 
 
@@ -417,9 +417,9 @@ Technological advances have caused industry transformations; manufacturing, food
 Nowadays, one of agriculture's challenges is the development of precision agriculture techniques focused on weed and crop segmentation. There are studies that show the impact of weed in corn crops \cite{suarez2005distintos}; yield can be affected up to 5000 kg/ha. Currently, growing development of artificial vision and machine learning algorithms has allowed researchers to propose solutions for weed segmentation in different types of crops. These algorithms are intended to be used in different weed control systems, such as autonomous weed-removing robots.
 \\
 
-One of the first approximations for crop detection algorithms was developed in 1996 \cite{brivot1996segmentation}; this algorithm could segment crops from weeds by means of infrared(IR) images. The images were processed by a hysteresis umbral and the Min Neighbouring method to identify the rows of a crop. In recent years the implementation of machine learning has opened new possibilities in weed and crop differentiation process. Recently, the use of Harris Corner detection techniques in CNNs was implemented with the use of Feature Detection, a machine-learning algorithm that uses DBSCAN (Density-based spartial clustering of aplications with noise) \cite{cheng2015feature}. This algorithm demonstrated an effectiveness of 98\% in the identification of rice weeds. Araguez \textit{et. al} \cite{equipo2006proceedings} implemented a segmentation algorithm through the analysis of the green histogram of the image and performed the crop and weed segmentation with unspecified classifiers.
+One of the first approximations for crop detection algorithms was developed in 1996 \cite{brivot1996segmentation}; this algorithm could segment crops from weeds by obtaining a set of infrared(IR) images. The images were processed by a hysteresis umbral and the Min Neighbouring method to identify the rows of a crop. In recent years the implementation of machine learning has opened new possibilities in weed and crop differentiation process. Recently, the use of Harris Corner detection techniques in CNNs was implemented with the use of Feature Detection, a machine-learning algorithm that uses DBSCAN (Density-based spartial clustering of aplications with noise) \cite{cheng2015feature}. This algorithm demonstrated an effectiveness of 98\% in the identification of weeds in rice crops. Araguez \textit{et. al} \cite{equipo2006proceedings} implemented a segmentation algorithm through the analysis of the green histogram of the image of plants and performed the crop and weed segmentation with unspecified classifiers.
 \\
-
+\\
 Hong and Lei \cite{jeon2011robust} developed an approximation by using an optimal method for detection in various luminosity settings, they achived this by the use of an artificial neural network (ANN) for weed and maize classification with a precision of 92.5\%. Also, another algorithm that uses OTSU and Watershed binarization methods for image segmentation has been developed \cite{hlaing2014weed}. While classification in this algorithm was done through an area analysis to perform a thresholding and the method is computationally efficient when the weed distribution does not resemble the size of the crop plants, its error increases when crop density is higher compared to weeds. Romeo \textit{et. al} \cite{romeo2012crop} proposed to use a fuzzy clustering approach to correctly segment green within the crop.
 \\
 
