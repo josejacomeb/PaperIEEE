@@ -6,3 +6,21 @@
 *.gz
 
 *.blg
+
+*.bib~
+
+*.dvi
+
+*.bbl
+
+*.bcf
+
+*.out
+
+*.nav
+
+*.xml
+
+*.snm
+
+*.toc
