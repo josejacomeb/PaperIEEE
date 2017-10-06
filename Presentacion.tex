@@ -63,18 +63,18 @@ Convolutional Neuronal Networks}
 \frametitle{Introduction}
 \textbf{Introduction}
 \begin{itemize}
-\item Maize is one of the most important \textbf{food or crop?} of the world.
-\item Weed can affect the maize crop up to 5000 Kg/Ha.\footnote{suarez2005distintos} %Las malas hierbas en el maiz pueden afectan hasta 5000 Kg/Hectaria de produccion.
-\item Robotics has presented a huge advance in Precision Agriculture.%La robotica esta presentando grandes avances en la agricultura de precision.
+\item Maize is one of the most important crops of the world.
+\item Weed can affect maize crop yield up to 5000 Kg/Ha.\footnote{suarez2005distintos} %Las malas hierbas en el maiz pueden afectan hasta 5000 Kg/Hectaria de produccion.
+\item Robotics has had significant contributions to Precision Agriculture.%La robotica esta presentando grandes avances en la agricultura de precision.
 \item Artificial Intelligence reached near-to-human precision.%Inteligencia artificial cada vez se acerca mas a la inteligencia humana.
 \end{itemize}
-\textbf{The Propose of the present study}
+\textbf{Purpose of the present study}
 \begin{itemize}
 \item Obtain samples to conform a dataset%Obtener muestras(imagenes) para conformar un dataset.
 \item Segment samples%Segmentar las muestras.
-\item Test diffent network architectures of Convolutional Neural Networks for classify Maize and Weed%Probar diferentes arquitecturas de Redes Neuronales Convolucionales para entrenar la red.
-\item Benchmark the best architure to analyse time of processing %Hacer Benchmark en diferentes hardwares para analizar tiempos de procesamiento.
-\item Optimize the time of processing of the net%Optimizar la red.
+\item Test different network architectures of Convolutional Neural Networks for Maize and Weed Clasification %Probar diferentes arquitecturas de Redes Neuronales Convolucionales para entrenar la red.
+\item Benchmark the best network architecture to analyze processing time %Hacer Benchmark en diferentes hardwares para analizar tiempos de procesamiento.
+\item Optimize the network processing speed %Optimizar la red.
 \end{itemize}
 \end{frame}
 %-----------------------------
@@ -85,9 +85,9 @@ Convolutional Neuronal Networks}
     \tableofcontents[currentsection]
   \end{frame}
 }
-\section{Hardware and Software Used}
+\section{Used Hardware and Software}
 \begin{frame}
-\frametitle{Hardware and Software Used}
+\frametitle{Used Hardware and Software}
 \textbf{Hardware}
 \begin{enumerate}
 \item Raspberry Pi 3.
@@ -142,8 +142,9 @@ Convolutional Neuronal Networks}
 \begin{itemize}
 \item Samples obtained in Pillaro-Tungurahua-Ecuador
 \item Images obtained in its initial stage(3-7 leaves) . %La imagenes fueron obtenidas encampos de maiz en su estapa inicial,( plantas con 3 a 7 hojas) 
-\item Rotated images every 30º to improve detection of plants\footcite{sladojevic2016deep}%Imagenes rotadas cada 30 grados para mejorar la deteccion de las planta.
-\item 1/5 of the total images chosed randomly to validate training%1/5 del total de las imagenes al azar fueron usadas para la etapa de validacion
+\item Rotated images every 30º to improve plant detection 
+\footcite{sladojevic2016deep}%Imagenes rotadas cada 30 grados para mejorar la deteccion de las planta.
+\item 1/5 of the total images chosen randomly to validate training%1/5 del total de las imagenes al azar fueron usadas para la etapa de validacion
 \end{itemize}
 \begin{table}[h!]
 \renewcommand{\arraystretch}{1.3}
@@ -194,9 +195,9 @@ Convolutional Neuronal Networks}
     \tableofcontents[currentsection]
   \end{frame}
 }
-\section{Architectures Tested}
+\section{Tested Architectures}
 \begin{frame}
-\frametitle{Architectures tested}
+\frametitle{Tested Architectures}
 \begin{itemize}
 	\item LeNET and AlexNet(Caffe Zoo Model) \
 	\item cNET and sNET \footnote{potena2016fast}
@@ -232,7 +233,7 @@ Convolutional Neuronal Networks}
 \begin{frame}
 \frametitle{cNET Performance}
 \begin{enumerate}
-\item cNET can be improved by decrease the number of filters
+\item cNET can be improved by decreasing the number of filters
 \item Images can be batched and also Caffe can be multithreaded
 \item Both nets were trained with 9000 iterations
 \end{enumerate}
@@ -260,12 +261,12 @@ Convolutional Neuronal Networks}
     \tableofcontents[currentsection]
   \end{frame}
 }
-\section{Presuming performance of cNET 16 filters}
+\section{Estimated performance of cNET 16 filters}
 \begin{frame}
-\frametitle{Presuming performance of cNET 16 filters}
+\frametitle{Estimated performance of cNET 16 filters}
 \begin{itemize}
-	\item A dataset of test with 202 images of each class was used
-	\item In a single image it can be found 18 plants to classify
+	\item A test dataset with 202 images of each class was used
+	\item 18 plants can be found in a single image approximately to be classified
 \end{itemize}
 \begin{table}[h!]
 \centering
@@ -296,9 +297,9 @@ Convolutional Neuronal Networks}
 \begin{frame}
 \frametitle{Conclusion}
 \begin{itemize}
-\item cNET showed the better results in classification of maize and weed
-\item The reduce of the number of filters allow to decrease the processing time and increase the accuracy of the net
-\item GPU showed the best results but with Multithreading and Batching CPU and Raspberry Pi can improve its time of processing 
+\item cNET showed the best results in classification of maize and weed
+\item The reduction of the number of filters decreased the processing time and increased the network accuracy 
+\item GPU showed the best results, but with Multithreading and Batching CPU and Raspberry Pi can improve its processing time
 \item Due to the limitations of the Raspberry Pi, it can't be used to classify in real time, but a Neural Module(such as Intel Movidius) can improve that result
 \end{itemize}
 \end{frame}
