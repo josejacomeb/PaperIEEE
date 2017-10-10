@@ -5,7 +5,6 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{makeidx}
-\usepackage[style=verbose]{biblatex}
 \usepackage{graphicx}
 \usepackage{makecell}
 \usepackage{verbatim}
@@ -13,7 +12,7 @@
 \usetheme{Szeged}
 \usecolortheme{beaver}
 \setbeamercovered{transparent}
-\addbibresource{bibliografiapaper.bib}
+
 \begin{document}
 %\font\myfont=cmr12 at 20pt
 %\title{{\myfont Precise Weed and Maize Classification through Convolutional Neuronal Networks}}
@@ -115,7 +114,7 @@ Convolutional Neuronal Networks}
 \begin{itemize}
 	\item Acquire  an RGB image through RPi Camera v2.1
 	\item Detect contours and crop image to the contour
-	\item Normalize Green Channel and then $S = 2*G - R - B$ \footcite{wang2013path}
+	\item Normalize Green Channel and then $S = 2*G - R - B$ \footnote{wang2013path}
 	\item OTSU Thresholding
 	\item Mask image
 \end{itemize}
@@ -142,8 +141,7 @@ Convolutional Neuronal Networks}
 \begin{itemize}
 \item Samples obtained in Pillaro-Tungurahua-Ecuador
 \item Images obtained in its initial stage(3-7 leaves) . %La imagenes fueron obtenidas encampos de maiz en su estapa inicial,( plantas con 3 a 7 hojas) 
-\item Rotated images every 30º to improve plant detection 
-\footcite{sladojevic2016deep}%Imagenes rotadas cada 30 grados para mejorar la deteccion de las planta.
+\item Rotated images every 30º to improve plant detection \footnote{sladojevic2016deep}%Imagenes rotadas cada 30 grados para mejorar la deteccion de las planta.
 \item 1/5 of the total images chosen randomly to validate training%1/5 del total de las imagenes al azar fueron usadas para la etapa de validacion
 \end{itemize}
 \begin{table}[h!]
@@ -163,7 +161,25 @@ Convolutional Neuronal Networks}
 \end{tabular}
 \end{table}
 \end{frame}
-
+\begin{frame}
+\frametitle{Samples}
+\begin{itemize}
+\item Maize Plants \textit{(Zea maiz)}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=3.5 in]{samplesmaize}
+	\caption{Normal architecture in a Convolutional Neural Network}
+	\label{figure4}
+	\end{figure}
+	\item Weed Plants \textit{(Zea maiz)}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=3.5 in]{samplesweed}
+	\caption{Normal architecture in a Convolutional Neural Network}
+	\label{figure4}
+	\end{figure}
+\end{itemize}
+\end{frame}
 %-----------------------------
 \AtBeginSection[]
 {
@@ -178,7 +194,7 @@ Convolutional Neuronal Networks}
 \begin{itemize}
 	\item Highly accurate method for image classification
 	\item A class of deep, feed-forward artificial neural networks
-	\item Tested on classification of plants, \footcite{cheng2015feature} \footcite{potena2016fast} \footcite{di2016automatic}
+	\item Tested on classification of plants, \footnote{cheng2015feature} \footnote{potena2016fast} \footnote{di2016automatic}
 	\item Multiple architectures and applications
 \end{itemize}
 	\begin{figure}[h]
@@ -314,5 +330,5 @@ Thanks!
 
 %-----------------------------
 %\bibliographystyle{plain}
-%\bibliography{bibliografiapaper}
+\bibliography{bibliografiapaper}
 \end{document}
