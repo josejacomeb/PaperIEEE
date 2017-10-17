@@ -1,4 +1,6 @@
 \documentclass[10pt,a4paper]{beamer}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{bibliografiapaper}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{amsmath}
@@ -14,16 +16,6 @@
 \setbeamercovered{transparent}
 
 \begin{document}
-%\font\myfont=cmr12 at 20pt
-%\title{{\myfont Precise Weed and Maize Classification through Convolutional Neuronal Networks}}
-%\author{{\bf C\'ordova Andrea\inst{1}, Barreno Mauricio, J\'acome Jos\'e }\\
-%\institute{
-%\inst{1}%
- % Universidad de las Fuerzas Armadas ESPE\\
- % Latacunga - Ecuador}
-%{ 2nd IEEE Ecuador Technical Chapters Meeting}
-%\vspace*{1cm}}
-%\date{October 2017}
 \title[Precise Weed and Maize Classification through Convolutional Neuronal Networks] %optional
 {Precise Weed and Maize Classification through
 Convolutional Neuronal Networks}
@@ -62,8 +54,9 @@ Convolutional Neuronal Networks}
 \frametitle{Introduction}
 \textbf{Introduction}
 \begin{itemize}
-\item Maize is one of the most important crops of the world.
-\item Weed can affect maize crop yield up to 5000 Kg/Ha.\footnote{suarez2005distintos} %Las malas hierbas en el maiz pueden afectan hasta 5000 Kg/Hectaria de produccion.
+\item Maize(\textit{Zea mays}) is one of the most important crops of the world.
+\item Weed can affect maize crop yield up to 5000 Kg/Ha.\footnote{ R. SU\'AREZ and J. P. Y. J. VALLADARES, “Distintos sistemas de escarda en ma\'iz forrajero,” \textit{Producciones agroganaderas: Gesti\'on eficiente
+y conservaci\'on del Medio Natural. Actas de la XLV RC de la SEEP. Gij\'on}, 2005.} %Las malas hierbas en el maiz pueden afectan hasta 5000 Kg/Hectaria de produccion.
 \item Robotics has had significant contributions to Precision Agriculture.%La robotica esta presentando grandes avances en la agricultura de precision.
 \item Artificial Intelligence reached near-to-human precision.%Inteligencia artificial cada vez se acerca mas a la inteligencia humana.
 \end{itemize}
@@ -71,7 +64,7 @@ Convolutional Neuronal Networks}
 \begin{itemize}
 \item Obtain samples to conform a dataset%Obtener muestras(imagenes) para conformar un dataset.
 \item Segment samples%Segmentar las muestras.
-\item Test different network architectures of Convolutional Neural Networks for Maize and Weed Clasification %Probar diferentes arquitecturas de Redes Neuronales Convolucionales para entrenar la red.
+\item Test accuracy in different network architectures of Convolutional Neural Networks for Maize and Weed Clasification %Probar diferentes arquitecturas de Redes Neuronales Convolucionales para entrenar la red.
 \item Benchmark the best network architecture to analyze processing time %Hacer Benchmark en diferentes hardwares para analizar tiempos de procesamiento.
 \item Optimize the network processing speed %Optimizar la red.
 \end{itemize}
@@ -100,6 +93,12 @@ Convolutional Neuronal Networks}
 \item Ubuntu 16.04
 \item PIXEL Distribution derived from Debian.
 \end{enumerate}
+\begin{figure}[hbtp]
+%\caption{•}
+\centering
+\includegraphics[scale=0.3]{SoftHard.png}
+\end{figure}
+
 \end{frame}
 %-----------------------------
 \AtBeginSection[]
@@ -112,17 +111,20 @@ Convolutional Neuronal Networks}
 \section{Image Processing}
 \begin{frame}
 \begin{itemize}
-	\item Acquire  an RGB image through RPi Camera v2.1
-	\item Detect contours and crop image to the contour
-	\item Normalize Green Channel and then $S = 2*G - R - B$ \footnote{wang2013path}
+	\item Acquire  an RGB image through RPi Camera v2.1(Centered to the plant)
+	
+	\item Normalize Green Channel and then $S = 2*G - R - B$ \footnote{ P. Wang, Z. Meng, C. Luo, and H. Mei, “Path recognition for agricultural robot vision navigation under weed environment,” in \textit{7th International Conference on Computer and Computing Technologies in Agriculture (CCTA)}, no. Part I. Springer, 2013, pp. 242–248.
+}
 	\item OTSU Thresholding
+	\item Detect contours and crop image to the contour 
 	\item Mask image
+	
 \end{itemize}
 \frametitle{Image Processing}
 	\begin{figure}[h]
 	\centering
-	\includegraphics[width=3.5 in]{procesamiento}
-	\caption{The process of image processing,\textbf{ por lo pronto}}
+	\includegraphics[width=3.5 in]{SegmentationPaper}
+	\caption{Steps of image processing(Cropped image)}
 	\label{figure4}
 	\end{figure}
 \end{frame}
@@ -130,7 +132,8 @@ Convolutional Neuronal Networks}
 \AtBeginSection[]
 {
   \begin{frame}
-    \frametitle{Table of Contents}
+    \frametitle{Table of
+     Contents}
     \tableofcontents[currentsection]
   \end{frame}
 }
@@ -141,7 +144,8 @@ Convolutional Neuronal Networks}
 \begin{itemize}
 \item Samples obtained in Pillaro-Tungurahua-Ecuador
 \item Images obtained in its initial stage(3-7 leaves) . %La imagenes fueron obtenidas encampos de maiz en su estapa inicial,( plantas con 3 a 7 hojas) 
-\item Rotated images every 30º to improve plant detection \footnote{sladojevic2016deep}%Imagenes rotadas cada 30 grados para mejorar la deteccion de las planta.
+\item Rotated images every 30º to improve plant detection \footnote{ S. Sladojevic, M. Arsenovic, A. Anderla, D. Culibrk, and D. Stefanovic, “Deep neural networks based recognition of plant diseases by leaf image classification,” \textit{Computational intelligence and neuroscience}, vol. 2016, 2016.
+}%Imagenes rotadas cada 30 grados para mejorar la deteccion de las planta.
 \item 1/5 of the total images chosen randomly to validate training%1/5 del total de las imagenes al azar fueron usadas para la etapa de validacion
 \end{itemize}
 \begin{table}[h!]
@@ -168,14 +172,14 @@ Convolutional Neuronal Networks}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=3.5 in]{samplesmaize}
-	\caption{Normal architecture in a Convolutional Neural Network}
+	%\caption{Normal architecture in a Convolutional Neural Network}
 	\label{figure4}
 	\end{figure}
-	\item Weed Plants \textit{(Zea maiz)}
+	\item Weed Plants \textit{(Urtica Urens, Lysimachia vulgaris , Chenopodium \'album , Malva Capestri)} \footnote{COBA ROBALINO, José María. \textit{Monografía General del Cantón Píllaro.}} %Ortiga, Allpaquinua Cuchimalva, Forastera, Allpaquinua,  
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=3.5 in]{samplesweed}
-	\caption{Normal architecture in a Convolutional Neural Network}
+	%\caption{Normal architecture in a Convolutional Neural Network}
 	\label{figure4}
 	\end{figure}
 \end{itemize}
@@ -194,7 +198,8 @@ Convolutional Neuronal Networks}
 \begin{itemize}
 	\item Highly accurate method for image classification
 	\item A class of deep, feed-forward artificial neural networks
-	\item Tested on classification of plants, \footnote{cheng2015feature} \footnote{potena2016fast} \footnote{di2016automatic}
+	\item Tested on classification of plants, \footnote{B. Cheng and E. T. Matson, “A feature-based machine learning agent for automatic rice and weed discrimination.”} \footnote{ C. Potena, D. Nardi, and A. Pretto, “Fast and accurate crop and weed identification with summarized train sets for precision agriculture”
+}
 	\item Multiple architectures and applications
 \end{itemize}
 	\begin{figure}[h]
@@ -216,7 +221,8 @@ Convolutional Neuronal Networks}
 \frametitle{Tested Architectures}
 \begin{itemize}
 	\item LeNET and AlexNet(Caffe Zoo Model) \
-	\item cNET and sNET \footnote{potena2016fast}
+	\item cNET and sNET \footnote{ C. Potena, D. Nardi, and A. Pretto, “Fast and accurate crop and weed identification with summarized train sets for precision agriculture”
+}
 	\item 3000 iterations in each training
 \end{itemize}
 \begin{table}[h!]
@@ -330,5 +336,5 @@ Thanks!
 
 %-----------------------------
 %\bibliographystyle{plain}
-\bibliography{bibliografiapaper}
+%\bibliography{bibliografiapaper}
 \end{document}
