@@ -8,34 +8,33 @@
 \title{Lecture for Conference}
 \begin{document}
 \section{Presentation}
-Ladies and Gentlemen, my name is Jos\'e J\'acome, I'm student of Mechatronics Engineering and I'm representing to the Universidad de las Fuerzas Armadas ESPE and my co-authors Andrea C\'ordova and Mauricio Barreno, I'm going to present you our paper "Precise Weed and Maize Classification through Convolutional Neuronal Networks", so let's start...
+Ladies and Gentlemen, my name is Jos\'e J\'acome, I'm a Mechatronics Engineering student and I'm representing the Universidad de las Fuerzas Armadas ESPE as well as the co-authors of this paper, Andrea C\'ordova and Mauricio Barreno. I will present to you our paper titled "Precise Weed and Maize Classification through Convolutional Neuronal Networks", so let's start...
 \section{Introduction}
-So first, we talk about Maize, it's one of the most important crops in the world, that Crop could be affected by weed in the yield up to 5000 Kg/Ha, so it is neccessary to develop solutions for Precision Agriculture with Robotics. It's possible due to AI has reached a near-to-human precision
+So first, lets begin talking about Maize, it's one of the most important crops in the world. This Crop can be significantly affected by weeds, causing a yield reduction of up to 5000 Kg/Ha, so it is necessary to develop solutions for this particular problem and Precision Agriculture with Robotics have a great potential for solving this kind of issues. It's application is possible due to the fact that AI has reached near-to-human precision
 \section{Purpose of the present study}
-Well, we are going to develop a "Clasifier" of Maize and Weed, so we have to do:
-Obtain Samples to conform datasets in Maize Crops, Make an Algorith of Image Processing to Segment Samples, after we test the accuracy in different network architectures of Convolutional Neural Networks for Maize and Weed Clasification, later it's neccesary to Benchmark the appropiate network architecture  and finally optimize the network for run in selected hardware 
+The purpose of this study was to develop a Maize and Weed "Classifier" of Maize and Weed, so firstly we:
+Obtained Sample images to conform a maize dataset and Make an Algorith of Image Processing to Segment Samples. Afterwards we tested the accuracy in different network architectures of Convolutional Neural Networks for Maize and Weed Classification. Later it was necessary to Benchmark the appropriate network architecture  and finally optimize the network to run in a specific hardware. 
 \section{Used Hardware and Software}
-To develop that objetives, we have chosen the present hardware: A popular embedded system: Raspberry Pi 3 with its camera to get the samples, a CPU Core i7 6Th Generation and a Nvidia Graphics Card the GTX950M. \\
+To obtain the desired result, we have chosen the following hardware: A popular embedded system: Raspberry Pi 3 with its camera to get the samples, a CPU Core i7 6Th Generation and a Nvidia Graphics Card the GTX950M. \\
 And also we used free software to develop the elements of the net, first an image proccessing Library OpenCV, Caffe Framework to develop general-purpose convolutional (Fully Compatible with Python and C++) and Linux OS such as Ubuntu for the PC and Pixel for the Raspberry Pi.
 
 \section{Image Processing}
-With the help of OpenCV, we developed an algorithm, a firs step was Acquiere a RGB from the Pi Camera, centered and in a vertical position of the plant, next to we normalized the Geen Channel to avoid lights and shadows of the Image, afterwards we substracted the Green Channel from the Blue and Red Channel with the next equation described with Wang and others. After the image need to be thresholded through the OTSU Method, next it's neccesary to Detect the contours and crop te image, after for get the max detail we masked the imagen. After we have some examples of the processing of images, for weed we have common plants in the Ecuadorin Highlands such as Ortiga, Allpaquinua and Malva. 
+With the help of OpenCV, we developed an algorithm. A firs step was to Acquire a RGB image from the Pi Camera, centered and in a vertical position on reference to the plant, next to we normalized the Green Channel to avoid lights and shadows of the Image, afterwards we subtracted the Green Channel from the Blue and Red Channel with the next equation described by Wang. After this, the image needed to be thresholded through the OTSU Method. Following this, it was necessary to Detect the contours and crop the image. furthermore, to get a maximum detail we masked the image. In the end we show some examples of the image processing process. There are common plants in the Ecuadorin Highlands such as Ortiga, Allpaquinua and Malva that fall under weed classification.
 \section{Dataset}
-The dataset was conformed by samples took in Pillaro-Tungurahua-Ecuador a great producer of many crops such as maize, the samples were obtained in crops at stage V3-V7(3-7 leaves), after like Sladojevic said, we rotated images every 30º for improve the detection in any position, after the fifth part of the total images were chosen randomly to validate training and we have the following chart. 
+The dataset was conformed by samples took in Pillaro-Tungurahua-Ecuador, a great producer of many crops such as maize, the samples were obtained in crops at stage V3-V7(3-7 leaves). Following the procedure established by Sladojevic, we rotated images every 30º to improve the detection of plants in any position. Following this, the fifth part of the total images were chosen randomly to validate the neural network training and we obtained following chart. 
 \section{Convolutional Neural Networks}
-Let's talk something about CNN, It's a highly accurate method for image classification, aclas of deep, feed-forwar artificial NN, it was tested in classification of plants and have multiple architectures and applications. We  can see a cNET architecture here, with the main layers such as Convolution, Pooling and Fully Connected.
+Let's talk about CNN, It's a highly accurate method for image classification, aclas of deep, feed-forward artificial NN. it has been widely tested in classification of plants and has multiple architectures and applications. We  can see a cNET architecture here, with the main layers such as Convolution, Pooling and Fully Connected.
 \section{Tested Architectures}
-We have chosen four architectures, the first two were choosen of the Caffe Zoo Model, a open resource of CNN Architectures, and the last two were choosen of the paper of Ciro Potena and others, sNET and cNET(beetroot). So, we have the following results, the net with best results was cNET with 96.4\% of accuracy and 13.72\$ of Loss. 
+Four architectures were chosen, the first two were chosen from the Caffe Zoo Model, a open resource of CNN Architectures, and the last two were chosen from the paper by Ciro Potena and others, sNET and cNET(beetroot). So, the following results were obtained, the net with the best performance was cNET with 96.4\% of accuracy and 13.72\$ of Loss. 
 \section{cNET Performance}
-cNET has 6 million of filters, so cNET can be improved by decresing the number of filtres, also Images can be batched and also Caffe ca be Multithreaded, and both nets were trained with 9000 iterations, so the result were better because the images of the dataset don't have too much features of shape and color to process. 
+cNET has 6 million of filters, so cNET can be improved by decresing the number of filtres. Also Images can be batched and also Caffe ca be Multithreaded, and both nets were trained with 9000 iterations, so the final result was better because the dataset images don't have too many features of shape and color to process. 
 \section{Estimated performance of cNET 16 filters}
-well, like I mentioned before, the nets in Caffe can be tuned, so we have the results with the next parameters and considering that 18 planst can be found in a single image of a row of crop, so.
+well, like I mentioned before, the nets in Caffe can be tuned, so we have performance results with these specific parameters. It was considereded that 18 plants can be found in a single image of a row of crop.
 \section{Conclusion}
 \begin{itemize}
-\item cNET showed the best results in classification of maize and weed
+\item cNET had the best performance in classification of maize and weed
 \item The reduction of the number of filters decreased the processing time and increased the network accuracy 
-\item GPU showed the best results, but with Multithreading and Batching CPU and Raspberry Pi can improve its processing time
-\item Due to the limitations of the Raspberry Pi, it can't be used to classify in real time, but a Neural Module(such as Intel Movidius) can improve that result
-\end{itemize}
+\item GPU showed the best results, but with Multithreading and Batching CPU and Raspberry Pi its processing time can be improved 
+\item Due to the limitations of the Raspberry Pi, it can't be used to classify in real time, but a Neural Module(such as Intel Movidius) can improve its performance \end{itemize}
 Thanks!
 \end{document}

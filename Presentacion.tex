@@ -113,12 +113,12 @@ y conservaci\'on del Medio Natural. Actas de la XLV RC de la SEEP. Gij\'on}, 200
 \section{Image Processing}
 \begin{frame}
 \begin{itemize}
-	\item Acquire  an RGB image through RPi Camera v2.1(Centered to the plant)
+	\item Acquire  an RGB image through RPi Camera v2.1(Centered on the plant)
 	
 	\item Normalize Green Channel and then $S = 2*G - R - B$ \footnote{ P. Wang, Z. Meng, C. Luo, and H. Mei, “Path recognition for agricultural robot vision navigation under weed environment,” in \textit{7th International Conference on Computer and Computing Technologies in Agriculture (CCTA)}, no. Part I. Springer, 2013, pp. 242–248.
 }
 	\item OTSU Thresholding
-	\item Detect contours and crop image to the contour 
+	\item Detect contours and crop image to obtain its contour 
 	\item Mask image
 	
 \end{itemize}
@@ -201,7 +201,7 @@ y conservaci\'on del Medio Natural. Actas de la XLV RC de la SEEP. Gij\'on}, 200
 \begin{itemize}
 	\item Highly accurate method for image classification
 	\item A class of deep, feed-forward artificial neural networks
-	\item Tested on classification of plants, \footnote{B. Cheng and E. T. Matson, “A feature-based machine learning agent for automatic rice and weed discrimination.”} \footnote{ C. Potena, D. Nardi, and A. Pretto, “Fast and accurate crop and weed identification with summarized train sets for precision agriculture”
+	\item Tested for plant classification, \footnote{B. Cheng and E. T. Matson, “A feature-based machine learning agent for automatic rice and weed discrimination.”} \footnote{ C. Potena, D. Nardi, and A. Pretto, “Fast and accurate crop and weed identification with summarized train sets for precision agriculture”
 }
 	\item Multiple architectures and applications
 \end{itemize}
@@ -322,7 +322,7 @@ y conservaci\'on del Medio Natural. Actas de la XLV RC de la SEEP. Gij\'on}, 200
 \begin{frame}
 \frametitle{Conclusion}
 \begin{itemize}
-\item cNET showed the best results in classification of maize and weed
+\item cNET had the best performance in maize and weed classification
 \item The reduction of the number of filters decreased the processing time and increased the network accuracy 
 \item GPU showed the best results, but with Multithreading and Batching CPU and Raspberry Pi can improve its processing time
 \item Due to the limitations of the Raspberry Pi, it can't be used to classify in real time, but a Neural Module(such as Intel Movidius) can improve that result
